@@ -1,0 +1,75 @@
+// Spawn positions on the map
+// | 12  34 |
+// |        |
+// | 56  78 |
+
+
+// Game type list
+// 1 - Team prospectors (North vs South)
+// 2 - Team prospectors (West vs East)
+// 3 - Prospector FFA (Teams of 2 or solo)
+
+
+
+//==============================================================
+// Initial functions
+Starting
+begin
+    mp_selectmsg := true;
+    
+    INIT_LoadMapParams;
+    INIT_LoadGameParams;
+    INIT_ApplyGameParams;
+    INIT_GenerateDeposits;
+    INIT_SetUpAllies;
+    INIT_SetUpTechs;
+    INIT_PrepareSquad;
+    INIT_PrepareReinforcements;
+    INIT_SpawnStartingUnits;
+    INIT_CameraFocus;
+    INIT_ActivateLUAInterface;
+    
+    if Your_Side>=1 AND Your_Side<=8 then
+        music_nat:=Side_Nations[Your_Side];
+end;
+
+
+//==============================================================
+// Cyclic functions
+every 0$1 do
+begin
+  ShowTimer;
+  Enable;
+end;
+
+every 0$3 trigger Multiplayer do
+begin
+    CheckPlayerPresence;
+    Enable;
+end;
+
+every 0$1 trigger tick>=CLOCK_fluctuation AND spawn_fluctuation<>0 do
+begin
+    enable;
+    CLOCK_fluctuation := CLOCK_fluctuation + spawn_fluctuation;
+    CYCLIC_Fluctuation;
+end;
+
+every 0$1 trigger tick>=CLOCK_crate_spawn do
+begin
+    enable;
+    CLOCK_crate_spawn := CLOCK_crate_spawn + crate_spawn_rate + fluctuation_modifier_crates;
+    CYCLIC_CrateSpawn;
+end;
+
+every 0$1 trigger tick>=CLOCK_human_spawn AND people_spawn_rate<>0 do
+begin
+    enable;
+    CLOCK_human_spawn := CLOCK_human_spawn + people_spawn_rate + fluctuation_modifier_humans;
+    CYCLIC_HumanSpawn;
+end;
+
+//==============================================================
+// Finish functions
+
+

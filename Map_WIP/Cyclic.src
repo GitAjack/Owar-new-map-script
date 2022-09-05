@@ -1,0 +1,118 @@
+//This container contains all the code that is executing cyclically throughout the game
+
+//Crate spawn script
+export Function CYCLIC_CrateSpawn;
+var i, j, k, amount;
+begin
+    for i=1 to position_drop_zones do
+    begin
+        amount  := Rand(position_drop_zones[i][1],5);
+            for j=3 to position_drop_zones[i] do
+                if Prob(position_drop_zones[i][2]) then
+                    for k=1 to position_drop_zones[i][j] do
+                        CreateCratesArea(amount, position_drop_zones[i][j][k], true);
+    end;
+end;
+
+//Script for spawning humans by drops from EON, the script favors spawning humans for side that has the least
+export Function CYCLIC_HumanSpawn;
+var i, j, entity, areas, outside, side, arguments, human;
+begin
+    side_soldier_count  := [[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0]];
+    arguments           := [0,0,0,0,0,0,0,0];
+    for i=8 downto 1 do 
+    begin
+        side_soldier_count  := Replace(side_soldier_count, i, Replace(side_soldier_count[i], 2, side_soldiers[i]+0));
+        arguments           := Replace(arguments, i, side_soldiers[i]+0);
+    end;
+    
+    for i=8 downto 1 do
+        if not side_isalive[i] then
+            side_soldier_count := Delete(side_soldier_count, i);
+    
+    side_soldier_count  := SortListByListAsc(side_soldier_count, arguments);
+    
+    for i=side_soldier_count+0 downto 1 do
+    begin
+        if side_soldier_count[i][2]>side_soldier_count[1][2] then
+        side_soldier_count := Delete(side_soldier_count, i);
+    end;
+    
+    side    := side_soldier_count[Rand(1,side_soldier_count)][1];
+    if side_soldiers[side]>0 then
+        entity  := side_soldiers[side][Rand(1,side_soldiers[side])]
+    else
+    begin
+        entity  := FilterAllUnits([[f_side, side],[f_type, 3],[f_btype, 0],[f_or],[f_btype, 1]]);
+        entity  := entity[Rand(1,entity)];
+    end;
+        
+    outside := 0;
+    areas   := 0;
+    
+    for i=1 to position_drop_zones do
+        for j=1 to position_drop_zones[i][3] do
+        begin
+            areas := areas+1;
+            
+            if IsInArea(entity, position_drop_zones[i][3][j]) then
+            begin
+                human := PrepareCharacters(side, [Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5)], new_character_EON);
+                PlaceUnitArea(human, position_drop_zones[i][3][j], true);
+                side_soldiers := Replace(side_soldiers, side, side_soldiers[side] ^ human);
+                exit;
+            end
+            else
+            begin
+                outside := outside+1;
+            end;
+        end;
+            
+    if areas=outside then
+    begin
+        i := Rand(1,position_drop_zones);
+        j := Rand(1,position_drop_zones[i][3]);
+        human := PrepareCharacters(side, [Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5)], new_character_EON);
+        PlaceUnitArea(human, position_drop_zones[i][3][j], true);
+        side_soldiers := Replace(side_soldiers, side, side_soldiers[side] ^ human);
+    end;
+end;
+    
+//Spawn fluctuation script
+export Function CYCLIC_Fluctuation;
+var change;
+begin
+    current_spawn_rate := Rand(-5,5);
+    fluctuation_modifier_crates := fluctuation_base_crates*current_spawn_rate;
+    fluctuation_modifier_humans := fluctuation_base_humans*current_spawn_rate;
+    change := current_spawn_rate - past_spawn_rate;
+    
+    Case change of
+        -10..-6:
+        begin
+        //KOMUNIKAT O ZNACZNYM ZMNIEJSZENIU DOSTAW
+        end;
+        
+        -5..-1:
+        begin
+        //KOMUNIKAT O ZMNIEJSZENIU DOSTAW
+        end;
+        
+        0:
+        begin
+        //BRAK KOMUNIKATU
+        end;
+        
+        1..5:
+        begin
+        //KOMUNIKAT O ZWIĘKSZENIU DOSTAW
+        end;
+        
+        6..10:
+        begin
+        //KOMUNIKAT O ZNACZNYM ZWIĘKSZENIU DOSTAW
+        end;
+    end;
+    
+    past_spawn_rate := current_spawn_rate;
+end;

@@ -1,0 +1,146 @@
+//This container contains all the code that is executed when a certain trigger is set off
+
+//Naming a depot when it's being built
+on BuildingStarted(b,u) do
+begin
+    if GetBType(b) in [b_depot, b_warehouse] then
+    begin
+        SetBName(b, '@' & GetSide(b));
+        if GetSide(b)=Your_Side then
+            if FilterAllUnits([[f_side,b],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+                ToLua('LUA_IsDepot();');
+                if side_tech_lvl[GetSide(b)]=4 then
+                    ToLua('LUA_SideTechMax()');
+    end;
+end;
+
+//Naming a depot when it's being captured
+on BuildingCaptured(b,o,e) do
+begin
+    if GetBType(b) in [b_depot, b_warehouse] then
+    begin
+        SetBName(b, '@' & GetSide(b));
+        if FilterAllUnits([[f_side,b],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+            ToLua('LUA_IsDepot();');
+                if side_tech_lvl[GetSide(b)]=4 then
+                    ToLua('LUA_SideTechMax()');
+        if FilterAllUnits([[f_side,o],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+            ToLua('LUA_NoDepot();');
+    end;
+end;
+
+//Side lost a soldier
+on UnitDestroyed(i) do
+var side;
+begin
+    if GetType(i)=1 then
+    begin
+        side            := GetSide(i);
+        side_soldiers   := Replace(side_soldiers, side, side_soldiers[side] diff i);
+        DidPlayerLose(side);
+    end;
+    
+    if GetBType(i) in [b_depot, b_warehouse] then
+        if FilterAllUnits([[f_side,i],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+            ToLua('LUA_NoDepot();');
+end;
+
+//SAIL events
+on SailEvent(ID) do
+var i,j,lost;
+begin
+    Case ID of
+        66: //Game ending conditions for 2 team deathmatch
+        begin
+            for i=1 to Teams do
+            begin
+                lost := 0;
+                for j in Teams[i] do
+                    if side_isalive[j]=0 then
+                        lost := lost+1;
+                
+                if lost=Teams[i]+0 then
+                    if IAmSpec or Your_Side in Teams[i] then
+                        YouLostInMultiplayer
+                    else
+                        YouWinInMultiplayer
+                else
+                    Continue
+            end;
+        end;
+    end;
+end;
+
+//LUA events
+on CustomCommand(side, command, crates, oil, siberite, order) do
+begin
+    Case command of
+        201: //Player checking the next technological upgrade requirements
+        begin
+            if side=Your_Side then
+                ToLua('LUA_UpdateUpgradeCost('&cost_per_upgrade[side_tech_lvl[side]+1][reinforce_cost][1]&','&cost_per_upgrade[side_tech_lvl[side]+1][reinforce_cost][2]&','&cost_per_upgrade[side_tech_lvl[side]+1][reinforce_cost][3]&');');
+        end;
+        
+        202: //Player opening the reinforcements window
+        begin
+            if side=Your_Side then
+            begin       
+                if side_reinforcement_amount[side]<0 or side_reinforcement_amount[side]>side_reinforcement_cap[side] then
+                    side_reinforcement_amount[side] := 1;
+                    
+                ToLua('LUA_UpdateReinforceCost('&side_reinforcement_amount[side]*cost_per_human[reinforce_cost]&','&0&','&0&','&side_reinforcement_amount[side]&');');
+            end;
+        end;
+        
+        2020: //Player decreasing the soldier amount in reinforcement window
+        begin
+            if side=Your_Side then
+            begin
+                if side_reinforcement_amount[side]>1 then
+                    side_reinforcement_amount[side]:= side_reinforcement_amount[side]-1;
+                    
+                ToLua('LUA_UpdateReinforceCost('&side_reinforcement_amount[side]*cost_per_human[reinforce_cost]&','&0&','&0&','&side_reinforcement_amount[side]&');');
+            end;
+        end;
+            
+        2021: //Player increasing the soldier amount in reinforcement window
+        begin
+            if side=Your_Side then
+            begin
+                if side_reinforcement_amount[side]<side_reinforcement_cap[side] then
+                    side_reinforcement_amount[side]:= side_reinforcement_amount[side]+1;
+                    
+                ToLua('LUA_UpdateReinforceCost('&side_reinforcement_amount[side]*cost_per_human[reinforce_cost]&','&0&','&0&','&side_reinforcement_amount[side]&');');
+            end;
+        end;
+        
+        203: //Player opening siberite transfer window
+        begin
+            if side=Your_Side then
+                ToLua('LUA_UpdateSiberiteSent('&team_siberite_stocked&','&victory_cond&');');
+        end;
+        
+        204: //Player confirming the upgrade or reinforcement declaration
+        begin
+            Case order of
+                1:
+                begin
+                    side_pending_order := Replace
+                end;
+                
+                2:
+                begin
+                
+                end;
+                
+                3:
+                begin
+                
+                end;
+            end;
+        end;
+        
+        
+        
+    end;
+end;
