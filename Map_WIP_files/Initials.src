@@ -1,0 +1,352 @@
+//This file contains all the functions called at the start of the map
+
+//Game parameter loader
+export Function INIT_LoadGameParams;
+begin
+	if Multiplayer then					//The game is initiated from a multiplayer lobby
+        begin
+			Game_Type					:= mp_game_type;
+			Your_Side					:= mp_player_side;
+			Side_Positions				:= mp_sides_positions;
+			Side_Nations				:= mp_sides_nations;
+			Side_Comps					:= mp_sides_comps;
+			Side_Teams					:= mp_sides_teams;
+			Teams						:= mp_teams;
+			
+			Choice_people_num  			:= GetMultiplayerSetting(0);	//5,9,13,17
+        	Choice_experience			:= GetMultiplayerSetting(1);	//Rookie, Regular, Veteran, Ace
+        	Choice_starting_resources	:= GetMultiplayerSetting(2);	//None, Little, Average, Plenty
+        	Choice_crate_spawn_rate		:= GetMultiplayerSetting(3);	//Small, Medium, Large, Rain
+        	Choice_people_spawn_rate	:= GetMultiplayerSetting(4);	//None, Sporadic, Medium, Large
+        	Choice_spawn_fluctuation	:= GetMultiplayerSetting(5);	//Regular, Fluctuating, Chaotic
+			Choice_oil_abundance		:= GetMultiplayerSetting(6);	//Scarce, Adequade, Plenty
+			Choice_sib_abundance		:= GetMultiplayerSetting(7);	//Scarce, Adequade, Plenty
+			Choice_victory_cond			:= GetMultiplayerSetting(8);	//Deathmatch, 200 crystals, 400 crystals, 800 crystals
+			Choice_reinforce_cost		:= GetMultiplayerSetting(9);	//Cheap, Moderate, Expensive, Oppressive
+			Choice_black_FoW			:= GetMultiplayerSetting(10);	//OFF, ON
+			Choice_starting_tech_lvl	:= GetMultiplayerSetting(11);	//Scouting party, First skirmishes, Escalation, Full-on war, The endgame
+		end
+    else								//The game is initiated from editor as a test
+        begin
+			RandomizeAll;
+			Game_Type					:= 1;
+			Your_Side					:= 9;
+			Side_Positions				:= [1,2,3,4,5,6,7,8];
+			Side_Nations				:= [1,2,3,1,2,3,1,2];
+			Side_Comps					:= [1,1,1,1,1,1,1,1];
+			Side_Teams					:= [1,1,1,1,2,2,2,2];
+			Teams						:= [[1,2,3,4],[5,6,7,8]];
+			
+			Choice_people_num	  		:= 2;
+        	Choice_experience			:= 3;
+        	Choice_starting_resources	:= 1;
+        	Choice_crate_spawn_rate		:= 3;
+        	Choice_people_spawn_rate	:= 3;
+        	Choice_spawn_fluctuation	:= 0;
+			Choice_oil_abundance		:= 0;
+			Choice_sib_abundance		:= 0;
+			Choice_victory_cond			:= 2;
+			Choice_reinforce_cost		:= 1;
+			Choice_black_FoW			:= 0;
+			Choice_starting_tech_lvl	:= 0;
+		end;
+	
+end;
+
+//Choices made through game parameters are being converted to precise values
+export Function INIT_ApplyGameParams;
+var i;
+begin
+	people_num	  			:= people_num[Choice_people_num + 1];
+	experience				:= experience[Choice_experience + 1];
+    starting_resources		:= starting_resources[Choice_starting_resources + 1];
+    crate_spawn_rate		:= crate_spawn_rate[Choice_crate_spawn_rate + 1];
+    people_spawn_rate		:= people_spawn_rate[Choice_people_spawn_rate + 1];
+    spawn_fluctuation		:= spawn_fluctuation[Choice_spawn_fluctuation + 1];
+	fluctuation_base_crates	:= fluctuation_base_crates[Choice_crate_spawn_rate + 1];
+	fluctuation_base_humans := fluctuation_base_humans[Choice_people_spawn_rate + 1];
+    oil_abundance			:= oil_abundance[Choice_oil_abundance + 1];
+    sib_abundance			:= sib_abundance[Choice_sib_abundance + 1];
+    victory_cond			:= victory_cond[Choice_victory_cond + 1];
+    reinforce_cost			:= reinforce_cost[Choice_reinforce_cost + 1];
+	soldier_limit			:= people_num[Choice_people_num + 1];
+	black_fow				:= Choice_black_FoW;
+	starting_tech_lvl		:= Choice_starting_tech_lvl;
+	
+	CLOCK_crate_spawn		:= crate_spawn_rate;
+	CLOCK_human_spawn		:= people_spawn_rate;
+	CLOCK_fluctuation		:= spawn_fluctuation;
+	
+	for i=1 to Side_Positions do
+	begin
+		if not Side_Positions[i] then
+			side_isalive := Replace(side_isalive, i, 0)
+		else
+			side_isalive :=	Replace(side_isalive, i, 1);
+	end;
+end;
+
+//Generation of oil and siberite deposits on the map
+export Function INIT_GenerateDeposits;
+var x,y,i,j,pool_oil_deposits,pool_siberite_deposits;
+begin
+	pool_oil_deposits				:= available_oil_deposits;
+	pool_siberite_deposits			:= available_siberite_deposits;
+	i								:= 0;
+	
+	while i < oil_abundance do
+	begin
+		for j=1 to pool_oil_deposits do
+		begin
+			i							:= i+1;
+			x							:= length(pool_oil_deposits[j]);
+			y							:= Rand(1,x);
+			CreateDepositXY(pool_oil_deposits[j][y][1][1], pool_oil_deposits[j][y][1][2], mat_oil);
+			CreateDepositXY(pool_oil_deposits[j][y][2][1], pool_oil_deposits[j][y][2][2], mat_oil);
+			pool_oil_deposits			:= Replace(pool_oil_deposits, j, Delete(pool_oil_deposits[j],y));
+			if i>=oil_abundance then
+				break;
+		end;
+	end;
+
+	i								:= 0;		
+	
+	while i < sib_abundance do
+	begin
+		for j=1 to pool_siberite_deposits do
+		begin
+			i							:= i+1;
+			x							:= length(pool_siberite_deposits[j]);
+			y							:= Rand(1,x);
+			CreateDepositXY(pool_siberite_deposits[j][y][1][1], pool_siberite_deposits[j][y][1][2], mat_siberit);
+			CreateDepositXY(pool_siberite_deposits[j][y][2][1], pool_siberite_deposits[j][y][2][2], mat_siberit);
+			pool_siberite_deposits		:= Replace(pool_siberite_deposits, j, Delete(pool_siberite_deposits[j],y));
+			if i>=sib_abundance then
+				break;
+		end;
+	end;	
+end;
+
+//Script that sets up allies within teams and a shared vision between sides
+export Function INIT_SetUpAllies;
+var i,j;
+begin
+	for i=1 to 8 do
+        for j=1 to 8 do
+		begin
+          if Side_Teams[i]=Side_Teams[j] then
+            SetAttitude(i,j,att_friend,true)
+          else
+            SetAttitude(i,j,att_enemy,true);
+		end;
+			
+	for i=1 to 8 do
+		ChangeSideFog(i,Side_Teams[i]);
+	
+	FogOff(0);
+	ResetFog;
+	
+	if black_fow then
+		for i=1 to 8 do
+			ClearAllFogForSide(i);
+end;			
+
+//Script for initial technology settings
+export Function INIT_SetUpTechs;
+var i;
+begin
+	for i=1 to 8 do
+	begin
+		DisableAllTechs(i);
+		side_tech_lvl := Replace(side_tech_lvl, i, starting_tech_lvl);
+		TechUpgrade(starting_tech_lvl,Side_Nations[i],i);
+	end;
+end;
+
+//Script for LUA interface activation for players (not spectators)
+export Function INIT_ActivateLUAInterface;
+var colour, tech, i;
+begin
+	if victory_cond=0 then
+		ToLua('Deathmatch = 1;')
+	else
+		ToLua('Deathmatch = 0;');
+
+	if Your_Side>=1 AND Your_Side<=8 then
+	begin
+		ToLua('LUA_UpdateSideInterface('&Your_Side&','&side_tech_lvl[Your_Side]&');');
+		ToLua('StartSideInterface();');
+		ToLua('LUA_NoDepot();');
+	end
+	else
+	begin
+		for i=1 to 8 do
+		begin
+			colour	:= i;
+			tech 	:= side_tech_lvl[i];
+			if not Side_Positions[i] then
+			begin
+				colour	:= 0;
+				tech	:= '"X"';
+			end;
+				
+			ToLua('LUA_RenderSpecLabels('&i&','&colour&','&tech&');');
+		end;
+		ToLua('StartSpecInterface();');
+	end;
+end;
+
+//Script for preparing starting loadout
+//The structure of the loadout looks like this [commander,soldiers,builders,mechanics,scientists] where each element in the array is an array of properties eg.
+//commander = [1, class, attributes, basic skills, skill levels, importance] or soldiers = [0, class, attributes, basic skills, skill levels, importance]
+//attributes = [default armor, speed], basic skills = [x,y,z,a], skill levels = [x,y,z,a], importance = x
+export Function INIT_PrepareSquad;
+var i,j, commander, profession, attributes, basic_skills, skill_levels, importance, stat_array;
+begin
+	stat_array := [];
+	
+	for i=1 to people_num[1] do
+	begin
+		commander		:= 1;
+		profession		:= 1;
+		attributes		:= [Rand(10,15),Rand(9,11)];
+		basic_skills	:= [Rand(1,3),0,0,0];
+		skill_levels	:= [basic_skills[1]+experience,Rand(0,experience),Rand(0,experience),Rand(0,experience)];
+		importance		:= 105;
+		stat_array		:= Replace(stat_array, stat_array+1, [commander, profession, attributes, basic_skills, skill_levels, importance]);
+	end;
+	
+	for j=2 to people_num do
+	begin
+		commander	:= 0;
+		attributes	:= [Rand(8,12),Rand(8,12)];
+		importance	:= 0;
+		profession	:= j-1;
+
+		for i=1 to people_num[j] do
+		begin
+			basic_skills	:= [0,0,0,0];
+			skill_levels	:= [Rand(0,experience),Rand(0,experience),Rand(0,experience),Rand(0,experience)];
+			basic_skills	:= Replace(basic_skills, j-1, Rand(0,2));
+			skill_levels	:= Replace(skill_levels, j-1, basic_skills[j-1]+experience);
+			stat_array		:= Replace(stat_array, stat_array+1, [commander, profession, attributes, basic_skills, skill_levels, importance]);
+		end;
+	end;
+	
+	composition := stat_array;
+end;
+
+export Function INIT_PrepareReinforcements;
+begin
+	new_character_EON				:= [0, Rand(1,4), [Rand(8,12), Rand(8,12)], [0,0,0,0], [Rand(0,experience), Rand(0,experience), Rand(0,experience), Rand(0,experience)], 0];
+	new_character_reinforcements	:= [0, 1, [Rand(8,12), Rand(8,12)], [0,0,0,0], [Rand(0,experience), Rand(0,experience), Rand(0,experience), Rand(0,experience)], 0];
+end;
+
+//Function that creates an arrray of unit IDs belonging to each side while also spawning them on the map
+export Function INIT_SpawnStartingUnits;
+var i,j, human, vehicle, crates, oil, siberite, cargo_capacity, vehicle_amount;
+begin
+	side_soldiers	:= [[],[],[],[],[],[],[],[]];
+	side_vehicles	:= [[],[],[],[],[],[],[],[]];
+	vehicle_amount	:= 0;
+	crates			:= starting_resources[1];
+	oil				:= starting_resources[2];
+	siberite		:= starting_resources[3];
+	cargo_capacity	:= crates + oil + siberite;	
+	
+	if cargo_capacity>0 then
+	begin
+		while cargo_capacity>0 do
+		begin
+			vehicle_amount := vehicle_amount + 1;
+			cargo_capacity := cargo_capacity - 100;
+		end;
+	end;
+	
+	for i=1 to 8 do
+	begin
+		if not side_isalive[i] then
+			Continue;
+		
+		for j=1 to composition do
+		begin
+			human			:= PrepareCharacters(i, position_spawn_direction, composition[j]);
+			side_soldiers	:= Replace(side_soldiers, i, side_soldiers[i] ^ human);
+		end;
+		
+		crates		:= starting_resources[1];
+		oil			:= starting_resources[2];
+		siberite	:= starting_resources[3];
+		
+		for j=1 to vehicle_amount do
+		begin
+			vehicle	:= PrepareVehicles(i, position_spawn_direction);
+			
+			if crates >= 100 then
+			begin
+				AddCargo(vehicle, mat_cans, 100);
+				crates := crates - 100;
+			end
+			else
+			begin
+				AddCargo(vehicle, mat_cans, crates);
+				if oil >= 100 then
+				begin 
+					AddCargo(vehicle, mat_oil, 100 - crates);
+					oil := oil - 100 + crates;
+					crates := 0;
+				end
+				else
+				begin
+					AddCargo(vehicle, mat_oil, oil);
+					if siberite >= 100 then
+					begin
+						AddCargo(vehicle, mat_siberit, 100 - oil);
+						siberite := siberite - 100 + oil;
+						oil := 0;
+					end
+					else
+					begin
+						AddCargo(vehicle, mat_siberit, siberite);
+						siberite := 0;
+					end;
+				end;
+			end;
+			
+			side_vehicles := Replace(side_vehicles, i, side_vehicles[i] ^ vehicle);
+		end;
+		
+		for j=1 to side_vehicles[i] do
+			PlaceHumanInUnit(side_soldiers[i][people_num[1]+people_num[2]+people_num[3]+people_num[4]-j], side_vehicles[i][j]);
+		
+		for j=1 to side_soldiers[i] do
+			PlaceUnitArea(side_soldiers[i][j], position_spawn_area[Side_Positions[i]], false);
+		
+		for j=1 to side_vehicles[i] do
+			PlaceUnitArea(side_vehicles[i][j], position_spawn_area[Side_Positions[i]], false);
+			
+	end;
+end;
+	
+//Function that centers the camera on starting position
+export Function INIT_CameraFocus;
+begin
+	if Your_Side>=1 AND Your_Side<=8 then
+		CenterNowOnUnits(side_soldiers[Your_Side])
+	else
+	begin
+		CenterNowOnXY(164,129);
+		FogOff(1);
+	end;
+end;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
