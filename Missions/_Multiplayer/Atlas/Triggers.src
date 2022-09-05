@@ -1,0 +1,72 @@
+//This container contains all the code that is executed when a certain trigger is set off
+
+//Naming a depot when it's being built
+on BuildingStarted(b,u) do
+begin
+    if GetBType(b) in [b_depot, b_warehouse] then
+    begin
+        SetBName(b, '@' & GetSide(b));
+        if GetSide(b)=Your_Side then
+            if FilterAllUnits([[f_side,b],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+                ToLua('LUA_IsDepot();');
+                if side_tech_lvl[GetSide(b)]=4 then
+                    ToLua('LUA_SideTechMax()');
+    end;
+end;
+
+//Naming a depot when it's being captured
+on BuildingCaptured(b,o,e) do
+begin
+    if GetBType(b) in [b_depot, b_warehouse] then
+    begin
+        SetBName(b, '@' & GetSide(b));
+        if FilterAllUnits([[f_side,b],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+            ToLua('LUA_IsDepot();');
+                if side_tech_lvl[GetSide(b)]=4 then
+                    ToLua('LUA_SideTechMax()');
+        if FilterAllUnits([[f_side,o],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+            ToLua('LUA_NoDepot();');
+    end;
+end;
+
+//Side lost a soldier
+on UnitDestroyed(i) do
+var side;
+begin
+    if GetType(i)=1 then
+    begin
+        side            := GetSide(i);
+        side_soldiers   := Replace(side_soldiers, side, side_soldiers[side] diff i);
+        DidPlayerLose(side);
+    end;
+    
+    if GetBType(i) in [b_depot, b_warehouse] then
+        if FilterAllUnits([[f_side,i],[f_btype,b_depot],[f_or],[f_btype,b_warehouse]])+0=0 then
+            ToLua('LUA_NoDepot();');
+end;
+
+//SAIL events
+on SailEvent(ID) do
+var i,j,lost;
+begin
+    Case ID of
+        66: //Game ending conditions for 2 team deathmatch
+        begin
+            for i=1 to Teams do
+            begin
+                lost := 0;
+                for j in Teams[i] do
+                    if side_isalive[j]=0 then
+                        lost := lost+1;
+                
+                if lost=Teams[i]+0 then
+                    if IAmSpec or Your_Side in Teams[i] then
+                        YouLostInMultiplayer
+                    else
+                        YouWinInMultiplayer
+                else
+                    Continue
+            end;
+        end;
+    end;
+end;
