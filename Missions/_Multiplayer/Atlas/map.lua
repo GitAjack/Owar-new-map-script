@@ -15,15 +15,30 @@ Background3={bevel=true,
 	gradient_colour2=RGBA(50,50,50,220),
 	gradient=true};
 	
-Max_Tech = 0;
+Area_Names = {};
+Area_Names[15] = 'North-West';
+Area_Names[16] = 'North-East';
+Area_Names[17] = 'South-West';
+Area_Names[18] = 'South-East';
+	
+Deathmatch 			= 0;	
+Max_Tech 			= 0;
+Order_Type 			= 0;
+Crates_Delivered 	= 0;
+Oil_Delivered 		= 0;
+Sib_Delivered 		= 0;
+Crates_Order 		= 0;
+Oil_Order 			= 0;
+Sib_Order 			= 0;
+Waiting				= 0;
 	
 --Interface element definitions
 
 --Main Window	
-SideInterface = {};
-SideInterface.window = {};
-SideInterface.label = {};
-SideInterface.button = {};
+SideInterface 				= {};
+SideInterface.window		= {};
+SideInterface.label 		= {};
+SideInterface.button 		= {};
 SideInterface.window.main 				= getWindowEX(game.window,anchorNone,XYWH(0,70,250,300),false,'Expedition status',Background2,{title_colour=RGBA(32,32,32,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_18B});
 SideInterface.button_open 				= getButtonEX_Gradient(game.window,anchorNone,XYWH(0,70,80,50),-1,'LUA_OpenSideInterface();',GradButton_Grey_Dark,{text='Contact Base',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 SideInterface.button_close 				= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)-(80+5),getHeight(SideInterface.window.main)-(30+5),80,30),-1,'LUA_HideSideInterface();',GradButton_Red,{text='Close',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
@@ -34,7 +49,7 @@ SideInterface.label.lost 				= getLabelEX(SideInterface.window.main,anchorNone,X
 SideInterface.button_upgrade 			= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,100,220,40),-1,'LUA_OpenTechUpgrade();',GradButton_Green,{text='Get technology upgrade',font_colour=WHITE(),fontname=Tahoma_16B});
 SideInterface.button_reinforce 			= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,150,220,40),-1,'LUA_OpenReinforce();',GradButton_Green,{text='Call reinforcements',font_colour=WHITE(),fontname=Tahoma_16B});
 SideInterface.button_siberite 			= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,100,220,40),-1,'LUA_OpenSendSiberite()',GradButton_Green,{text='Send siberite shipment',font_colour=WHITE(),fontname=Tahoma_16B});
-SideInterface.button.cancel 			= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(5,getHeight(SideInterface.window.main)-(30+5),80,30),-1,'LUA_BackToMainSideInterface();',GradButton_Red,{text='Cancel',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.button.cancel 			= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(5,getHeight(SideInterface.window.main)-(30+5),80,30),-1,'LUA_BackToMainSideInterface(); Order_Type = 0;',GradButton_Red,{text='Cancel',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Technology upgrades window
 SideInterface.window.upgrade 					= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Technology upgrade',Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
@@ -44,10 +59,10 @@ SideInterface.label.upgrade_cost_label_siberite = getLabelEX(SideInterface.windo
 SideInterface.label.upgrade_cost_crates 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(140,50,10,10),Tahoma_14B,'0',{font_colour=WHITE()});
 SideInterface.label.upgrade_cost_oil 			= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(140,80,10,10),Tahoma_14B,'0',{font_colour=WHITE()});
 SideInterface.label.upgrade_cost_siberite 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(140,110,10,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.button.upgrade_confirm 			= getButtonEX_Gradient(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)/2-40,getHeight(SideInterface.window.upgrade)-(20+15),80,30),-1,'',GradButton_Green,{text='Confirm',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.button.upgrade_confirm 			= getButtonEX_Gradient(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)/2-40,getHeight(SideInterface.window.upgrade)-(20+15),80,30),-1,'OW_CUSTOM_COMMAND(204,2); Order_Type = 2;',GradButton_Green,{text='Confirm',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Reinforcement calling window
-SideInterface.window.reinforce 						= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Reinforcements',Background3,{title_colour=RGBA(32,32,32,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
+SideInterface.window.reinforce 						= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Reinforcements',Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
 SideInterface.label.reinforce_amount 				= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-11,40,20,10),Tahoma_16B,'0',{font_colour=WHITE(),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
 SideInterface.label.reinforce_cost_label_crates 	= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(40,70,10,10),Tahoma_14B,'Crates :',{font_colour=WHITE()});
 SideInterface.label.reinforce_cost_label_oil 		= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(40,90,10,10),Tahoma_14B,'Oil :',{font_colour=WHITE()});
@@ -55,15 +70,35 @@ SideInterface.label.reinforce_cost_label_siberite 	= getLabelEX(SideInterface.wi
 SideInterface.label.reinforce_cost_crates 			= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(140,70,10,10),Tahoma_14B,'0',{font_colour=WHITE()});
 SideInterface.label.reinforce_cost_oil 				= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(140,90,10,10),Tahoma_14B,'0',{font_colour=WHITE()});
 SideInterface.label.reinforce_cost_siberite 		= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(140,110,10,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.button.reinforce_increase 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2+15,35,25,25),-1,'',GradButton_Green,{text='+',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
-SideInterface.button.reinforce_decrease 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-45,35,25,25),-1,'',GradButton_Green,{text='-',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
-SideInterface.button.reinforce_confirm 				= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-40,getHeight(SideInterface.window.reinforce)-(20+20),80,30),-1,'',GradButton_Green,{text='Confirm',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.button.reinforce_increase 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2+15,35,25,25),-1,'OW_CUSTOM_COMMAND(2021);',GradButton_Green,{text='+',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
+SideInterface.button.reinforce_decrease 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-45,35,25,25),-1,'OW_CUSTOM_COMMAND(2020);',GradButton_Green,{text='-',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
+SideInterface.button.reinforce_confirm 				= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-40,getHeight(SideInterface.window.reinforce)-(20+20),80,30),-1,'OW_CUSTOM_COMMAND(204,1); Order_Type = 1;',GradButton_Green,{text='Confirm',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Siberite sending window
-SideInterface.window.siberite 			= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Transfer siberite',Background3,{title_colour=RGBA(32,32,32,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
-SideInterface.label.sib_text			= getLabelEX(SideInterface.window.siberite,anchorNone,XYWH(15,70,150,10),Tahoma_16B,'Crystals sent :',{font_colour=WHITE()});
-SideInterface.label.sent_sib			= getLabelEX(SideInterface.window.siberite,anchorNone,XYWH(140,70,10,10),Tahoma_16B,'0 / 0',{font_colour=WHITE()});
-SideInterface.button.siberite_confirm 	= getButtonEX_Gradient(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-40,getHeight(SideInterface.window.siberite)-(20+50),80,30),-1,'',GradButton_Green,{text='Confirm',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.window.siberite 			= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Transfer siberite',Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
+SideInterface.label.sib_text			= getLabelEX(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-60,40,120,10),Tahoma_16B,'Crystals sent',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
+SideInterface.label.sent_sib			= getLabelEX(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-60,70,120,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
+SideInterface.button.siberite_confirm 	= getButtonEX_Gradient(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-40,getHeight(SideInterface.window.siberite)-(20+50),80,30),-1,'OW_CUSTOM_COMMAND(204,3); Order_Type = 3;',GradButton_Green,{text='Confirm',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+
+--Confirmed orders and pending resources window (upgrade/reinforcements/siberite)
+SideInterface.window.orders						= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Send resources',Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
+SideInterface.label.orders_cost_label_crates 	= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(30,40,100,10),Tahoma_14B,'Crates :',{font_colour=WHITE()});
+SideInterface.label.orders_cost_label_oil 		= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(30,65,100,10),Tahoma_14B,'Oil :',{font_colour=WHITE()});
+SideInterface.label.orders_cost_label_siberite 	= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(30,90,100,10),Tahoma_14B,'Siberite :',{font_colour=WHITE()});
+SideInterface.label.orders_cost_crates 			= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(120,40,10,10),Tahoma_14B,'0 / 0',{font_colour=WHITE()});
+SideInterface.label.orders_cost_oil 			= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(120,65,10,10),Tahoma_14B,'0 / 0',{font_colour=WHITE()});
+SideInterface.label.orders_cost_siberite 		= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(120,90,10,10),Tahoma_14B,'0 / 0',{font_colour=WHITE()});
+SideInterface.label.sib_text_order				= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-60,40,120,15),Tahoma_16B,'Crystals sent',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
+SideInterface.label.sent_sib_order				= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-60,70,120,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
+SideInterface.button.orders_pick_zone 			= getButtonEX_Gradient(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-60,110,120,30),-1,'OW_CUSTOM_COMMAND(2040);',GradButton_Green,{text='',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.button.orders_left 				= getButtonEX_Gradient(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-60-25-3,110,25,30),-1,'OW_CUSTOM_COMMAND(2041);',GradButton_Grey_Light,{text='<<',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
+SideInterface.button.orders_right 				= getButtonEX_Gradient(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2+60+3,110,25,30),-1,'OW_CUSTOM_COMMAND(2042);',GradButton_Grey_Light,{text='>>',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
+SideInterface.button.orders_send		 		= getButtonEX_Gradient(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-60,145,120,30),-1,'OW_CUSTOM_COMMAND(205); Waiting = 1;',GradButton_Grey_Dark,{text='Send transport',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+
+--Waiting for reinforcements window
+SideInterface.window.waiting 				= getWindowEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)/2-100,getHeight(SideInterface.window.main)/2-80,200,180),false,'Waiting for the transfer',Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
+SideInterface.label.time_remaining 			= getLabelEX(SideInterface.window.waiting,anchorNone,XYWH(getWidth(SideInterface.window.waiting)/2-60,40,120,10),Tahoma_16B,'Time remaining',{font_colour=WHITE(),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
+SideInterface.label.time_remaining_counter 	= getLabelEX(SideInterface.window.waiting,anchorNone,XYWH(getWidth(SideInterface.window.waiting)/2-60,70,120,10),Tahoma_16B,'',{font_colour=WHITE(),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
 
 --Spectator window
 SpecInterface 					= {};
@@ -78,9 +113,6 @@ SpecInterface.button_close 		= getButtonEX_Gradient(SpecInterface.window.main,an
 function StartSideInterface()		
 	setVisible(SideInterface.button_open,true);
 	setVisible(SideInterface.window.main,false);
-	setVisible(SideInterface.button_close,true);
-	setVisible(SideInterface.label.tech_level,true);
-	setVisible(SideInterface.label.tech_level.number,true);
 	setVisible(SideInterface.label.nodepot,false);
 	setVisible(SideInterface.label.lost,false);
 	setVisible(SideInterface.button_upgrade,false);
@@ -88,31 +120,10 @@ function StartSideInterface()
 	setVisible(SideInterface.button_siberite,false);
 	setVisible(SideInterface.button.cancel,false);
 	
-	setVisible(SideInterface.window.upgrade,false);
-	setVisible(SideInterface.label.upgrade_cost_label_crates,true);
-	setVisible(SideInterface.label.upgrade_cost_label_oil,true);
-	setVisible(SideInterface.label.upgrade_cost_label_siberite,true);
-	setVisible(SideInterface.label.upgrade_cost_crates,true);
-	setVisible(SideInterface.label.upgrade_cost_oil,true);
-	setVisible(SideInterface.label.upgrade_cost_siberite,true);
-	setVisible(SideInterface.button.upgrade_confirm,true);
-	
-	setVisible(SideInterface.window.reinforce,false);
-	setVisible(SideInterface.label.reinforce_amount,true);
-	setVisible(SideInterface.label.reinforce_cost_label_crates,true);
-	setVisible(SideInterface.label.reinforce_cost_label_oil,true);
-	setVisible(SideInterface.label.reinforce_cost_label_siberite,true);
-	setVisible(SideInterface.label.reinforce_cost_crates,true);
-	setVisible(SideInterface.label.reinforce_cost_oil,true);
-	setVisible(SideInterface.label.reinforce_cost_siberite,true);
-	setVisible(SideInterface.button.reinforce_increase,true);
-	setVisible(SideInterface.button.reinforce_decrease,true);
-	setVisible(SideInterface.button.reinforce_confirm,true);
-	
-	setVisible(SideInterface.window.siberite,false);
-	setVisible(SideInterface.label.sib_text,true);
-	setVisible(SideInterface.label.sent_sib,true);
-	setVisible(SideInterface.button.siberite_confirm,true);
+	setVisible(SideInterface.window.upgrade,false);	
+	setVisible(SideInterface.window.reinforce,false);	
+	setVisible(SideInterface.window.siberite,false);	
+	setVisible(SideInterface.window.orders,false);							
 	
 	setVisible(SpecInterface.button_open,false);
 	setVisible(SpecInterface.window.main,false);
@@ -122,7 +133,6 @@ end;
 function StartSpecInterface()		
 	setVisible(SpecInterface.button_open,true);
 	setVisible(SpecInterface.window.main,false);
-	setVisible(SpecInterface.button_close,true);
 
 	setVisible(SideInterface.button_open,false);
 	setVisible(SideInterface.window.main,false);
@@ -165,6 +175,13 @@ function LUA_NoDepot()
 	setVisible(SideInterface.window.upgrade,false);
 	setVisible(SideInterface.window.reinforce,false);
 	setVisible(SideInterface.window.siberite,false);
+	setVisible(SideInterface.window.orders,false);
+	setVisible(SideInterface.window.waiting,false);
+	setEnabled(SideInterface.button.orders_pick_zone,true);
+	updateGradButton(SideInterface.button.orders_pick_zone,GradButton_Green);
+	setVisible(SideInterface.button.orders_left,true);
+	setVisible(SideInterface.button.orders_right,true);
+	OW_CUSTOM_COMMAND(301);
 end;
 
 --Side interface when depot is built
@@ -173,15 +190,18 @@ function LUA_IsDepot()
 	setVisible(SideInterface.label.tech_level.number,true);
 	setVisible(SideInterface.label.nodepot,false);
 	setVisible(SideInterface.label.lost,false);
-	setVisible(SideInterface.button_reinforce,true);
 	setVisible(SideInterface.button.cancel,false);
 	
-	if Max_Tech==0 then
-	setVisible(SideInterface.button_upgrade,true);
-	elseif Max_Tech==1 then
-	setVisible(SideInterface.button_siberite,true);
+	if Waiting==1 then
+		setVisible(SideInterface.window.waiting,true);
+	elseif Waiting==0 then
+		setVisible(SideInterface.button_reinforce,true);
+		if Max_Tech==0 then
+			setVisible(SideInterface.button_upgrade,true);
+		elseif Max_Tech==1 and Deathmatch==0 then
+			setVisible(SideInterface.button_siberite,true);
+		end;
 	end;
-	
 end;
 
 --Side interface when side lost
@@ -197,12 +217,18 @@ function LUA_Lost()
 	setVisible(SideInterface.window.upgrade,false);
 	setVisible(SideInterface.window.reinforce,false);
 	setVisible(SideInterface.window.siberite,false);
+	setVisible(SideInterface.window.orders,false);
+	setVisible(SideInterface.window.waiting,false);
+	OW_CUSTOM_COMMAND(301);
 end;
 
 --Side interface when all tech levels were bought
 function LUA_SideTechMax()
 	setVisible(SideInterface.button_upgrade,false);
-	setVisible(SideInterface.button_siberite,true);
+	if Deathmatch==0 then
+		setVisible(SideInterface.button_siberite,true);
+	end;
+	
 	Max_Tech = 1;
 end;
 
@@ -216,6 +242,7 @@ function LUA_OpenTechUpgrade()
 	setVisible(SideInterface.button.cancel,true);
 
 	setVisible(SideInterface.window.upgrade,true);
+	OW_CUSTOM_COMMAND(201);
 end;
 
 --Side interface when reinforcement chosen
@@ -228,6 +255,7 @@ function LUA_OpenReinforce()
 	setVisible(SideInterface.button.cancel,true);
 
 	setVisible(SideInterface.window.reinforce,true);
+	OW_CUSTOM_COMMAND(202);
 end;
 
 --Side interface when sending siberite
@@ -240,6 +268,7 @@ function LUA_OpenSendSiberite()
 	setVisible(SideInterface.button.cancel,true);
 
 	setVisible(SideInterface.window.siberite,true);
+	OW_CUSTOM_COMMAND(203);
 end;
 
 --Side interface when going back to main window
@@ -247,6 +276,8 @@ function LUA_BackToMainSideInterface()
 	setVisible(SideInterface.window.upgrade,false);
 	setVisible(SideInterface.window.reinforce,false);
 	setVisible(SideInterface.window.siberite,false);
+	setVisible(SideInterface.window.orders,false);
+	setVisible(SideInterface.window.waiting,false);
 	setVisible(SideInterface.button.cancel,false);
 	
 	setVisible(SideInterface.label.tech_level,true);
@@ -254,15 +285,78 @@ function LUA_BackToMainSideInterface()
 	setVisible(SideInterface.button_reinforce,true);
 	
 	if Max_Tech==0 then
-	setVisible(SideInterface.button_upgrade,true);
-	elseif Max_Tech==1 then
-	setVisible(SideInterface.button_siberite,true);
+		setVisible(SideInterface.button_upgrade,true);
+	elseif Max_Tech==1 and Deathmatch==0 then
+		setVisible(SideInterface.button_siberite,true);
+	end;
+	
+	setEnabled(SideInterface.button.orders_pick_zone,true);
+	updateGradButton(SideInterface.button.orders_pick_zone,GradButton_Green);
+	setVisible(SideInterface.button.orders_left,true);
+	setVisible(SideInterface.button.orders_right,true);
+	
+	OW_CUSTOM_COMMAND(301);
+end;
+	
+--Side interface when order for reinforcements/upgrade has been issued
+function LUA_OrderIssued()
+	setVisible(SideInterface.window.upgrade,false);
+	setVisible(SideInterface.window.reinforce,false);
+	setVisible(SideInterface.window.siberite,false);
+	
+	setVisible(SideInterface.window.orders,true);
+	setVisible(SideInterface.button.orders_pick_zone,true);
+	setVisible(SideInterface.button.orders_send,true);
+	setVisible(SideInterface.button.orders_right,true);
+	setVisible(SideInterface.button.orders_left,true);
+	setEnabled(SideInterface.button.orders_send,false);
+			   
+	if Order_Type == 1 then
+		setVisible(SideInterface.label.orders_cost_label_crates,true);
+		setVisible(SideInterface.label.orders_cost_label_oil,true);
+		setVisible(SideInterface.label.orders_cost_label_siberite,true);
+		setVisible(SideInterface.label.orders_cost_crates,true);
+		setVisible(SideInterface.label.orders_cost_oil,true);
+		setVisible(SideInterface.label.orders_cost_siberite,true);
+		setVisible(SideInterface.label.sib_text_order,false);
+		setVisible(SideInterface.label.sent_sib_order,false);
+	
+	elseif Order_Type == 2 then
+		setVisible(SideInterface.label.orders_cost_label_crates,true);
+		setVisible(SideInterface.label.orders_cost_label_oil,true);
+		setVisible(SideInterface.label.orders_cost_label_siberite,true);
+		setVisible(SideInterface.label.orders_cost_crates,true);
+		setVisible(SideInterface.label.orders_cost_oil,true);
+		setVisible(SideInterface.label.orders_cost_siberite,true);
+		setVisible(SideInterface.label.sib_text_order,false);
+		setVisible(SideInterface.label.sent_sib_order,false);
+
+	elseif Order_Type == 3 then
+		setVisible(SideInterface.label.orders_cost_label_crates,false);
+		setVisible(SideInterface.label.orders_cost_label_oil,false);
+		setVisible(SideInterface.label.orders_cost_label_siberite,false);
+		setVisible(SideInterface.label.orders_cost_crates,false);
+		setVisible(SideInterface.label.orders_cost_oil,false);
+		setVisible(SideInterface.label.orders_cost_siberite,false);
+		setVisible(SideInterface.label.sib_text_order,true);
+		setVisible(SideInterface.label.sent_sib_order,true);
 	end;
 	
 end;
-	
 
---LABELS
+--Side interface when waiting for the transfer to finish
+function LUA_WaitingTransfer()
+	setVisible(SideInterface.window.orders,false);
+	setVisible(SideInterface.button.cancel,false);
+	setVisible(SideInterface.window.waiting,true);
+end;
+
+--Side interface after transfer
+function LUA_TransferSuccess()
+	setVisible(SideInterface.window.waiting,true);
+end;
+
+--INTERFACE ELEMENT UPDATE FUNCTIONS
 
 --Render spectator interface labels for the first time
 function LUA_RenderSpecLabels(side,colour,tech)	
@@ -281,6 +375,80 @@ function LUA_UpdateSideInterface(side,tech)
 	setText(SideInterface.label.tech_level.number,tech);
 end;
 
+--Update resource costs of next technology upgrade
+function LUA_UpdateUpgradeCost(crates,oil,siberite)
+	setText(SideInterface.label.upgrade_cost_crates,crates);
+	setText(SideInterface.label.upgrade_cost_oil,oil);
+	setText(SideInterface.label.upgrade_cost_siberite,siberite);
+end;
+
+--Update resource costs and reinforcements number in the reinforcement window
+function LUA_UpdateReinforceCost(crates,oil,siberite,soldiers);
+	setText(SideInterface.label.reinforce_amount,soldiers);
+	setText(SideInterface.label.reinforce_cost_crates,crates);
+	setText(SideInterface.label.reinforce_cost_oil,oil);
+	setText(SideInterface.label.reinforce_cost_siberite,siberite);
+end;
+
+--Update sent/required siberite in the sending window
+function LUA_UpdateSiberiteSent(stockpiled,required)
+	setText(SideInterface.label.sent_sib,stockpiled..' / '..required);
+end;
+
+--Update resources in the transfer window
+function LUA_UpdateTransferResources(crates, oil, siberite, wincond, setting)	
+	if setting==0 then
+		Crates_Order = crates;
+		Oil_Order = oil;
+		Sib_Order = siberite;
+	elseif setting>0 then 
+		Crates_Delivered = crates;
+		Oil_Delivered = oil;
+		Sib_Delivered = siberite;
+	end;
+	
+	setText(SideInterface.label.orders_cost_crates,Crates_Delivered..' / '..Crates_Order);
+	setText(SideInterface.label.orders_cost_oil,Oil_Delivered..' / '..Oil_Order);
+	setText(SideInterface.label.orders_cost_siberite,Sib_Delivered..' / '..Sib_Order);
+	setText(SideInterface.label.sent_sib_order,siberite..' / '..wincond);
+end;
+
+--Update picked zone in the transfer window
+function LUA_UpdateTransferZone(zone)
+	setText(SideInterface.button.orders_pick_zone,Area_Names[zone]);
+end;
+
+--Transfer zone chosen
+function LUA_ChosenTransferZone()
+	setEnabled(SideInterface.button.orders_pick_zone,false);
+	updateGradButton(SideInterface.button.orders_pick_zone,GradButton_Grey_Light);
+	setVisible(SideInterface.button.orders_left,false);
+	setVisible(SideInterface.button.orders_right,false);
+end;
+
+--Disable transfer when not enough resources are at the transfer zone or the transfer zone is not yet set up
+function LUA_CannotSendShipment()
+	setEnabled(SideInterface.button.orders_send,false);
+	updateGradButton(SideInterface.button.orders_send,GradButton_Grey_Dark);
+end;
+
+--Enable transfer when resources are ready at the transfer zone
+function LUA_CanSendShipment()
+	setEnabled(SideInterface.button.orders_send,true);
+	updateGradButton(SideInterface.button.orders_send,GradButton_Green);
+end;
+
+--Update the time remaining on the clock in the transfer waiting window
+function LUA_UpdateClock(remaining)
+	m = math.floor(remaining/2100);
+	s = math.floor((remaining % 2100)/35);
+	
+	if s<10 then
+		setText(SideInterface.label.time_remaining_counter,m..':0'..s);
+	elseif s>=10 then
+		setText(SideInterface.label.time_remaining_counter,m..':'..s);
+	end;
+end;
 
 --SPECIAL
 

@@ -47,7 +47,7 @@ HEXES
   LINE 16 8 207
     t4vB t2vB vB vB vB vB vB vB vB vB v5sq v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5 v5sH v7sX vAs8 vB vB vB vB vB vB vAsD v9sL v7sL v5sL v5sG v7sG v7sG v7sG v7sG v7sG v9sG v9sG vB vB vB vB vB vB vB vBsA vBsB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vBsA vBsA vC vBsC vB vB vB vB vB vB vB vB vBsO vE vEsP vH vH vH vH vH vH vH vH vH vH vH vH vH vH vBsq vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB v9sK v7sK v7 v5sK v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5so v5so r6v7sY r6v7sY r6vB vBso vBso vBsp vB vB vB vB vB vB vB vB vB vBsG vD vD vDsG vFsG vH vH vH vH vH vH vH vH vH vH vH vH vH vH vH t2vH t4vH
   LINE 17 9 208
-    t4vB t2vB vB vB vB vB vB vB vB v5sq v5 v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5sH v7s9 v8sG vAs8 vB vB vB vB v9sL v9sL v8sL v7sL v5sL v5 v5sG v5sG v5sG v5sG v5sG v7sG v7sG v9sG vB vB vB vB vBsA vBsB vBsA vC vBsC vB vB vB vB vB vB vB vB vB v5sr v5sr v5sr v5sm v5sm vB vB vB vB vB vB vB vB vBs9 vC vBsA vBsB vB vB vB vB vB vB vB vB vB vBsO vBsn vH vHso vHsp vH vH vH vH vH vH vH vH vH vH vH vBsq vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB v9sK v7sK v7 v5sK v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5so r6vB r6vB r6vB r6vB vBso vH vH vBsp vBsp vBsp vBso vBso vBsp vB vB vB vB vBsG vBsG vD vDsG vFsG vH vH vH vH vH vH vH vH vH vH vH vH vH vH vH t2vH t4vH
+    t4vB t2vB vB vB vB vB vB vB vB v5sq v5 v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5sHS v7s9 v8sG vAs8 vB vB vB vB v9sL v9sL v8sL v7sL v5sL v5 v5sG v5sG v5sG v5sG v5sG v7sG v7sG v9sG vB vB vB vB vBsA vBsB vBsA vC vBsC vB vB vB vB vB vB vB vB vB v5sr v5sr v5sr v5sm v5sm vB vB vB vB vB vB vB vB vBs9 vC vBsA vBsB vB vB vB vB vB vB vB vB vB vBsO vBsn vH vHso vHsp vH vH vH vH vH vH vH vH vH vH vH vBsq vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB v9sK v7sK v7 v5sK v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5so r6vB r6vB r6vB r6vB vBso vH vH vBsp vBsp vBsp vBso vBso vBsp vB vB vB vB vBsG vBsG vD vDsG vFsG vH vH vH vH vH vH vH vH vH vH vH vH vH vH vH t2vH t4vH
   LINE 18 9 208
     t4vB t2vB vB vB vB vB vB vB vB vB v5sp v5sp v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5sH v7s8 v8sG v9sG vAs8 v9sL v9sL v9sL v7sL v7sL v6sL v5sL v5 v5 v5 v5 v5 v5 v5sG v5sG v7sG v9sG vB vB vB vBs9 vC vBsB vBsD vBsD vB vB vB vB vB vB vB vB vB v5sr r6v5 r6v5 r6v5 r6v5 v5sm v5sm v5sm vB vB vB vB vB vB vBs9 vBsA vBsB vBsB vB vB vB vB vB vB vB vB vB vB vBsn vHsn r6vN vHsp vH vH vH vH vH vH vH vH vH vH vEsS vBsS vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB vB v9sK v7sK v7 v5sK v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 rAv5 v5 rAv5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5 v5so r6vB vBso vBso vBso vBso vH vH vH vH vH vH vHso vHsp vBsp vB vB vB vB vB vBsH vD vDsG vFsG vH vH vH vH vH vH vH vH vH vH vH vH vH vH t2vH t4vH
   LINE 19 10 209
@@ -1102,8 +1102,6 @@ ENVIROMENT
     sRi1
   ON_HEX 18 24
     sRi3
-  ON_HEX 24 24
-    sci9
   ON_HEX 137 24
     sciA
   ON_HEX 96 25
@@ -1116,8 +1114,6 @@ ENVIROMENT
     sGiG
   ON_HEX 209 25
     sci6
-  ON_HEX 28 26
-    sci4
   ON_HEX 102 26
     sJiN
   ON_HEX 154 26
@@ -1130,8 +1126,6 @@ ENVIROMENT
     sci8
   ON_HEX 24 27
     sci4
-  ON_HEX 28 27
-    sci2
   ON_HEX 98 27
     sci4
   ON_HEX 103 27
@@ -5908,8 +5902,6 @@ ENVIROMENT
     sJi8
   ON_HEX 234 235
     sci6
-  ON_HEX 304 235
-    sciA
   ON_HEX 119 236
     sci9
   ON_HEX 122 236
@@ -6563,15 +6555,15 @@ END_OF_BASES
 RANDOMS
   MICROLOGIC 2 0 1
   RANDOM_SEED 1 863437414
-  RANDOM_SEED 2 1607289086
-  RANDOM_SEED 3 1538975949
+  RANDOM_SEED 2 1185768134
+  RANDOM_SEED 3 -2142243363
   RANDOM_SEED 4 110103870
   RANDOM_SEED 5 -1618032701
   RANDOM_SEED 6 268592425
   RANDOM_SEED 7 92643794
   RANDOM_SEED 8 631288604
   RANDOM_SEED 9 426144657
-  RANDOM_SEED 10 -1620218461
+  RANDOM_SEED 10 -131696373
   RANDOM_SEED 11 393987896
   RANDOM_SEED 12 1172833818
   RANDOM_SEED 13 -171684798
@@ -6614,7 +6606,7 @@ LASER_EFECTS
 END_OF_LASER_EFECTS
 
 USER_INTERFACE
-  VIEW 3648 3532 1540 852 1
+  VIEW -56 -96 1540 852 1
   MASHA_FLAG 2 F F
 END_OF_USER_INTERFACE
 
@@ -7487,23 +7479,27 @@ AREAS
     NAME TransferNW
     COLOR 8C7035
     VISIBLE
-    LINES 4 0 20 16
-    ++++----------------
-    -++++---------------
-    --++++--------------
-    ----++++------------
-    -----++++-----------
-    ------++++----------
-    -------++++---------
-    --------++++--------
-    --------+++++-------
-    ---------+++++------
-    ----------+++++-----
-    -----------+++++----
-    ------------+++++---
-    -------------+++++--
-    --------------+++++-
-    ---------------+++++
+    LINES 4 0 22 20
+    ++++------------------
+    -++++-----------------
+    --++++----------------
+    ----++++--------------
+    -----++++-------------
+    ------++++------------
+    -------++++-----------
+    --------++++----------
+    --------+++++---------
+    --------++++++--------
+    ----------+++++-------
+    -----------+++++------
+    ------------+++++-----
+    -------------+++++----
+    --------------+++++---
+    ---------------+++++--
+    ---------------++++++-
+    ---------------+++++++
+    -----------------++++-
+    ------------------++--
   AREA 16
     NAME TransferNE
     COLOR 956240
@@ -7527,23 +7523,27 @@ AREAS
     NAME TransferSE
     COLOR 875A32
     VISIBLE
-    LINES 306 244 20 16
-    +++++---------------
-    -+++++--------------
-    --+++++-------------
-    ---+++++------------
-    ----+++++-----------
-    -----+++++----------
-    ------+++++---------
-    -------+++++--------
-    --------++++--------
-    ---------++++-------
-    ----------++++------
-    -----------++++-----
-    ------------++++----
-    --------------+++---
-    ---------------++++-
-    ----------------++++
+    LINES 305 240 21 20
+    --+------------------
+    -+++-----------------
+    ++++++---------------
+    ++++++---------------
+    -+++++---------------
+    --+++++--------------
+    ---+++++-------------
+    ----+++++------------
+    -----+++++-----------
+    ------+++++----------
+    -------++++++--------
+    --------+++++--------
+    ---------++++--------
+    ----------++++-------
+    -----------++++------
+    ------------++++-----
+    -------------++++----
+    ---------------+++---
+    ----------------++++-
+    -----------------++++
   AREA 18
     NAME TransferSW
     COLOR BB8260

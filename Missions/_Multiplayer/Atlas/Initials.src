@@ -30,7 +30,7 @@ begin
         begin
             RandomizeAll;
             Game_Type                   := 1;
-            Your_Side                   := 2;
+            Your_Side                   := 1;
             Side_Positions              := [1,2,3,4,5,6,7,8];
             Side_Nations                := [1,2,3,1,2,3,1,2];
             Side_Comps                  := [1,1,1,1,1,1,1,1];
@@ -39,7 +39,7 @@ begin
             
             Choice_people_num           := 2;
             Choice_experience           := 3;
-            Choice_starting_resources   := 1;
+            Choice_starting_resources   := 3;
             Choice_crate_spawn_rate     := 3;
             Choice_people_spawn_rate    := 3;
             Choice_spawn_fluctuation    := 0;
@@ -50,7 +50,6 @@ begin
             Choice_black_FoW            := 0;
             Choice_starting_tech_lvl    := 0;
         end;
-    
 end;
 
 //Choices made through game parameters are being converted to precise values
@@ -84,6 +83,11 @@ begin
         else
             side_isalive := Replace(side_isalive, i, 1);
     end;
+    
+    if victory_cond=0 then
+        ToLua('Deathmatch = 1;')
+    else
+        ToLua('Deathmatch = 0;');
 end;
 
 //Generation of oil and siberite deposits on the map
@@ -167,6 +171,11 @@ end;
 export Function INIT_ActivateLUAInterface;
 var colour, tech, i;
 begin
+    if victory_cond=0 then
+        ToLua('Deathmatch = 1;')
+    else
+        ToLua('Deathmatch = 0;');
+
     if Your_Side>=1 AND Your_Side<=8 then
     begin
         ToLua('LUA_UpdateSideInterface('&Your_Side&','&side_tech_lvl[Your_Side]&');');
@@ -231,15 +240,9 @@ begin
     composition := stat_array;
 end;
 
-export Function INIT_PrepareReinforcements;
-begin
-    new_character_EON               := [0, Rand(1,4), [Rand(8,12), Rand(8,12)], [0,0,0,0], [Rand(0,experience), Rand(0,experience), Rand(0,experience), Rand(0,experience)], 0];
-    new_character_reinforcements    := [0, 1, [Rand(8,12), Rand(8,12)], [0,0,0,0], [Rand(0,experience), Rand(0,experience), Rand(0,experience), Rand(0,experience)], 0];
-end;
-
 //Function that creates an arrray of unit IDs belonging to each side while also spawning them on the map
 export Function INIT_SpawnStartingUnits;
-var i,j, human, vehicle, crates, oil, siberite, cargo_capacity, vehicle_amount;
+var i,j, human, vehicle, crates, oil, siberite, cargo_capacity, vehicle_amount, bulk;
 begin
     side_soldiers   := [[],[],[],[],[],[],[],[]];
     side_vehicles   := [[],[],[],[],[],[],[],[]];
@@ -277,38 +280,12 @@ begin
         begin
             vehicle := PrepareVehicles(i, position_spawn_direction);
             
-            if crates >= 100 then
-            begin
-                AddCargo(vehicle, mat_cans, 100);
-                crates := crates - 100;
-            end
-            else
-            begin
-                AddCargo(vehicle, mat_cans, crates);
-                if oil >= 100 then
-                begin 
-                    AddCargo(vehicle, mat_oil, 100 - crates);
-                    oil := oil - 100 + crates;
-                    crates := 0;
-                end
-                else
-                begin
-                    AddCargo(vehicle, mat_oil, oil);
-                    if siberite >= 100 then
-                    begin
-                        AddCargo(vehicle, mat_siberit, 100 - oil);
-                        siberite := siberite - 100 + oil;
-                        oil := 0;
-                    end
-                    else
-                    begin
-                        AddCargo(vehicle, mat_siberit, siberite);
-                        siberite := 0;
-                    end;
-                end;
-            end;
-            
-            side_vehicles := Replace(side_vehicles, i, side_vehicles[i] ^ vehicle);
+            bulk := FillUpVehicles(vehicle,crates,oil,siberite);
+            crates := bulk[2];
+            oil := bulk[3];
+            siberite := bulk[4];
+
+            side_vehicles := Replace(side_vehicles, i, side_vehicles[i] ^ bulk[1]);
         end;
         
         for j=1 to side_vehicles[i] do

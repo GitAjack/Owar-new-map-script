@@ -24,7 +24,6 @@ begin
     INIT_SetUpAllies;
     INIT_SetUpTechs;
     INIT_PrepareSquad;
-    INIT_PrepareReinforcements;
     INIT_SpawnStartingUnits;
     INIT_CameraFocus;
     INIT_ActivateLUAInterface;
@@ -67,6 +66,35 @@ begin
     enable;
     CLOCK_human_spawn := CLOCK_human_spawn + people_spawn_rate + fluctuation_modifier_humans;
     CYCLIC_HumanSpawn;
+end;
+
+every 0$1 do
+var i, count; 
+begin
+    if not side_zone_locked=[0,0,0,0,0,0,0,0] then
+        CYCLIC_CheckTransportsInZones;
+    
+    enable;
+end;
+
+every 0$1 trigger not side_transfer_pending=[0,0,0,0,0,0,0,0] do
+var i, remaining;
+begin
+    for i=1 to 8 do
+    begin
+        if side_transfer_pending[i]=1 then
+        begin
+            remaining := side_transfer_clocks[i] - tick;
+            
+            if tick >= side_transfer_clocks[i] then
+                CYCLIC_FinalizeTransfer(i,side_resources_remaining[i][1],side_resources_remaining[i][2],side_resources_remaining[i][3]);
+            
+            if i=Your_Side then
+                ToLua('LUA_UpdateClock('&remaining&');');
+        end;
+    end;
+    
+    enable;
 end;
 
 //==============================================================

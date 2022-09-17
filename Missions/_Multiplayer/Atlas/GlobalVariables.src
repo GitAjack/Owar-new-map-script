@@ -62,24 +62,41 @@ EXPORT
     CLOCK_human_spawn,              //INT                           - Contains the next tick at which human will spawn (because EVERYs are retarded)
     CLOCK_fluctuation,              //INT                           - Contains the next tick at which fluctuation will occur (because EVERYs are retarded)
     
-    side_isalive;                   //ARRAY - 1 dimension of INT    - a simple status array, indicating if side is alive (1) or dead (0)
+    side_isalive,                   //ARRAY - 1 dimension of INT    - a simple status array, indicating if side is alive (1) or dead (0)
+    cost_per_human,                 //ARRAY - 1 dimension of INT    - Cost per human, depending on the cost setting
+    cost_per_upgrade,               //ARRAY - 3 dimensions of INT   - Cost for each upgrade, depending on the cost setting
+    side_reinforcement_amount,      //ARRAY - 1 dimension of INT    - A table of currently queued up reinforcements for each side
+    side_reinforcement_cap,         //ARRAY - 1 dimension of INT    - Allowed reinforcement cap for each side
+    side_pending_order,             //ARRAY - 2 dimension of INT    - A table of required resources queued up currently for each side
+    side_resources_delivered,       //ARRAY - 2 dimensions of int   - Resources delivered to transfer zone while the transfer is taking action
+    team_siberite_stocked,          //ARRAY - 1 dimension of INT    - A table showing the amount of siberite stocked by each team for win condition
+    team_transfer_zones,            //ARRAY - 2 dimensions of INT   - Transfer zones for each team
+    transfer_zone_direction,        //ARRAY - 2 dimensions of INT   - Direction of units coming back after transfer for each zone
+    side_chosen_zone,               //ARRAY - 1 dimension of INT    - Table of zones chosen by each side
+    side_zone_locked,               //ARRAY - 1 dimension of INT    - Table of zones locked by each side
+    side_transfer_clocks,           //ARRAY - 1 dimension of ticks  - A table of tick marking the return of each sent transport for all sides
+    side_units_outside,             //ARRAY - 2 dimensions of IDs   - A table of units outside area for the time of resource transfer
+    side_order_type,                //ARRAY - 1 dimension of INT    - A table of currently chosen transfer orders by each side
+    side_resources_remaining,       //ARRAY - 3 dimensions of INT   - A table of remaining resources after a succesfull transfer
+    side_transfer_pending;          //ARRAY - 1 dimension of BOOL   - A simple indication whether a side is currently waiting for the transfer to complete
 
-    
-    
     
 //Initial variable assignments custom to this map
 export Function INIT_LoadMapParams;
+var i;
 begin
-    people_num                      := [[1,1,1,1,1],[1,2,2,2,2],[1,3,3,3,3],[1,4,4,4,4]];   
-    experience                      := [1,2,4,5];                                   
-    starting_resources              := [[0,0,0],[50,30,0],[100,30,0],[150,50,0]];           
-    crate_spawn_rate                := [2$00,1$30,1$00,0$30];                       
-    people_spawn_rate               := [0,15$0,10$0,5$0];                       
-    spawn_fluctuation               := [0,5$0,2$30];                                
-    oil_abundance                   := [4,6,8];                                     
-    sib_abundance                   := [2,3,4];                                     
-    victory_cond                    := [0, 200, 400, 800];                          
-    reinforce_cost                  := [0.5,1,1.5,2];
+    people_num                      := [[1,1,1,1,1],[1,2,2,2,2],[1,3,3,3,3],[1,4,4,4,4]];
+    experience                      := [1,2,4,5];
+    starting_resources              := [[0,0,0],[50,30,0],[100,30,0],[150,50,0]];
+    crate_spawn_rate                := [2$00,1$30,1$00,0$30];
+    people_spawn_rate               := [0,15$0,10$0,5$0];
+    spawn_fluctuation               := [0,5$0,2$30];
+    oil_abundance                   := [4,6,8];
+    sib_abundance                   := [2,3,4];
+    victory_cond                    := [0, 400, 800, 1200];
+    reinforce_cost                  := [1,2,3,4];
+    cost_per_human                  := [50,70,100,150];
+    cost_per_upgrade                := [[[70,30,0],[100,50,0],[150,50,0],[200,100,0]],[[100,30,0],[150,50,0],[200,50,0],[250,100,0]],[[130,30,10],[200,50,20],[250,50,20],[300,100,50]],[[150,0,30],[250,0,50],[300,0,70],[350,0,100]]];
     
     available_oil_deposits          := [[[[12,17],[317,242]],[[46,47],[283,211]],[[34,12],[295,247]],[[72,48],[257,211]],[[95,78],[235,182]]],[[[89,28],[241,232]],[[118,41],[211,218]],[[125,7],[203,252]],[[166,80],[163,179]]],[[[192,57],[137,202]],[[197,6],[150,253]],[[214,66],[115,192]],[[208,25],[121,234]],[[242,89],[87,170]]]];
     available_siberite_deposits     := [[[[61,103],[268,156]],[[100,115],[229,144]],[[128,105],[201,154]],[[113,75],[216,184]]],[[[167,143],[162,116]],[[129,157],[200,102]]]];
@@ -94,4 +111,20 @@ begin
     fluctuation_modifier_humans     := 0;
     current_spawn_rate              := 0;
     past_spawn_rate                 := 0;
+    
+    side_reinforcement_amount       := [1,1,1,1,1,1,1,1];
+    side_reinforcement_cap          := [3,3,3,3,3,3,3,3];
+    team_siberite_stocked           := [0,0];
+    team_transfer_zones             := [[TransferNW,TransferNE],[TransferSW,TransferSE]];
+    transfer_zone_direction         := [[3,4],[1,5]];
+    side_chosen_zone                := [1,1,1,1,1,1,1,1];
+    side_zone_locked                := [0,0,0,0,0,0,0,0];
+    side_pending_order              := [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+    side_order_type                 := [0,0,0,0,0,0,0,0];
+    side_units_outside              := [[],[],[],[],[],[],[],[]];
+    side_transfer_pending           := [0,0,0,0,0,0,0,0];
+    side_resources_remaining        := [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+    
+    for i=1 to Teams do
+        team_siberite_stocked       := Replace(team_siberite_stocked, i, 0);
 end;    

@@ -91,7 +91,6 @@ begin
         if depots+0=0 then
         begin
             side_isalive := Replace(side_isalive, side, 0);
-            colour := 0;
             RaiseSailEvent(66);
             if side=Your_Side then
             begin
@@ -99,6 +98,7 @@ begin
                 Multiplayer_Loose_Message();
             end
             else
+                colour := 0;
                 ToLua('LUA_UpdateSpecInterface('&side&','&colour&','&side_tech_lvl[side]&');');
         end;
     end;
@@ -114,7 +114,7 @@ begin
         begin
             side_isalive := Replace(side_isalive, i, 0);
             RaiseSailEvent(66);
-            if not Your_Side in [1,2,3,4,5,6,7,8] then
+            if IAmSpec then
             begin
                 colour := 0;
                 ToLua('LUA_UpdateSpecInterface('&i&','&colour&','&side_tech_lvl[i]&');');
@@ -151,7 +151,7 @@ end;
     
 //Function for technology upgrades (INFORMATION HAS TO BE SHARED WITH OTHER PLAYERS > TO LUA)
 export Function TechUpgrade(tier,nation,side);
-var techs, buildings, i;
+var techs, buildings, reinforcement, i;
 begin
     techs       := [];
     buildings   := [];
@@ -178,6 +178,8 @@ begin
                     buildings   := [0,2,3,4,6,7,8,10,16,19,26,29,31,32];
                 end;
             end;
+            
+            reinforcement := 3;
         end;
         
         1:
@@ -201,6 +203,8 @@ begin
                     buildings   := [0,2,3,4,6,7,8,10,12,16,17,19,26,29,30,31,32];
                 end;
             end;
+            
+            reinforcement := 3;
         end;
         
         2:
@@ -224,6 +228,8 @@ begin
                     buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,14,16,17,19,21,24,26,28,29,30,31,32,33];
                 end;
             end;
+            
+            reinforcement := 4;
         end;
         
         3:
@@ -247,6 +253,8 @@ begin
                     buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,21,24,26,28,29,30,31,32,33];
                 end;
             end;
+            
+            reinforcement := 4;
         end;
         
         4:
@@ -270,12 +278,65 @@ begin
                     buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,21,24,26,28,29,30,31,32,33,34,37];
                 end;                
             end;
-        ToLua('LUA_SideTechMax();');    
+            
+            reinforcement := 5;
+            ToLua('LUA_SideTechMax();');
         end;
     end;
     
+    side_reinforcement_cap := Replace(side_reinforcement_cap, side, reinforcement);
     TechUnlock(techs,side,1);
     BuildingUnlock(buildings,side,1);
 end;
 
+//Script for filling consecutive vehicles in the array with resources
+export Function FillUpVehicles(vehicle,crates,oil,siberite);
+var occupied;
+begin
+    if crates >= 100 then
+    begin
+    AddCargo(vehicle, mat_cans, 100);
+    crates := crates - 100;
+    end
+    else
+    begin
+        AddCargo(vehicle, mat_cans, crates);
+        occupied := crates;
+        crates := 0;
+        if oil >= 100 then
+        begin 
+            AddCargo(vehicle, mat_oil, 100 - occupied);
+            oil := oil - 100 + occupied;
+        end
+        else
+        begin
+            AddCargo(vehicle, mat_oil, oil);
+            occupied := oil;
+            oil := 0;
+            if siberite >= 100 then
+            begin
+                AddCargo(vehicle, mat_siberit, 100 - occupied);
+                siberite := siberite - 100 + occupied;
+            end
+            else
+            begin
+                AddCargo(vehicle, mat_siberit, siberite);
+                siberite := 0;
+            end;
+        end;
+    end;
+    result := [vehicle,crates,oil,siberite];
+end;
 
+//Unit rotator :)
+export Function RotateUnit(in_direction,rotation);
+var r;
+begin
+    rotation := rotation mod 6;
+    r := in_direction+rotation;
+    if r>=6 then
+        rotation := rotation-6;
+    if r<=1 then
+        rotation := rotation+6;
+    result := in_direction+rotation;
+end;
