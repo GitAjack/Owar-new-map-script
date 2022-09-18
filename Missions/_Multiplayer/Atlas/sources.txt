@@ -1,9 +1,0 @@
-SOURCE_CODES
-  ENABLED Main
-  ENABLED Initials
-  ENABLED GlobalVariables
-  ENABLED External
-  ENABLED Triggers
-  ENABLED Cyclic
-  ENABLED Clock
-END_OF_SOURCE_CODES
