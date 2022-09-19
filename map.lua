@@ -203,7 +203,6 @@ function LUA_IsDepot()
 	No_Depot = 0;
 	setVisible(SideInterface.label.nodepot,false);
 	setVisible(SideInterface.label.lost,false);
-	setVisible(SideInterface.button.cancel,false);
 	
 	if Waiting==1 then
 		setVisible(SideInterface.window.waiting,true);
@@ -488,6 +487,15 @@ end;
 
 --Close all interfaces at the end of the game
 function FROMOW_MAP_END()
+	setVisible(SideInterface.window.main,false);
+	setVisible(SideInterface.button_open,false);
+	setVisible(SpecInterface.window.main,false);
+	setVisible(SpecInterface.button_open,false);
+	SideInterface=nil;
+	SpecInterface=nil;
+end;
+
+function EndGame()
 	setVisible(SideInterface.window.main,false);
 	setVisible(SideInterface.button_open,false);
 	setVisible(SpecInterface.window.main,false);

@@ -48,7 +48,7 @@ begin
         entity  := side_soldiers[side][Rand(1,side_soldiers[side])]
     else
     begin
-        entity  := FilterAllUnits([[f_side, side],[f_type, 3],[f_btype, 0],[f_or],[f_btype, 1]]);
+        entity  := FilterAllUnits([[f_side, side],[f_type, 3],[f_or,[f_btype, 0],[f_btype, 1]]]);
         entity  := entity[Rand(1,entity)];
     end;
         
@@ -174,6 +174,7 @@ begin
             begin
                 new_character_reinforcements := [0, 1, [Rand(8,12), Rand(8,12)], [0,0,0,0], [Rand(0,experience), Rand(0,experience), Rand(0,experience), Rand(0,experience)], 0];
                 human := PrepareCharacters(side, [Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5), Rand(0,5)], new_character_reinforcements);
+                side_soldiers := Replace(side_soldiers, side, side_soldiers[side] ^ human);
                 PlaceUnitArea(human, team_transfer_zones[Side_Teams[side]][side_chosen_zone[side]], false);
             end;
             
@@ -226,7 +227,7 @@ begin
             end;
             
             if side=Your_Side then
-                    ToLua('LUA_UpdateSiberiteSent('&team_siberite_stocked[Side_Teams[side]]&','&victory_cond&');');
+                ToLua('LUA_UpdateSiberiteSent('&team_siberite_stocked[Side_Teams[side]]&','&victory_cond&');');
             
             if Your_Side=9 then
                 for i=1 to Teams do

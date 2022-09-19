@@ -87,7 +87,7 @@ var depots, colour;
 begin
     if side_soldiers[side]=0 then
     begin
-        depots := FilterAllUnits([[f_side, side],[f_type, 3],[f_btype, 0],[f_or],[f_btype, 1]]);
+        depots := FilterAllUnits([[f_side, side],[f_type, 3],[f_or,[f_btype, 0],[f_btype, 1]]]);
         if depots+0=0 then
         begin
             side_isalive := Replace(side_isalive, side, 0);
@@ -128,7 +128,8 @@ Function TechUnlock(techs,side,state);
 var i;
 begin
     for i in techs do
-        SetTech(i,side,state);
+        if Researched(side,i)=0 then
+            SetTech(i,side,state);
 end;
 
 //Auxilliary function for compact building unlocks manipulation

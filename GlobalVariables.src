@@ -49,11 +49,12 @@ EXPORT
     fluctuation_modifier_humans,    //INT                           - Current modifier to human spawn time
     current_spawn_rate,             //INT                           - Spawn rate modifier for the current iteration of the script
     past_spawn_rate,                //INT                           - Information about previous spawn rate to generate informations for the player
-
+    
     composition,                    //ARRAY - 3 dimensions of INT   - The structure of the loadout looks like this [commander,soldiers,builders,mechanics,scientists] where each element in the array is an array of properties eg. commander = [1, class, attributes, basic skills, skill levels, importance] or soldiers = [0, class, attributes, basic skills, skill levels, importance], //attributes = [default armor, speed], basic skills = [x,y,z,a], skill levels = [x,y,z,a], importance = x
     new_character_EON,              //ARRAY - 2 dimensions of INT   - A simple array with stats for a random human spawning through EON
     new_character_reinforcements,   //ARRAY - 2 dimensions of INT   - A simple array with stats for a random human spawning through calling reinforcements
     side_soldiers,                  //ARRAY - 2 dimensions of INT   - An array of IDs for all soldiers belonging to each side
+    side_depots,                    //ARRAY - 2 dimensions of INT   - An array of ID storing all depots belonging to each side
     side_soldier_count,             //ARRAY - 2 dimensions of INT   - An array containing number of soldiers for each side at the time [[side, amount],...]]
     soldier_limit,                  //INT                           - Soldier limit for the current stage of the game - the script will try to fill people up to this limit by spawning new ones
     side_vehicles,                  //ARRAY - 2 dimensions of INT   - An array of IDs for all vehicles belonging to each side
@@ -112,6 +113,7 @@ begin
     current_spawn_rate              := 0;
     past_spawn_rate                 := 0;
     
+    side_depots                     := [[],[],[],[],[],[],[],[]];
     side_reinforcement_amount       := [1,1,1,1,1,1,1,1];
     side_reinforcement_cap          := [3,3,3,3,3,3,3,3];
     team_transfer_zones             := [[TransferNW,TransferNE],[TransferSW,TransferSE]];
@@ -123,5 +125,4 @@ begin
     side_units_outside              := [[],[],[],[],[],[],[],[]];
     side_transfer_pending           := [0,0,0,0,0,0,0,0];
     side_resources_remaining        := [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
-    side_resources_delivered        := [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
 end;    

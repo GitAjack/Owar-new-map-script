@@ -69,11 +69,11 @@ begin
 end;
 
 every 0$1 trigger 1 in side_zone_locked do
-begin                                   
-     CYCLIC_CheckTransportsInZones;
-     enable;
+begin
+    CYCLIC_CheckTransportsInZones;
+    enable;
 end;
-                            
+
 every 0$1 trigger 1 in side_transfer_pending do
 var i, remaining;
 begin

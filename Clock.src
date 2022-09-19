@@ -8,7 +8,7 @@ var AllStrings;
 begin
   AllStrings:=['#Multi1x1-Time', tick];
   if WaitServerStrings then AllStrings = AllStrings ^ WaitServerStrings;
-  ExtraStrings:=[side_chosen_zone,side_zone_locked];
+  ExtraStrings:='';
   if (ExtraStrings) then AllStrings:= AllStrings ^ '' ^ ExtraStrings;
   Display_Strings:= AllStrings;
 end;

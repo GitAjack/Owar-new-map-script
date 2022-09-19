@@ -30,7 +30,7 @@ begin
         begin
             RandomizeAll;
             Game_Type                   := 1;
-            Your_Side                   := 9;
+            Your_Side                   := 1;
             Side_Positions              := [1,2,3,4,5,6,7,8];
             Side_Nations                := [1,2,3,1,2,3,1,2];
             Side_Comps                  := [1,1,1,1,1,1,1,1];
@@ -45,7 +45,7 @@ begin
             Choice_spawn_fluctuation    := 0;
             Choice_oil_abundance        := 0;
             Choice_sib_abundance        := 0;
-            Choice_victory_cond         := 0;
+            Choice_victory_cond         := 2;
             Choice_reinforce_cost       := 1;
             Choice_black_FoW            := 0;
             Choice_starting_tech_lvl    := 0;
@@ -201,13 +201,13 @@ begin
         end;
         ToLua('StartSpecInterface();');
     end;
-
+    
     if Your_Side in [1,2,3,4,5,6,7,8] then
         ToLua('LUA_UpdateSiberiteSent('&team_siberite_stocked[Side_Teams[Your_Side]]&','&victory_cond&');');
-
+    
     if Your_Side=9 then
         for i=1 to Teams do
-            ToLua('LUA_UpdateSiberiteSpec('&team_siberite_stocked[i]&','&victory_cond&','&i&');');
+            ToLua('LUA_UpdateSiberiteSpec('&team_siberite_stocked[i]&','&victory_cond&','&i&');');  
 end;
 
 //Script for preparing starting loadout
