@@ -1,0 +1,52 @@
+begin
+? type grass
+? inident Normal
+ ! hue -15
+new
+? type grass
+? inident Flowers
+ ! hue -14
+new
+? type grass
+? index 2
+? inident vres
+ ! hue -134
+new
+? inident vres
+? type grass
+? index 3
+ ! add 28 00F2FF
+ ! all 112
+new
+? inident ker-husty
+ ! hue -17
+ ! all 110
+new
+? inident list-dvoupatr
+ ! hue -32
+ ! all 110
+new
+? inident list-akatojerab
+ ! add 7 00F2FF
+ ! contr 115
+new
+? inident list-sahara
+ ! hue -20
+new
+? inident list-briza-vyssi
+ ! hue -17
+new
+? inident list-briza
+ ! hue -5
+new
+? inident list-vrba-zluta
+ ! hue -7
+ ! all 90
+new
+? inident leknin
+ ! hue -17
+new
+? inident rakos
+ ! hue -17
+ ! all 87
+end

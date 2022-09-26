@@ -1,0 +1,128 @@
+//This bit of code is just a storage for all global variables used in the code
+//Made purely for my pedantic purposes, a lot here is probably redundant
+
+EXPORT
+    Game_Type,                      //INT                           - Type of the game (x - defined in multidesc) - OW default variable
+    Side_Positions,                 //ARRAY - 1 dimension of INT    - Position of each side, array [x,x,x,x,x,x,x,x], (x - defined in multidesc) - routed to "Side_Positions" in DatEx
+    Side_Nations,                   //ARRAY - 1 dimension of INT    - Faction of each side, array [x,x,x,x,x,x,x,x], (x = 1-am, 2-ru, 3-ar) - routed to "Side_Nations" in DatEx
+    Side_Comps,                     //ARRAY - 1 dimensions of INT   - Defines if the side is controlled by computer, array [x,x,x,x,x,x,x,x], (x = 0 or 1) - routed to "Side_Comps" in DatEx
+    Side_Teams,                     //ARRAY - 1 dimension of INT    - Team which the side belongs to, array [a,b,c,d,e,f,g,h] - routed to "Side_Teams" in DatEx
+    Teams,                          //ARRAY - 2 dimensions of INT   - Definition of team compositions, array [[A,B],[C,D],[E,F],[G,H]] - an example of four teams of 2 sides each - OW default variable
+        
+    Choice_people_num,              //ARRAY - 2 dimensions of INT   - Choice of the starting number of people" [[commanders,soldiers,builders,mechanics,scientsts],[...],...]] - (int+1 chooses a position in the array)
+    Choice_experience,              //INT                           - Choice of the starting skill level of people [x,y,z,a,b,c,...] - (int+1 chooses a position in the array)
+    Choice_starting_resources,      //ARRAY - 2 dimensions of INT   - Choice of the amount of starting resources [[crates,oil,sib],[...],...]] - (int+1 chooses a position in the array)
+    Choice_crate_spawn_rate,        //INT                           - Choice of the crate spawn rate [x,y,z,a,b,c,...] - (int+1 chooses a position in the array)
+    Choice_people_spawn_rate,       //INT                           - Choice of the spawn rate of new people [x,y,z,a,b,c,...] - (int+1 chooses a position in the array)
+    Choice_spawn_fluctuation,       //INT                           - Choice of the irregularity of spawn periods [[x,y],[z,a],[b,c],...] - (int+1 chooses a set in the array)
+    Choice_oil_abundance,           //INT                           - Choice of the abundance of oil deposits per side [x,y,z] - (int+1 chooses the number in the array)
+    Choice_sib_abundance,           //INT                           - Choice of the abundance of siberite deposits per side [x,y,z] - (int+1 chooses the number in the array)
+    Choice_victory_cond,            //INT                           - Choice of the victory condition [0,200,400,800] - (int+1 chooses the required amount of transported siberite - 0 enables standard fight)
+    Choice_reinforce_cost,          //INT                           - Choice of the modifier to resource costs of reinforcement purchases [50,100,150,200] - (int+1 chooses the percentage modifier in the arrray)
+    Choice_black_FoW,               //INT                           - Choice of the FoW setting 
+    Choice_starting_tech_lvl,       //INT                           - Choice of the starting tech level
+        
+    people_num,                     //ARRAY - 2 dimensions of INT   - [[soldiers_setting_1, builders_setting_1, mechanics_setting_1, scientists_setting_1],[...]]
+    experience,                     //ARRAY - 1 dimension of INT    - Starting soldier experience levels
+    starting_resources,             //ARRAY - 2 dimensions of INT   - [[crates_setting_1, oil_setting_1],[...]]
+    crate_spawn_rate,               //ARRAY - 1 dimension of TIME   - Time between next crate spawns
+    people_spawn_rate,              //ARRAY - 1 dimension of TIME   - Time between next human spawns
+    spawn_fluctuation,              //ARRAY - 1 dimension of TIME   - The time between each rerolls of the crate/human spawn times, 0 -> fluctuations disabled 
+    oil_abundance,                  //ARRAY - 1 dimension of INT    - Amount of oil deposits on HALF OF THE MAP (so x2 total)
+    sib_abundance,                  //ARRAY - 1 dimension of INT    - Amount of siberite deposits on HALF OF THE MAP (so x2 total)
+    victory_cond,                   //ARRAY - 1 dimension of INT    - Endgame victory condition (after buying all upgrades) 0 -> deathmatch
+    reinforce_cost,                 //ARRAY - 1 dimension of REAL   - Cost modifier for additional troops/upgrades during the game
+    black_fow,                      //INT                           - 0 - black fog is on, 1 - no black fog
+    starting_tech_lvl,              //INT                           - Choice from 0 to 4
+    side_tech_lvl,                  //ARRAY - 1 dimensional of INT  - An array containing the tech level of each side
+        
+    available_oil_deposits,         //ARRAY - 3 dimensions of INT   - [[[[deposit_Area1_1_X,deposit_Area1_1_Y],[mirror_Area1_1_X,mirror_Area1_1_Y]],[[deposit_Area1_2_X,deposit_Area1_2_Y],[mirror_Area1_2_X,mirror_Area1_2_Y]]],[[[deposit_Area2_X,deposit_Area2_1_Y],[mirror_Area2_1_X,mirror_Area2_1_Y]],[[deposit_Area2_2_X,deposit_Area2_2_Y],[mirror_Area2_2_X,mirror_Area2_2_Y]]]]
+    available_siberite_deposits,    //ARRAY - 3 dimensions of INT   - [same as for oil]
+    
+    position_spawn_direction,       //ARRAY - 1 dimension of INT    - An array defining which direction should the spawning unit face when spawned on chosen position
+    position_spawn_area,            //ARRAY - 1 dimension of IDs    - An array defining which area should the unit spawn in
+    
+    position_drop_zones,            //ARRAY - 3 dimensions          - An array defining which area should crate drops and people spawn in during the game [[number, [zone1, mirror], [zone2, ...]],[[number, [zone832, mirror], zone833,...]],...]]] (higher number means better drops)
+    fluctuation_base_crates,        //ARRAY - 1 dimension of INT    - An array with time fluctuation bases (ticks) for every setting of the spawn rate for crates
+    fluctuation_base_humans,        //ARRAY - 1 dimension of INT    - An array with time fluctuation bases (ticks) for every setting of the spawn rate for people
+    fluctuation_modifier_crates,    //INT                           - Current modifier to crate spawn time
+    fluctuation_modifier_humans,    //INT                           - Current modifier to human spawn time
+    current_spawn_rate,             //INT                           - Spawn rate modifier for the current iteration of the script
+    past_spawn_rate,                //INT                           - Information about previous spawn rate to generate informations for the player
+    
+    composition,                    //ARRAY - 3 dimensions of INT   - The structure of the loadout looks like this [commander,soldiers,builders,mechanics,scientists] where each element in the array is an array of properties eg. commander = [1, class, attributes, basic skills, skill levels, importance] or soldiers = [0, class, attributes, basic skills, skill levels, importance], //attributes = [default armor, speed], basic skills = [x,y,z,a], skill levels = [x,y,z,a], importance = x
+    new_character_EON,              //ARRAY - 2 dimensions of INT   - A simple array with stats for a random human spawning through EON
+    new_character_reinforcements,   //ARRAY - 2 dimensions of INT   - A simple array with stats for a random human spawning through calling reinforcements
+    side_soldiers,                  //ARRAY - 2 dimensions of INT   - An array of IDs for all soldiers belonging to each side
+    side_depots,                    //ARRAY - 2 dimensions of INT   - An array of ID storing all depots belonging to each side
+    side_soldier_count,             //ARRAY - 2 dimensions of INT   - An array containing number of soldiers for each side at the time [[side, amount],...]]
+    soldier_limit,                  //INT                           - Soldier limit for the current stage of the game - the script will try to fill people up to this limit by spawning new ones
+    side_vehicles,                  //ARRAY - 2 dimensions of INT   - An array of IDs for all vehicles belonging to each side
+    
+    CLOCK_crate_spawn,              //INT                           - Contains the next tick at which crates will spawn (because EVERYs are retarded)
+    CLOCK_human_spawn,              //INT                           - Contains the next tick at which human will spawn (because EVERYs are retarded)
+    CLOCK_fluctuation,              //INT                           - Contains the next tick at which fluctuation will occur (because EVERYs are retarded)
+    
+    side_isalive,                   //ARRAY - 1 dimension of INT    - a simple status array, indicating if side is alive (1) or dead (0)
+    cost_per_human,                 //ARRAY - 1 dimension of INT    - Cost per human, depending on the cost setting
+    cost_per_upgrade,               //ARRAY - 3 dimensions of INT   - Cost for each upgrade, depending on the cost setting
+    side_reinforcement_amount,      //ARRAY - 1 dimension of INT    - A table of currently queued up reinforcements for each side
+    side_reinforcement_cap,         //ARRAY - 1 dimension of INT    - Allowed reinforcement cap for each side
+    side_pending_order,             //ARRAY - 2 dimension of INT    - A table of required resources queued up currently for each side
+    side_resources_delivered,       //ARRAY - 2 dimensions of int   - Resources delivered to transfer zone while the transfer is taking action
+    team_siberite_stocked,          //ARRAY - 1 dimension of INT    - A table showing the amount of siberite stocked by each team for win condition
+    team_transfer_zones,            //ARRAY - 2 dimensions of INT   - Transfer zones for each team
+    transfer_zone_direction,        //ARRAY - 2 dimensions of INT   - Direction of units coming back after transfer for each zone
+    side_chosen_zone,               //ARRAY - 1 dimension of INT    - Table of zones chosen by each side
+    side_zone_locked,               //ARRAY - 1 dimension of INT    - Table of zones locked by each side
+    side_transfer_clocks,           //ARRAY - 1 dimension of ticks  - A table of tick marking the return of each sent transport for all sides
+    side_units_outside,             //ARRAY - 2 dimensions of IDs   - A table of units outside area for the time of resource transfer
+    side_order_type,                //ARRAY - 1 dimension of INT    - A table of currently chosen transfer orders by each side
+    side_resources_remaining,       //ARRAY - 3 dimensions of INT   - A table of remaining resources after a succesfull transfer
+    side_transfer_pending;          //ARRAY - 1 dimension of BOOL   - A simple indication whether a side is currently waiting for the transfer to complete
+
+    
+//Initial variable assignments custom to this map
+export Function INIT_LoadMapParams;
+var i;
+begin
+    people_num                      := [[1,1,1,1,1],[1,2,2,2,2],[1,3,3,3,3],[1,4,4,4,4]];
+    experience                      := [1,2,4,5];
+    starting_resources              := [[0,0,0],[50,30,0],[100,30,0],[150,50,0]];
+    crate_spawn_rate                := [2$00,1$30,1$00,0$30];
+    people_spawn_rate               := [0,15$0,10$0,5$0];
+    spawn_fluctuation               := [0,5$0,2$30];
+    oil_abundance                   := [4,6,8];
+    sib_abundance                   := [2,3,4];
+    victory_cond                    := [0, 400, 800, 1200];
+    reinforce_cost                  := [1,2,3,4];
+    cost_per_human                  := [50,70,100,150];
+    cost_per_upgrade                := [[[70,30,0],[100,50,0],[150,50,0],[200,100,0]],[[100,30,0],[150,50,0],[200,50,0],[250,100,0]],[[130,30,10],[200,50,20],[250,50,20],[300,100,50]],[[150,0,30],[250,0,50],[300,0,70],[350,0,100]]];
+    
+    available_oil_deposits          := [[[[12,17],[317,242]],[[46,47],[283,211]],[[34,12],[295,247]],[[72,48],[257,211]],[[95,78],[235,182]]],[[[89,28],[241,232]],[[118,41],[211,218]],[[125,7],[203,252]],[[166,80],[163,179]]],[[[192,57],[137,202]],[[197,6],[150,253]],[[214,66],[115,192]],[[208,25],[121,234]],[[242,89],[87,170]]]];
+    available_siberite_deposits     := [[[[61,103],[268,156]],[[100,115],[229,144]],[[128,105],[201,154]],[[113,75],[216,184]]],[[[167,143],[162,116]],[[129,157],[200,102]]]];
+    
+    position_spawn_direction        := [2,2,3,3,0,0,5,5];
+    position_spawn_area             := [INIT_SpawnNW, INIT_SpawnNW, INIT_SpawnNE, INIT_SpawnNE, INIT_SpawnSW, INIT_SpawnSW, INIT_SpawnSE, INIT_SpawnSE];
+    
+    position_drop_zones             := [[1, 65, [CrateDropSW, CrateDropSE, CrateDropNW, CrateDropNE]],[2, 60, [CrateDropMidSW, CrateDropMidNE], [CrateDropMidNW, CrateDropMidSE]],[3, 50, [CrateDropMidN, CrateDropMidS]]];
+    fluctuation_base_crates         := [0$12,0$9,0$6,0$2];
+    fluctuation_base_humans         := [0,1$30,1$00,0$30];
+    fluctuation_modifier_crates     := 0;
+    fluctuation_modifier_humans     := 0;
+    current_spawn_rate              := 0;
+    past_spawn_rate                 := 0;
+    
+    side_depots                     := [[],[],[],[],[],[],[],[]];
+    side_reinforcement_amount       := [1,1,1,1,1,1,1,1];
+    side_reinforcement_cap          := [3,3,3,3,3,3,3,3];
+    team_transfer_zones             := [[TransferNW,TransferNE],[TransferSW,TransferSE]];
+    transfer_zone_direction         := [[3,4],[1,5]];
+    side_chosen_zone                := [1,1,1,1,1,1,1,1];
+    side_zone_locked                := [0,0,0,0,0,0,0,0];
+    side_pending_order              := [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+    side_order_type                 := [0,0,0,0,0,0,0,0];
+    side_units_outside              := [[],[],[],[],[],[],[],[]];
+    side_transfer_pending           := [0,0,0,0,0,0,0,0];
+    side_resources_remaining        := [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+end;    

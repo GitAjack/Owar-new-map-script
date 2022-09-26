@@ -1,0 +1,347 @@
+//This block is serving as a storage for functions copied over from the library or other maps
+
+//Array length counter
+export Function length( _array );
+var _x;
+begin
+Result := 0;
+    for _x in _array do
+    begin
+    Result := Result + 1;
+    end;
+end;
+
+//Script for creating artificial players << used in Initials block
+export Function mp_sides_comps;         
+var c,i;
+begin
+  c = [];
+  for i=1 to 8 do
+   c = c^Multiplayer_GetPlayerIsComp(i);
+  result = c;
+end;
+
+//Script for preparing characters for each side
+export Function PrepareCharacters(side, direction, loadout);
+begin
+    InitHc();
+    InitUc();
+    if loadout[1] and Multiplayer then
+    begin
+        hc_name         := mp_sides_players_names[side];
+        hc_gallery      := 'MULTIAVATARS';
+        hc_face_number  := Multiplayer_GetPlayerSideNum(side);
+        hc_sex          := Multiplayer_GetPlayerSex(side);
+    end;
+    
+    uc_side         := side;
+    uc_nation       := Side_Nations[side];
+    uc_direction    := direction[Side_Positions[side]];
+    hc_class        := loadout[2];
+    hc_attr         := loadout[3];
+    hc_basic_skills := loadout[4];
+    hc_skills       := loadout[5];
+    hc_importance   := loadout[6];
+    
+    Result          := CreateHuman;
+end;
+
+//Script for preparing cargo bays for each side on the start
+export Function PrepareVehicles(side, direction);
+begin
+    InitUc();
+    InitVc();
+    uc_direction    := direction[Side_Positions[side]];
+    uc_side         := side;
+    uc_nation       := Side_Nations[side];
+    vc_control      := 1;
+    vc_engine       := 1;
+    vc_fuel_battery := 85;
+    
+    case Side_Nations[side] of
+        1:
+        begin
+            vc_chassis  := 2;
+            vc_weapon   := 12;
+        end;
+        
+        2:
+        begin
+            vc_chassis  := 13;
+            vc_weapon   := 32;
+        end;
+        
+        3:
+        begin
+            vc_chassis  := 21;
+            vc_weapon   := 51;
+        end;
+    end;
+    
+    Result  := CreateVehicle;
+end;
+
+//Function detecting if the player lost
+export Function DidPlayerLose(side);
+var depots, colour;
+begin
+    if side_soldiers[side]=0 then
+    begin
+        depots := FilterAllUnits([[f_side, side],[f_type, 3],[f_or,[f_btype, 0],[f_btype, 1]]]);
+        if depots+0=0 then
+        begin
+            side_isalive := Replace(side_isalive, side, 0);
+            if side=Your_Side then
+            begin
+                ToLua('LUA_Lost();');
+                Multiplayer_Loose_Message();
+            end
+            else
+                colour := 0;
+                ToLua('LUA_UpdateSpecInterface('&side&','&colour&','&side_tech_lvl[side]&');');
+                
+            RaiseSailEvent(66); 
+        end;
+    end;
+end;
+
+//Function detecting if player controlling the side left the game
+export Function CheckPlayerPresence;
+var i,colour;
+begin
+    for i=1 to 8 do
+    begin
+        if not MultiplayerSideAlive(i) and side_isalive[i] then
+        begin
+            side_isalive := Replace(side_isalive, i, 0);
+            if Your_Side=9 then
+            begin
+                colour := 0;
+                ToLua('LUA_UpdateSpecInterface('&i&','&colour&','&side_tech_lvl[i]&');');
+            end;
+            
+            RaiseSailEvent(66);
+        end;
+    end;
+end;        
+
+//Auxilliary function for compact technology manipulation
+Function TechUnlock(techs,side,state);
+var i;
+begin
+    for i in techs do
+        if Researched(side,i)=0 then
+            SetTech(i,side,state);
+end;
+
+//Auxilliary function for compact building unlocks manipulation
+Function BuildingUnlock(buildings,side,state);
+var i;
+begin
+    for i in buildings do
+        SetRestrict(i,side,state);
+end;
+
+//Disable all techs and buildings (ONLY AT THE START OF THE GAME! HAS TO BE EXECUTED BEFORE OTHER TECH SETTINGS)
+export Function DisableAllTechs(side);
+var techs, buildings;
+begin
+    techs       := [35,45,46,47,1,2,11,3,4,5,6,7,8,9,12,13,10,14,15,18,16,17,20,19,21,22,23,24,25,26,28,29,30,31,37,38,32,27,33,36,70,69,39,34,40,71,41,42,43,44,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68];
+    buildings   := [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39];
+    TechUnlock(techs,side,0);
+    BuildingUnlock(buildings,side,0);
+end;    
+    
+//Function for technology upgrades (INFORMATION HAS TO BE SHARED WITH OTHER PLAYERS > TO LUA)
+export Function TechUpgrade(tier,nation,side);
+var techs, buildings, reinforcement, i;
+begin
+    techs       := [];
+    buildings   := [];
+    
+    Case tier of
+        0:
+        begin
+            Case nation of
+                1: //americans
+                begin
+                    techs       := [35,45,46,47,69,48,51];
+                    buildings   := [0,2,3,4,6,7,8,10,16,19,26,27,29,31,32];
+                end;
+                
+                2: //arabs
+                begin
+                    techs       := [35,45,46,47,69,48,51];
+                    buildings   := [0,2,3,4,6,7,8,10,16,23,26,27,29,31,32];
+                end;
+                
+                3: //russians
+                begin
+                    techs       := [46,47,69,48,51];
+                    buildings   := [0,2,3,4,6,7,8,10,16,19,26,29,31,32];
+                end;
+            end;
+            
+            reinforcement := 3;
+        end;
+        
+        1:
+        begin
+            Case nation of
+                1: //americans
+                begin
+                    techs       := [35,45,46,47,6,7,20,69,39,48,49,51,52,60];
+                    buildings   := [0,2,3,4,6,7,8,10,15,16,17,19,20,26,27,29,30,31,32];
+                end;
+                
+                2: //arabs
+                begin
+                    techs       := [35,45,46,47,6,7,20,70,69,39,48,49,51,52,60];
+                    buildings   := [0,2,3,4,6,7,8,10,15,16,17,20,23,26,27,29,30,31,32,42];
+                end;
+                
+                3: //russians
+                begin
+                    techs       := [46,47,9,20,69,39,48,49,51,52,57];
+                    buildings   := [0,2,3,4,6,7,8,10,12,16,17,19,26,29,30,31,32];
+                end;
+            end;
+            
+            reinforcement := 3;
+        end;
+        
+        2:
+        begin
+            Case nation of
+                1: //americans
+                begin
+                    techs       := [35,45,46,47,6,7,12,15,20,69,39,48,49,50,51,52,60,61];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,15,16,17,19,20,26,27,29,30,31,32,36];
+                end;
+                
+                2: //arabs
+                begin
+                    techs       := [35,45,46,47,5,6,7,15,17,20,70,69,39,41,42,48,49,50,51,52,60,61,66];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,13,15,16,17,20,23,26,27,29,30,31,32];
+                end;
+                
+                3: //russians
+                begin
+                    techs       := [46,47,9,20,21,22,30,32,27,69,39,44,48,49,50,51,52,54,57,58,63];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,14,16,17,19,21,24,26,28,29,30,31,32,33];
+                end;
+            end;
+            
+            reinforcement := 4;
+        end;
+        
+        3:
+        begin
+            Case nation of
+                1: //americans
+                begin
+                    techs       := [35,45,46,47,6,7,12,13,10,15,16,20,21,22,32,27,69,39,40,48,49,50,51,52,53,54,55,57,58,59,60,61,62];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,15,16,17,18,19,20,21,24,25,26,27,28,29,30,31,32,33,36];
+                end;
+                
+                2: //arabs
+                begin
+                    techs       := [35,45,46,47,5,6,7,8,15,18,17,20,21,22,26,70,69,39,40,41,42,43,48,49,50,51,52,53,54,55,60,61,62,66,67,68];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,13,15,16,17,18,20,21,23,26,27,28,29,30,31,32];
+                end;
+                
+                3: //russians
+                begin
+                    techs       := [46,47,9,20,19,21,22,28,29,30,37,32,27,69,39,34,40,44,48,49,50,51,52,53,54,55,56,57,58,59,63,64];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,21,24,26,28,29,30,31,32,33];
+                end;
+            end;
+            
+            reinforcement := 4;
+        end;
+        
+        4:
+        begin
+            Case nation of
+                1: //americans
+                begin
+                    techs       := [35,45,46,47,6,7,12,13,10,14,15,16,20,21,22,25,32,27,36,69,39,34,40,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,15,16,17,18,19,20,21,24,25,26,27,28,29,30,31,32,33,36];
+                end;
+                
+                2: //arabs
+                begin
+                    techs       := [35,45,46,47,5,6,7,8,15,18,17,20,21,22,25,26,70,69,39,40,41,42,43,48,49,50,51,52,53,54,55,56,60,61,62,66,67,68];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,13,15,16,17,18,20,21,23,26,27,28,29,30,31,32];
+                end;
+                
+                3: //russians
+                begin
+                    techs       := [46,47,9,20,19,21,22,23,25,28,29,30,31,37,38,32,27,33,69,39,34,40,71,44,48,49,50,51,52,53,54,55,56,57,58,59,63,64,65];
+                    buildings   := [0,1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,21,24,26,28,29,30,31,32,33,34,37];
+                end;                
+            end;
+            
+            reinforcement := 5;
+            
+            if side=Your_Side then
+                ToLua('LUA_SideTechMax();');
+        end;
+    end;
+    
+    side_reinforcement_cap := Replace(side_reinforcement_cap, side, reinforcement);
+    TechUnlock(techs,side,1);
+    BuildingUnlock(buildings,side,1);
+end;
+
+//Script for filling consecutive vehicles in the array with resources
+export Function FillUpVehicles(vehicle,crates,oil,siberite);
+var occupied;
+begin
+    if crates >= 100 then
+    begin
+    AddCargo(vehicle, mat_cans, 100);
+    crates := crates - 100;
+    end
+    else
+    begin
+        AddCargo(vehicle, mat_cans, crates);
+        occupied := crates;
+        crates := 0;
+        if oil >= 100 then
+        begin 
+            AddCargo(vehicle, mat_oil, 100 - occupied);
+            oil := oil - 100 + occupied;
+        end
+        else
+        begin
+            AddCargo(vehicle, mat_oil, oil);
+            occupied := oil;
+            oil := 0;
+            if siberite >= 100 then
+            begin
+                AddCargo(vehicle, mat_siberit, 100 - occupied);
+                siberite := siberite - 100 + occupied;
+            end
+            else
+            begin
+                AddCargo(vehicle, mat_siberit, siberite);
+                siberite := 0;
+            end;
+        end;
+    end;
+    result := [vehicle,crates,oil,siberite];
+end;
+
+//Unit rotator :)
+export Function RotateUnit(in_direction,rotation);
+var r;
+begin
+    rotation := rotation mod 6;
+    r := in_direction+rotation;
+    if r>=6 then
+        rotation := rotation-6;
+    if r<=1 then
+        rotation := rotation+6;
+    result := in_direction+rotation;
+end;

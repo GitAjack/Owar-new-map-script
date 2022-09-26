@@ -1,0 +1,15 @@
+// Keep this module last!
+
+export ExtraStrings;
+export WaitServerStrings;
+
+export function ShowTimer;
+var AllStrings;
+begin
+  AllStrings:=['#Multi1x1-Time', tick];
+  if WaitServerStrings then AllStrings = AllStrings ^ WaitServerStrings;
+  ExtraStrings:='';
+  if (ExtraStrings) then AllStrings:= AllStrings ^ '' ^ ExtraStrings;
+  Display_Strings:= AllStrings;
+end;
+
