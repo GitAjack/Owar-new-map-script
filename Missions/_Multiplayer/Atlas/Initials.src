@@ -45,7 +45,7 @@ begin
             Choice_spawn_fluctuation    := 0;
             Choice_oil_abundance        := 2;
             Choice_sib_abundance        := 2;
-            Choice_victory_cond         := 2;
+            Choice_victory_cond         := 0;
             Choice_reinforce_cost       := 1;
             Choice_black_FoW            := 0;
             Choice_starting_tech_lvl    := 0;
@@ -100,34 +100,42 @@ begin
     pool_oil_deposits               := available_oil_deposits;
     pool_siberite_deposits          := available_siberite_deposits;
     i                               := 0;
-    
+
     while i < oil_abundance do
     begin
         for j=1 to pool_oil_deposits do
         begin
-            i                           := i+1;
-            x                           := length(pool_oil_deposits[j]);
-            y                           := Rand(1,x);
+            i := i+1;
+            x := length(pool_oil_deposits[j]);
+            y := Rand(1,x);
             CreateDepositXY(pool_oil_deposits[j][y][1][1], pool_oil_deposits[j][y][1][2], mat_oil);
             CreateDepositXY(pool_oil_deposits[j][y][2][1], pool_oil_deposits[j][y][2][2], mat_oil);
-            pool_oil_deposits           := Replace(pool_oil_deposits, j, Delete(pool_oil_deposits[j],y));
+            pool_oil_deposits := Replace(pool_oil_deposits, j, Delete(pool_oil_deposits[j],y));
+
+            if pool_oil_deposits[j]+0=0 then
+                pool_oil_deposits := Delete(pool_oil_deposits,j);
+
             if i>=oil_abundance then
                 break;
         end;
     end;
 
-    i                               := 0;       
-    
+    i                               := 0;
+
     while i < sib_abundance do
     begin
         for j=1 to pool_siberite_deposits do
         begin
-            i                           := i+1;
-            x                           := length(pool_siberite_deposits[j]);
-            y                           := Rand(1,x);
+            i := i+1;
+            x := length(pool_siberite_deposits[j]);
+            y := Rand(1,x);
             CreateDepositXY(pool_siberite_deposits[j][y][1][1], pool_siberite_deposits[j][y][1][2], mat_siberit);
             CreateDepositXY(pool_siberite_deposits[j][y][2][1], pool_siberite_deposits[j][y][2][2], mat_siberit);
-            pool_siberite_deposits      := Replace(pool_siberite_deposits, j, Delete(pool_siberite_deposits[j],y));
+            pool_siberite_deposits := Replace(pool_siberite_deposits, j, Delete(pool_siberite_deposits[j],y));
+
+            if pool_siberite_deposits[j]+0=0 then
+                pool_siberite_deposits := Delete(pool_siberite_deposits,j);
+
             if i>=sib_abundance then
                 break;
         end;
@@ -179,6 +187,19 @@ begin
     else
         ToLua('Deathmatch = 0;');
 
+    count = [0,0,0,0,0,0,0,0];
+    for i=1 to 8 do
+    begin
+        colour  := i;
+        tech    := side_tech_lvl[i];
+        team    := Side_Teams[i];
+        if not Side_Positions[i] then
+            team    := 0;
+        
+        count := Replace(count, team, count[team]+1);
+        ToLua('LUA_RenderSpecLabels('&i&','&team&','&count[team]&','&colour&','&tech&');');
+    end;
+
     if Your_Side in [1,2,3,4,5,6,7,8] then
     begin
         ToLua('LUA_UpdateSideInterface('&Your_Side&','&side_tech_lvl[Your_Side]&');');
@@ -187,27 +208,17 @@ begin
     end
     else
     begin
-        count = [0,0,0,0,0,0,0,0];
-        for i=1 to 8 do
-        begin
-            colour  := i;
-            tech    := side_tech_lvl[i];
-            team    := Side_Teams[i];
-            if not Side_Positions[i] then
-                team    := 0;
-            
-            count := Replace(count, team, count[team]+1);
-            ToLua('LUA_RenderSpecLabels('&i&','&team&','&count[team]&','&colour&','&tech&');');
-        end;
-        ToLua('StartSpecInterface();');
+        ToLua('Is_Spectator = 1');
     end;
+    
+//   ToLua('StartPerspectiveChanger();');
+    ToLua('StartSpecInterface();');
     
     if Your_Side in [1,2,3,4,5,6,7,8] then
         ToLua('LUA_UpdateSiberiteSent('&team_siberite_stocked[Side_Teams[Your_Side]]&','&victory_cond&');');
     
-    if Your_Side=9 then
-        for i=1 to Teams do
-            ToLua('LUA_UpdateSiberiteSpec('&team_siberite_stocked[i]&','&victory_cond&','&i&');');  
+    for i=1 to Teams do
+        ToLua('LUA_UpdateSiberiteSpec('&team_siberite_stocked[i]&','&victory_cond&','&i&');');  
 end;
 
 //Script for preparing starting loadout

@@ -1,8 +1,8 @@
 --Translation Globals
 NW=100100;
 NE=100101;
-SW=100102;
-SE=100103;
+SE=100102;
+SW=100103;
 SideInterfaceButtonOpen=100104;
 SideInterfaceButtonClose=100105;
 SpecInterfaceButtonOpen=100106;
@@ -30,3 +30,4 @@ SpecTechLevelPart1=100127;
 SpecTechLevelPart2=100128;
 ConvoyStatus=100129;
 SideInterfaceButtonCancel=100130;
+Spectate=100131;

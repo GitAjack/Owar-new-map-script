@@ -20,8 +20,8 @@ Background3={bevel=true,
 Area_Names = {};
 Area_Names[15] = loc(NW); --'North-West'
 Area_Names[16] = loc(NE); --'North-East';
-Area_Names[17] = loc(SW); --'South-West';
-Area_Names[18] = loc(SE); --'South-East';
+Area_Names[17] = loc(SW); --'South-East';
+Area_Names[18] = loc(SE); --'South-West';
 
 No_Depot			= 0;	
 Deathmatch 			= 0;	
@@ -34,31 +34,34 @@ Crates_Order 		= 0;
 Oil_Order 			= 0;
 Sib_Order 			= 0;
 Waiting				= 0;
+Is_Spectator		= 0;
 
 
-SideInterfaceMaxWidth=math.max(SGUI_widelen(loc(MainSideWindowTitle)),SGUI_widelen(loc(VictoryConditon))+5,SGUI_widelen(loc(YourTechLevel))+5)*10;
-ConvoyButtonWidth=math.max(SGUI_widelen(loc(SendTransport)),SGUI_widelen(loc(Area_Names[15])),SGUI_widelen(loc(Area_Names[16])),SGUI_widelen(loc(Area_Names[17])),SGUI_widelen(loc(Area_Names[18])))*8;
+ConvoyButtonWidth=math.max(SGUI_widelen(loc(SendTransport)),SGUI_widelen(loc(NW)),SGUI_widelen(loc(NE)),SGUI_widelen(loc(SW)),SGUI_widelen(loc(SE)))*10;
 CloseButtonWidth=math.max(SGUI_widelen(loc(SideInterfaceButtonClose)),SGUI_widelen(loc(SideInterfaceButtonCancel)));
-	
+SideInterfaceMaxWidth=math.max(SGUI_widelen(loc(MainSideWindowTitle))*10,SGUI_widelen(loc(VictoryConditon))*10+60,SGUI_widelen(loc(YourTechLevel))*10+10,ConvoyButtonWidth+110);
+ButtonOpenLength=math.max(SGUI_widelen(loc(SpecInterfaceButtonOpen)),SGUI_widelen(loc(SideInterfaceButtonOpen)))*10;
+--PerspectiveLabel=math.max(SGUI_widelen(loc(Team1)),SGUI_widelen(loc(Team2)),SGUI_widelen(loc(Spectate)))*11;
+
 --Interface element definitions
 
 --Main Window	
-SideInterface 				= {};
-SideInterface.window		= {};
-SideInterface.label 		= {};
-SideInterface.button 		= {};
-SideInterface.window.main 						= getWindowEX(game.window,anchorNone,XYWH(0,450*interface.scale,SideInterfaceMaxWidth,330),false,loc(MainSideWindowTitle),Background2,{title_colour=RGBA(32,32,32,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_18B});
-SideInterface.button_open 						= getButtonEX_Gradient(game.window,anchorNone,XYWH(0,750*interface.scale,SGUI_widelen(loc(SideInterfaceButtonOpen))*10,50),-1,'LUA_OpenSideInterface();',GradButton_Grey_Dark,{text=loc(SideInterfaceButtonOpen),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface 									= {};
+SideInterface.window							= {};
+SideInterface.label 							= {};
+SideInterface.button 							= {};
+SideInterface.window.main 						= getWindowEX(game.window,anchorNone,XYWH(ScrWidth-SideInterfaceMaxWidth,ScrHeight*0.72-280,SideInterfaceMaxWidth,330),false,loc(MainSideWindowTitle),Background2,{title_colour=RGBA(40,40,40,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_18B});
+SideInterface.button_open 						= getButtonEX_Gradient(game.window,anchorNone,XYWH(ScrWidth-ButtonOpenLength,ScrHeight*0.72,ButtonOpenLength,50),-1,'LUA_OpenSideInterface();',GradButton_Grey_Dark,{text=loc(SideInterfaceButtonOpen),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 SideInterface.button_close 						= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)-CloseButtonWidth*12-10,getHeight(SideInterface.window.main)-(30+5),CloseButtonWidth*12,30),-1,'LUA_HideSideInterface();',GradButton_Red,{text=loc(SideInterfaceButtonClose),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 SideInterface.label.tech_level 					= getLabelEX(SideInterface.window.main,anchorNone,XYWH(10,40,SGUI_widelen(loc(YourTechLevel))*10,10),Tahoma_16B,loc(YourTechLevel)..' : ',{font_colour=WHITE()});	
-SideInterface.label.tech_level.number 			= getLabelEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)-(50),40,5,10),Tahoma_16B,'0',{font_colour=WHITE()});
+SideInterface.label.tech_level.number 			= getLabelEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)-(10+10),40,10,10),Tahoma_16B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
 SideInterface.label.victory_condition			= getLabelEX(SideInterface.window.main,anchorNone,XYWH(10,65,SGUI_widelen(loc(VictoryConditon))*10,10),Tahoma_16B,loc(VictoryConditon)..' : ',{font_colour=WHITE()});
-SideInterface.label.victory_condition_number 	= getLabelEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)-(70),65,20,10),Tahoma_16B,'0 / 0',{font_colour=WHITE()});
+SideInterface.label.victory_condition_number 	= getLabelEX(SideInterface.window.main,anchorNone,XYWH(getWidth(SideInterface.window.main)-(10+60),65,60,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
 SideInterface.label.nodepot 					= getLabelEX(SideInterface.window.main,anchorNone,XYWH(10,90,getWidth(SideInterface.window.main)-20,getHeight(SideInterface.window.main)-90-40),Tahoma_16B,loc(NoDepotWarning),{colour1=RGBA(255,0,0,20),border_type=BORDER_TYPE_OUTER,border_colour=BLACKA(200),border_size=1,wordwrap=true,font_colour=RGBA(255,0,0,255),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
 SideInterface.label.lost 						= getLabelEX(SideInterface.window.main,anchorNone,XYWH(10,90,getWidth(SideInterface.window.main)-20,getHeight(SideInterface.window.main)-90-40),Tahoma_18B,loc(LostWarning),{colour1=RGBA(255,0,0,20),border_type=BORDER_TYPE_OUTER,border_colour=BLACKA(200),border_size=1,font_colour=RGBA(255,0,0,255),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
-SideInterface.button_upgrade 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,110,getWidth(SideInterface.window.main)-(30),40),-1,'LUA_OpenTechUpgrade();',GradButton_Green,{text=loc(GetTechOrder),font_colour=WHITE(),fontname=Tahoma_16B});
-SideInterface.button_reinforce 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,170,getWidth(SideInterface.window.main)-(30),40),-1,'LUA_OpenReinforce();',GradButton_Green,{text=loc(ReinforcementOrder),font_colour=WHITE(),fontname=Tahoma_16B});
-SideInterface.button_siberite 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,230,getWidth(SideInterface.window.main)-(30),40),-1,'LUA_OpenSendSiberite()',GradButton_Green,{text=loc(SiberiteOrder),font_colour=WHITE(),fontname=Tahoma_16B});
+SideInterface.button_upgrade 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,110,getWidth(SideInterface.window.main)-30,40),-1,'LUA_OpenTechUpgrade();',GradButton_Green,{text=loc(GetTechOrder),font_colour=WHITE(),fontname=Tahoma_16B});
+SideInterface.button_reinforce 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,170,getWidth(SideInterface.window.main)-30,40),-1,'LUA_OpenReinforce();',GradButton_Green,{text=loc(ReinforcementOrder),font_colour=WHITE(),fontname=Tahoma_16B});
+SideInterface.button_siberite 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(15,230,getWidth(SideInterface.window.main)-30,40),-1,'LUA_OpenSendSiberite()',GradButton_Green,{text=loc(SiberiteOrder),font_colour=WHITE(),fontname=Tahoma_16B});
 SideInterface.button.cancel 					= getButtonEX_Gradient(SideInterface.window.main,anchorNone,XYWH(10,getHeight(SideInterface.window.main)-(30+5),CloseButtonWidth*12,30),-1,'LUA_BackToMainSideInterface(); Order_Type = 0;',GradButton_Red,{text=loc(SideInterfaceButtonCancel),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Technology upgrades window
@@ -66,38 +69,38 @@ SideInterface.window.upgrade 					= getWindowEX(SideInterface.window.main,anchor
 SideInterface.label.upgrade_cost_label_crates 	= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(40,60,SGUI_widelen(loc(CostCrates))*10,10),Tahoma_14B,loc(CostCrates)..' : ',{font_colour=WHITE()});
 SideInterface.label.upgrade_cost_label_oil 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(40,90,SGUI_widelen(loc(CostOil))*10,10),Tahoma_14B,loc(CostOil)..' : ',{font_colour=WHITE()});
 SideInterface.label.upgrade_cost_label_siberite = getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(40,120,SGUI_widelen(loc(CostSiberite))*10,10),Tahoma_14B,loc(CostSiberite)..' : ',{font_colour=WHITE()});
-SideInterface.label.upgrade_cost_crates 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)-(70),60,15,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.label.upgrade_cost_oil 			= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)-(70),90,15,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.label.upgrade_cost_siberite 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)-(70),120,15,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.button.upgrade_confirm 			= getButtonEX_Gradient(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)/2-40,getHeight(SideInterface.window.upgrade)-(30+15),80,30),-1,'OW_CUSTOM_COMMAND(204,2); Order_Type = 2;',GradButton_Green,{text=loc(ButtonConfirm),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.label.upgrade_cost_crates 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)-(100),60,60,10),Tahoma_14B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.label.upgrade_cost_oil 			= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)-(100),90,60,10),Tahoma_14B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.label.upgrade_cost_siberite 		= getLabelEX(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)-(100),120,60,10),Tahoma_14B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.button.upgrade_confirm 			= getButtonEX_Gradient(SideInterface.window.upgrade,anchorNone,XYWH(getWidth(SideInterface.window.upgrade)/2-SGUI_widelen(loc(ButtonConfirm))*10/2,getHeight(SideInterface.window.upgrade)-(30+15),SGUI_widelen(loc(ButtonConfirm))*10,30),-1,'OW_CUSTOM_COMMAND(204,2); Order_Type = 2;',GradButton_Green,{text=loc(ButtonConfirm),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Reinforcement calling window
 SideInterface.window.reinforce 						= getWindowEX(SideInterface.window.main,anchorNone,XYWH(10,90,getWidth(SideInterface.window.main)-20,getHeight(SideInterface.window.main)-90-40),false,loc(ReinforcementOrder),Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
-SideInterface.label.reinforce_amount 				= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-10,40,25,25),Tahoma_16B,'0',{font_colour=WHITE(),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
+SideInterface.label.reinforce_amount 				= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-15,35,30,25),Tahoma_18B,'0',{font_colour=WHITE(),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
 SideInterface.label.reinforce_cost_label_crates 	= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(40,70,SGUI_widelen(loc(CostCrates))*10,10),Tahoma_14B,loc(CostCrates)..' : ',{font_colour=WHITE()});
 SideInterface.label.reinforce_cost_label_oil 		= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(40,100,SGUI_widelen(loc(CostOil))*10,10),Tahoma_14B,loc(CostOil)..' : ',{font_colour=WHITE()});
 SideInterface.label.reinforce_cost_label_siberite 	= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(40,130,SGUI_widelen(loc(CostSiberite))*10,10),Tahoma_14B,loc(CostSiberite)..' : ',{font_colour=WHITE()});
-SideInterface.label.reinforce_cost_crates 			= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)-(70),70,15,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.label.reinforce_cost_oil 				= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)-(70),100,15,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.label.reinforce_cost_siberite 		= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)-(70),130,15,10),Tahoma_14B,'0',{font_colour=WHITE()});
-SideInterface.button.reinforce_increase 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2+15,40,25,25),-1,'OW_CUSTOM_COMMAND(2021);',GradButton_Green,{text='+',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
-SideInterface.button.reinforce_decrease 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-40,40,25,25),-1,'OW_CUSTOM_COMMAND(2020);',GradButton_Green,{text='-',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
-SideInterface.button.reinforce_confirm 				= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-40,getHeight(SideInterface.window.reinforce)-(30+15),80,30),-1,'OW_CUSTOM_COMMAND(204,1); Order_Type = 1;',GradButton_Green,{text=loc(ButtonConfirm),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.label.reinforce_cost_crates 			= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)-(100),70,60,10),Tahoma_14B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.label.reinforce_cost_oil 				= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)-(100),100,60,10),Tahoma_14B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.label.reinforce_cost_siberite 		= getLabelEX(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)-(100),130,60,10),Tahoma_14B,'0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.button.reinforce_increase 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2+15,35,25,25),-1,'OW_CUSTOM_COMMAND(2021);',GradButton_Green,{text='+',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
+SideInterface.button.reinforce_decrease 			= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-40,35,25,25),-1,'OW_CUSTOM_COMMAND(2020);',GradButton_Green,{text='-',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_20B});
+SideInterface.button.reinforce_confirm 				= getButtonEX_Gradient(SideInterface.window.reinforce,anchorNone,XYWH(getWidth(SideInterface.window.reinforce)/2-SGUI_widelen(loc(ButtonConfirm))*10/2,getHeight(SideInterface.window.reinforce)-(30+15),SGUI_widelen(loc(ButtonConfirm))*10,30),-1,'OW_CUSTOM_COMMAND(204,1); Order_Type = 1;',GradButton_Green,{text=loc(ButtonConfirm),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Siberite sending window
 SideInterface.window.siberite 			= getWindowEX(SideInterface.window.main,anchorNone,XYWH(10,90,getWidth(SideInterface.window.main)-20,getHeight(SideInterface.window.main)-90-40),false,loc(SiberiteOrder),Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
 SideInterface.label.sib_text			= getLabelEX(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-SGUI_widelen(loc(SiberiteSent))*10/2,50,SGUI_widelen(loc(SiberiteSent))*10,10),Tahoma_16B,loc(SiberiteSent),{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
 SideInterface.label.sent_sib			= getLabelEX(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-60,80,120,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
-SideInterface.button.siberite_confirm 	= getButtonEX_Gradient(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-40,getHeight(SideInterface.window.siberite)-(30+15),80,30),-1,'OW_CUSTOM_COMMAND(204,3); Order_Type = 3;',GradButton_Green,{text=loc(ButtonConfirm),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SideInterface.button.siberite_confirm 	= getButtonEX_Gradient(SideInterface.window.siberite,anchorNone,XYWH(getWidth(SideInterface.window.siberite)/2-SGUI_widelen(loc(ButtonConfirm))*10/2,getHeight(SideInterface.window.siberite)-(30+15),SGUI_widelen(loc(ButtonConfirm))*10,30),-1,'OW_CUSTOM_COMMAND(204,3); Order_Type = 3;',GradButton_Green,{text=loc(ButtonConfirm),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 
 --Confirmed orders and pending resources window (upgrade/reinforcements/siberite)
 SideInterface.window.orders						= getWindowEX(SideInterface.window.main,anchorNone,XYWH(10,90,getWidth(SideInterface.window.main)-20,getHeight(SideInterface.window.main)-90-40),false,loc(ConvoyStatus),Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B});
 SideInterface.label.orders_cost_label_crates 	= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(40,40,SGUI_widelen(loc(CostCrates))*10,10),Tahoma_14B,loc(CostCrates)..' : ',{font_colour=WHITE()});
 SideInterface.label.orders_cost_label_oil 		= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(40,65,SGUI_widelen(loc(CostOil))*10,10),Tahoma_14B,loc(CostOil)..' : ',{font_colour=WHITE()});
 SideInterface.label.orders_cost_label_siberite 	= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(40,90,SGUI_widelen(loc(CostSiberite))*10,10),Tahoma_14B,loc(CostSiberite)..' : ',{font_colour=WHITE()});
-SideInterface.label.orders_cost_crates 			= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)-(70),40,30,10),Tahoma_14B,'0 / 0',{font_colour=WHITE()});
-SideInterface.label.orders_cost_oil 			= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)-(70),65,30,10),Tahoma_14B,'0 / 0',{font_colour=WHITE()});
-SideInterface.label.orders_cost_siberite 		= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)-(70),90,30,10),Tahoma_14B,'0 / 0',{font_colour=WHITE()});
+SideInterface.label.orders_cost_crates 			= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)-(100),40,60,10),Tahoma_14B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.label.orders_cost_oil 			= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)-(100),65,60,10),Tahoma_14B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
+SideInterface.label.orders_cost_siberite 		= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)-(100),90,60,10),Tahoma_14B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_RIGHT});
 SideInterface.label.sib_text_order				= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-SGUI_widelen(loc(SiberiteSent))/2*10,40,SGUI_widelen(loc(SiberiteSent))*10,15),Tahoma_16B,loc(SiberiteSent),{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
 SideInterface.label.sent_sib_order				= getLabelEX(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-60,70,120,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
 SideInterface.button.orders_pick_zone 			= getButtonEX_Gradient(SideInterface.window.orders,anchorNone,XYWH(getWidth(SideInterface.window.orders)/2-ConvoyButtonWidth/2,120,ConvoyButtonWidth+5,30),-1,'OW_CUSTOM_COMMAND(2040);',GradButton_Green,{text='',font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
@@ -119,13 +122,19 @@ SpecInterface.label.tech_level 				= {};
 SpecInterface.label.tech_level.number		= {};
 SpecInterface.label.victory_progress		= {};
 
-SpecInterface.window.main 						= getWindowEX(game.window,anchorNone,XYWH(0,400*interface.scale,SGUI_widelen(loc(SpecTechLevelPart1))*10+SGUI_widelen(loc(SpecTechLevelPart2))*10+25,400),false,loc(MainSpecWindowTitle),Background2,{title_colour=RGBA(32,32,32,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_18B});
+SpecInterface.window.main 						= getWindowEX(game.window,anchorNone,XYWH(ScrWidth-SGUI_widelen(loc(SpecTechLevelPart1))*10-SGUI_widelen(loc(SpecTechLevelPart2))*10-25,ScrHeight*0.72-405,SGUI_widelen(loc(SpecTechLevelPart1))*10+SGUI_widelen(loc(SpecTechLevelPart2))*10+25,400),false,loc(MainSpecWindowTitle),Background2,{title_colour=RGBA(32,32,32,200),title_border_colour=MenuColour_Background6,title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_18B});
 SpecInterface.window.team[1]					= getWindowEX(SpecInterface.window.main,anchorNone,XYWH(10,30,SGUI_widelen(loc(SpecTechLevelPart1))*10+SGUI_widelen(loc(SpecTechLevelPart2))*10+5,160),false,loc(Team1),Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B,text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
 SpecInterface.window.team[2]					= getWindowEX(SpecInterface.window.main,anchorNone,XYWH(10,200,SGUI_widelen(loc(SpecTechLevelPart1))*10+SGUI_widelen(loc(SpecTechLevelPart2))*10+5,160),false,loc(Team2),Background3,{title_colour=RGBA(50,50,50,200),title_border_colour=RGBA(0,0,0,255),title_fontcolour=RGBA(255,255,255,255),title_fontname=Tahoma_16B,text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
 SpecInterface.label.victory_progress[1]			= getLabelEX(SpecInterface.window.team[1],anchorNone,XYWH(getWidth(SpecInterface.window.team[1])/2-120,35,240,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
 SpecInterface.label.victory_progress[2]			= getLabelEX(SpecInterface.window.team[2],anchorNone,XYWH(getWidth(SpecInterface.window.team[2])/2-120,35,240,10),Tahoma_16B,'0 / 0',{font_colour=WHITE(),text_halign=ALIGN_MIDDLE});
-SpecInterface.button_open 						= getButtonEX_Gradient(game.window,anchorNone,XYWH(0,750*interface.scale,SGUI_widelen(loc(SpecInterfaceButtonOpen))*10,50),-1,'LUA_OpenSpecInterface();',GradButton_Grey_Dark,{text=loc(SpecInterfaceButtonOpen),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+SpecInterface.button_open 						= getButtonEX_Gradient(game.window,anchorNone,XYWH(ScrWidth-ButtonOpenLength,ScrHeight*0.72-55,ButtonOpenLength,50),-1,'LUA_OpenSpecInterface();',GradButton_Grey_Dark,{text=loc(SpecInterfaceButtonOpen),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
 SpecInterface.button_close 						= getButtonEX_Gradient(SpecInterface.window.main,anchorNone,XYWH(getWidth(SpecInterface.window.main)-SGUI_widelen(loc(SpecInterfaceButtonClose))*12-10,getHeight(SpecInterface.window.main)-(30+5),SGUI_widelen(loc(SpecInterfaceButtonClose))*12,30),-1,'LUA_HideSpecInterface();',GradButton_Red,{text=loc(SpecInterfaceButtonClose),font_colour=WHITE(),wordwrap=true,fontname=Tahoma_18B});
+
+--Perspective changer
+--PerspectiveChanger					= {};
+--PerspectiveChanger.label			= getLabelEX(game.window,anchorNone,XYWH(ScrWidth/2-PerspectiveLabel/2,0,PerspectiveLabel,40),Tahoma_18B,'',{colour1=RGBA(0,0,0,255),border_type=BORDER_TYPE_OUTER,border_colour=BLACKA(200),border_size=1,wordwrap=true,font_colour=RGBA(255,0,0,255),text_valign=ALIGN_CENTER,text_halign=ALIGN_MIDDLE});
+--PerspectiveChanger.button_prev		= getButtonEX_Gradient(game.window,anchorNone,XYWH(ScrWidth/2-PerspectiveLabel/2-30-5,0,30,40),-1,'OW_CUSTOM_COMMAND(501)',GradButton_Grey_Light,{text='<<',font_colour=WHITE(),fontname=Tahoma_18B});
+--PerspectiveChanger.button_next		= getButtonEX_Gradient(game.window,anchorNone,XYWH(ScrWidth/2+PerspectiveLabel/2+5,0,30,40),-1,'OW_CUSTOM_COMMAND(502)',GradButton_Grey_Light,{text='>>',font_colour=WHITE(),fontname=Tahoma_18B});
 
 
 --Initiate side interface
@@ -144,7 +153,7 @@ function StartSideInterface()
 	setVisible(SideInterface.window.siberite,false);	
 	setVisible(SideInterface.window.orders,false);							
 	
-	setVisible(SpecInterface.button_open,false);
+	setVisible(SpecInterface.button_open,true);
 	setVisible(SpecInterface.window.main,false);
 end;
 	
@@ -153,25 +162,49 @@ function StartSpecInterface()
 	setVisible(SpecInterface.button_open,true);
 	setVisible(SpecInterface.window.main,false);
 
-	setVisible(SideInterface.button_open,false);
-	setVisible(SideInterface.window.main,false);
+	if Is_Spectator==1 then
+		setVisible(SideInterface.button_open,false);
+		setVisible(SideInterface.window.main,false);
+	elseif Is_Spectator==0 then
+		setVisible(SideInterface.button_open,true);
+		setVisible(SideInterface.window.main,false);
+	end		
 end;
+
+--Initiate perspective changer (only for spectators)
+--function StartPerspectiveChanger()
+--	if Is_Spectator==1 then
+--		setVisible(PerspectiveChanger.label,true);
+--		setVisible(PerspectiveChanger.button_prev,true);
+--		setVisible(PerspectiveChanger.button_next,true);
+--	elseif Is_Spectator==0 then
+--		setVisible(PerspectiveChanger.label,false);
+--		setVisible(PerspectiveChanger.button_prev,false);
+--		setVisible(PerspectiveChanger.button_next,false);
+--	end;
+--end;
 
 --Hide interface
 function LUA_HideSideInterface()
 	setVisible(SideInterface.button_open,true);
-	setVisible(SideInterface.window.main,false); 
+	setVisible(SpecInterface.button_open,true);
+	setVisible(SideInterface.window.main,false);
 end;
 
 --Hide spectator interface
 function LUA_HideSpecInterface()
 	setVisible(SpecInterface.button_open,true);
 	setVisible(SpecInterface.window.main,false);
+	
+	if Is_Spectator==0 then
+		setVisible(SideInterface.button_open,true);
+	end;
 end;
 
 --Open interface
 function LUA_OpenSideInterface()
 	setVisible(SideInterface.window.main,true);
+	setVisible(SpecInterface.button_open,false);
 	setVisible(SideInterface.button_open,false);
 end;
 
@@ -183,6 +216,7 @@ function LUA_OpenSpecInterface()
 	setVisible(SpecInterface.label.victory_progress[1],true);	
 	setVisible(SpecInterface.label.victory_progress[2],true);	
 	setVisible(SpecInterface.button_open,false);
+	setVisible(SideInterface.button_open,false);
 end;
 
 --Side interface when there is no depot built by the side
@@ -239,13 +273,6 @@ end;
 function LUA_SideTechMax()
 	setEnabled(SideInterface.button_upgrade,false);
 	updateGradButton(SideInterface.button_upgrade,GradButton_Grey_Dark);
-	if Deathmatch==0 and No_Depot==0 and Waiting==0 then
-		setEnabled(SideInterface.button_siberite,true);
-		updateGradButton(SideInterface.button_siberite,GradButton_Green);
-	elseif Deathmatch==1 and No_Depot==0 and Waiting==0 then
-		setEnabled(SideInterface.button_siberite,false);
-		updateGradButton(SideInterface.button_siberite,GradButton_Grey_Dark);
-	end;
 	
 	Max_Tech = 1;
 end;
@@ -298,7 +325,12 @@ function LUA_BackToMainSideInterface()
 		setVisible(SideInterface.button_reinforce,true);
 	end;
 	
-	if Max_Tech==0 and No_Depot==0 and Waiting==0 then
+	if Max_Tech==0 and Deathmatch==0 and No_Depot==0 and Waiting==0 then
+		setEnabled(SideInterface.button_upgrade,true);
+		setEnabled(SideInterface.button_siberite,true);
+		updateGradButton(SideInterface.button_siberite,GradButton_Green);
+		updateGradButton(SideInterface.button_siberite,GradButton_Green);
+	elseif Max_Tech==0 and Deathmatch==1 and No_Depot==0 and Waiting==0 then
 		setEnabled(SideInterface.button_upgrade,true);
 		setEnabled(SideInterface.button_siberite,false);
 		updateGradButton(SideInterface.button_siberite,GradButton_Green);
@@ -501,6 +533,20 @@ function LUA_UpdateClock(remaining)
 	end;
 end;
 
+--Update current perspective readout
+--function LUA_UpdatePerspective(team)
+--	if team==1 then
+--		setText(PerspectiveChanger.label,loc(Team1));
+--	elseif team==2 then
+--		setText(PerspectiveChanger.label,loc(Team2));
+--	elseif team==9 then
+--		setText(PerspectiveChanger.label,loc(Spectate));
+--	end
+--end;
+
+
+
+
 --SPECIAL
 
 --Close all interfaces at the end of the game
@@ -509,17 +555,12 @@ function FROMOW_MAP_END()
 	setVisible(SideInterface.button_open,false);
 	setVisible(SpecInterface.window.main,false);
 	setVisible(SpecInterface.button_open,false);
+--	setVisible(PerspectiveChanger.label,false);
+--	setVisible(PerspectiveChanger.button_prev,false);
+--	setVisible(PerspectiveChanger.button_next,false);
 	SideInterface=nil;
 	SpecInterface=nil;
-end;
-
-function EndGame()
-	setVisible(SideInterface.window.main,false);
-	setVisible(SideInterface.button_open,false);
-	setVisible(SpecInterface.window.main,false);
-	setVisible(SpecInterface.button_open,false);
-	SideInterface=nil;
-	SpecInterface=nil;
+--	PerspectiveChanger=nil;
 end;
 
 --Send resources through the transfer automatically (if the order is not about siberite)

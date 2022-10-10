@@ -91,15 +91,15 @@ begin
         if depots+0=0 then
         begin
             side_isalive := Replace(side_isalive, side, 0);
+            
             if side=Your_Side then
             begin
                 ToLua('LUA_Lost();');
                 Multiplayer_Loose_Message();
-            end
-            else
-                colour := 0;
-                ToLua('LUA_UpdateSpecInterface('&side&','&colour&','&side_tech_lvl[side]&');');
-                
+            end;
+
+            colour := 0;
+            ToLua('LUA_UpdateSpecInterface('&side&','&colour&','&side_tech_lvl[side]&');');
             RaiseSailEvent(66); 
         end;
     end;
@@ -114,12 +114,8 @@ begin
         if not MultiplayerSideAlive(i) and side_isalive[i] then
         begin
             side_isalive := Replace(side_isalive, i, 0);
-            if Your_Side=9 then
-            begin
-                colour := 0;
-                ToLua('LUA_UpdateSpecInterface('&i&','&colour&','&side_tech_lvl[i]&');');
-            end;
-            
+            colour := 0;
+            ToLua('LUA_UpdateSpecInterface('&i&','&colour&','&side_tech_lvl[i]&');');
             RaiseSailEvent(66);
         end;
     end;
@@ -196,7 +192,7 @@ begin
                 
                 2: //arabs
                 begin
-                    techs       := [35,45,46,47,6,7,20,70,69,39,48,49,51,52,60];
+                    techs       := [35,45,46,47,6,7,20,69,39,48,49,51,52,60];
                     buildings   := [0,2,3,4,6,7,8,10,15,16,17,20,23,26,27,29,30,31,32,42];
                 end;
                 

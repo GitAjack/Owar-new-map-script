@@ -199,8 +199,7 @@ begin
             if side=Your_Side then
                 ToLua('LUA_UpdateSideInterface('&side&','&side_tech_lvl[side]&');');
                 
-            if Your_Side=9 then
-                ToLua('LUA_UpdateSpecInterface('&side&','&side&','&side_tech_lvl[side]&');');   
+            ToLua('LUA_UpdateSpecInterface('&side&','&side&','&side_tech_lvl[side]&');');   
             
             for i in side_units_outside[side] do
             begin
@@ -231,10 +230,7 @@ begin
             if side=Your_Side then
                 ToLua('LUA_UpdateSiberiteSent('&team_siberite_stocked[Side_Teams[side]]&','&victory_cond&');');
             
-            if Your_Side=9 then
-                for i=1 to Teams do
-                    ToLua('LUA_UpdateSiberiteSpec('&team_siberite_stocked[i]&','&victory_cond&','&i&');');
-                    
+            ToLua('LUA_UpdateSiberiteSpec('&team_siberite_stocked[i]&','&victory_cond&','&i&');');                    
             RaiseSailEvent(67);
         end;
     end;

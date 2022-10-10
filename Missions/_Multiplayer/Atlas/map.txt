@@ -648,10 +648,6 @@ ENVIROMENT
     sci5
   ON_HEX 134 2
     sci9
-  ON_HEX 147 2
-    sci8
-  ON_HEX 148 2
-    sci3
   ON_HEX 171 2
     sRi2
   ON_HEX 176 2
@@ -694,18 +690,10 @@ ENVIROMENT
     sci3
   ON_HEX 94 3
     sci2
-  ON_HEX 105 3
-    sRi3
-  ON_HEX 137 3
-    sci7
   ON_HEX 139 3
     sci4
   ON_HEX 144 3
     sci2
-  ON_HEX 146 3
-    sRi3
-  ON_HEX 149 3
-    sRi1
   ON_HEX 171 3
     sci5
   ON_HEX 183 3
@@ -730,24 +718,16 @@ ENVIROMENT
     sRi4
   ON_HEX 29 4
     sRi3
-  ON_HEX 30 4
-    sRi4
   ON_HEX 31 4
     sci6
   ON_HEX 34 4
     sRi5
   ON_HEX 40 4
     sci1
-  ON_HEX 48 4
-    sRi3
   ON_HEX 51 4
     sci5
   ON_HEX 56 4
     sci3
-  ON_HEX 58 4
-    sRi1
-  ON_HEX 72 4
-    sRi3
   ON_HEX 74 4
     sci5
   ON_HEX 77 4
@@ -760,18 +740,10 @@ ENVIROMENT
     sci9
   ON_HEX 94 4
     sJi4
-  ON_HEX 105 4
-    sci9
-  ON_HEX 108 4
-    sRi4
   ON_HEX 139 4
     sRi3
   ON_HEX 142 4
     sRi1
-  ON_HEX 169 4
-    sRi1
-  ON_HEX 177 4
-    sRi2
   ON_HEX 188 4
     sRi3
   ON_HEX 194 4
@@ -788,16 +760,10 @@ ENVIROMENT
     sci5
   ON_HEX 47 5
     sci3
-  ON_HEX 50 5
-    sciA
-  ON_HEX 52 5
-    sRi2
   ON_HEX 77 5
     sci6
   ON_HEX 81 5
     sci9
-  ON_HEX 82 5
-    sRi4
   ON_HEX 87 5
     sci5
   ON_HEX 88 5
@@ -808,8 +774,6 @@ ENVIROMENT
     sRi1
   ON_HEX 142 5
     sciA
-  ON_HEX 144 5
-    sRi5
   ON_HEX 174 5
     sci8
   ON_HEX 193 5
@@ -832,12 +796,8 @@ ENVIROMENT
     sci6
   ON_HEX 50 6
     sci6
-  ON_HEX 51 6
-    sci8
   ON_HEX 85 6
     sci4
-  ON_HEX 86 6
-    sRi4
   ON_HEX 88 6
     sci9
   ON_HEX 93 6
@@ -846,16 +806,8 @@ ENVIROMENT
     sGiq
   ON_HEX 140 6
     sci7
-  ON_HEX 141 6
-    sRi4
-  ON_HEX 142 6
-    sci3
   ON_HEX 148 6
     sKiJ
-  ON_HEX 171 6
-    sRi4
-  ON_HEX 174 6
-    sRi2
   ON_HEX 188 6
     sci8
   ON_HEX 194 6
@@ -872,22 +824,10 @@ ENVIROMENT
     sci9
   ON_HEX 100 7
     sci5
-  ON_HEX 101 7
-    sRi5
   ON_HEX 102 7
     sci7
-  ON_HEX 109 7
-    sRi2
   ON_HEX 138 7
     sci7
-  ON_HEX 147 7
-    sRi4
-  ON_HEX 177 7
-    sRi3
-  ON_HEX 186 7
-    sRi1
-  ON_HEX 191 7
-    sRi5
   ON_HEX 10 8
     sci7
   ON_HEX 20 8
@@ -902,20 +842,12 @@ ENVIROMENT
     sci7
   ON_HEX 137 8
     sci6
-  ON_HEX 138 8
-    sRi4
   ON_HEX 19 9
     sci4
-  ON_HEX 27 9
-    sRi5
   ON_HEX 41 9
     sci1
-  ON_HEX 47 9
-    sRi4
   ON_HEX 104 9
     sci3
-  ON_HEX 111 9
-    sci2
   ON_HEX 112 9
     sRi5
   ON_HEX 113 9
@@ -924,8 +856,6 @@ ENVIROMENT
     sci4
   ON_HEX 38 10
     sciA
-  ON_HEX 100 10
-    sci2
   ON_HEX 113 10
     sciA
   ON_HEX 122 10
@@ -942,24 +872,14 @@ ENVIROMENT
     sci2
   ON_HEX 27 11
     sci2
-  ON_HEX 109 11
-    sRi1
-  ON_HEX 110 11
-    sci4
-  ON_HEX 111 11
-    sci2
   ON_HEX 120 11
     sci6
-  ON_HEX 137 11
-    sRi3
   ON_HEX 139 11
     sci2
   ON_HEX 201 11
     sRi5
   ON_HEX 22 12
     sci2
-  ON_HEX 39 12
-    sRi5
   ON_HEX 116 12
     sci8
   ON_HEX 118 12
@@ -990,14 +910,10 @@ ENVIROMENT
     sIiC
   ON_HEX 133 14
     sci6
-  ON_HEX 158 14
-    sRi4
   ON_HEX 202 14
     sci8
   ON_HEX 204 14
     sci6
-  ON_HEX 102 15
-    sRi2
   ON_HEX 118 15
     sJiK
   ON_HEX 122 15
@@ -1006,8 +922,6 @@ ENVIROMENT
     sci1
   ON_HEX 136 15
     sci6
-  ON_HEX 137 15
-    sRi5
   ON_HEX 159 15
     sci7
   ON_HEX 119 16
@@ -1016,8 +930,6 @@ ENVIROMENT
     sJiJ
   ON_HEX 121 16
     sJi2
-  ON_HEX 152 16
-    sRi5
   ON_HEX 153 16
     sci1
   ON_HEX 157 16
@@ -1030,30 +942,18 @@ ENVIROMENT
     sci8
   ON_HEX 155 17
     sci3
-  ON_HEX 163 17
-    sRi3
-  ON_HEX 157 18
-    sRi1
   ON_HEX 158 18
     sci7
   ON_HEX 161 18
     sci1
   ON_HEX 206 18
     sRi5
-  ON_HEX 16 19
-    sRi1
   ON_HEX 29 19
     sci4
-  ON_HEX 133 19
-    sciA
-  ON_HEX 134 19
-    sRi4
   ON_HEX 135 19
     sci6
   ON_HEX 136 19
     sci1
-  ON_HEX 204 19
-    sRi4
   ON_HEX 14 20
     sci6
   ON_HEX 100 20
@@ -1068,8 +968,6 @@ ENVIROMENT
     sRi1
   ON_HEX 18 21
     sRi5
-  ON_HEX 136 21
-    sci3
   ON_HEX 204 21
     sci8
   ON_HEX 208 22
@@ -1088,24 +986,16 @@ ENVIROMENT
     sci2
   ON_HEX 209 23
     sRi1
-  ON_HEX 18 24
-    sRi3
-  ON_HEX 137 24
-    sciA
   ON_HEX 96 25
     sci1
   ON_HEX 102 25
     sGiX
-  ON_HEX 137 25
-    sci5
   ON_HEX 165 25
     sGiG
   ON_HEX 102 26
     sJiN
   ON_HEX 154 26
     sRi2
-  ON_HEX 159 26
-    sRi3
   ON_HEX 160 26
     sci1
   ON_HEX 24 27
@@ -1114,8 +1004,6 @@ ENVIROMENT
     sci4
   ON_HEX 103 27
     sci3
-  ON_HEX 16 28
-    sRi2
   ON_HEX 19 28
     sRi2
   ON_HEX 26 28
@@ -1124,8 +1012,6 @@ ENVIROMENT
     sJi2
   ON_HEX 159 28
     sci3
-  ON_HEX 209 28
-    sRi4
   ON_HEX 155 29
     sRi1
   ON_HEX 160 29
@@ -1150,8 +1036,6 @@ ENVIROMENT
     sciA
   ON_HEX 213 31
     sci7
-  ON_HEX 19 32
-    sRi4
   ON_HEX 42 32
     sci6
   ON_HEX 46 32
@@ -1244,16 +1128,10 @@ ENVIROMENT
     sci3
   ON_HEX 68 36
     sRi3
-  ON_HEX 75 36
-    sRi2
   ON_HEX 84 36
     sci5
   ON_HEX 106 36
     sci1
-  ON_HEX 145 36
-    sci3
-  ON_HEX 146 36
-    sRi4
   ON_HEX 170 36
     sci2
   ON_HEX 191 36
@@ -1272,8 +1150,6 @@ ENVIROMENT
     sRi1
   ON_HEX 161 37
     sci9
-  ON_HEX 163 37
-    sRi2
   ON_HEX 172 37
     sci3
   ON_HEX 197 37
@@ -1288,16 +1164,12 @@ ENVIROMENT
     sciA
   ON_HEX 175 38
     sci3
-  ON_HEX 193 38
-    sRi5
   ON_HEX 197 38
     sci5
   ON_HEX 41 39
     sJiU
   ON_HEX 43 39
     sci7
-  ON_HEX 83 39
-    sci6
   ON_HEX 87 39
     sci4
   ON_HEX 94 39
@@ -1306,8 +1178,6 @@ ENVIROMENT
     sciA
   ON_HEX 110 39
     sJi7
-  ON_HEX 145 39
-    sci8
   ON_HEX 147 39
     sci6
   ON_HEX 161 39
@@ -1320,12 +1190,8 @@ ENVIROMENT
     sRi4
   ON_HEX 24 40
     sgi2
-  ON_HEX 35 40
-    sgi8
   ON_HEX 56 40
     sci1
-  ON_HEX 84 40
-    sRi2
   ON_HEX 86 40
     sci4
   ON_HEX 92 40
@@ -1338,10 +1204,6 @@ ENVIROMENT
     sci8
   ON_HEX 144 40
     sci5
-  ON_HEX 147 40
-    sci8
-  ON_HEX 161 40
-    sciA
   ON_HEX 200 40
     sci9
   ON_HEX 21 41
@@ -1350,8 +1212,6 @@ ENVIROMENT
     sci6
   ON_HEX 92 41
     sci8
-  ON_HEX 161 41
-    sRi3
   ON_HEX 184 41
     sGiE
   ON_HEX 186 41
@@ -1362,22 +1222,14 @@ ENVIROMENT
     sgi2
   ON_HEX 48 42
     sciA
-  ON_HEX 90 42
-    sRi5
   ON_HEX 98 42
     sci2
   ON_HEX 99 42
     sciA
   ON_HEX 101 42
     sci9
-  ON_HEX 102 42
-    sRi1
   ON_HEX 167 42
     sci9
-  ON_HEX 199 42
-    sRi2
-  ON_HEX 216 42
-    sRi3
   ON_HEX 218 42
     sciA
   ON_HEX 52 43
@@ -1424,10 +1276,6 @@ ENVIROMENT
     sRi4
   ON_HEX 156 45
     sci5
-  ON_HEX 168 45
-    sRi5
-  ON_HEX 172 45
-    sRi4
   ON_HEX 173 45
     sci6
   ON_HEX 106 46
@@ -1438,8 +1286,10 @@ ENVIROMENT
     sci8
   ON_HEX 156 46
     sciA
-  ON_HEX 173 46
-    sRi3
+  ON_HEX 168 46
+    sci2
+  ON_HEX 172 46
+    sci6
   ON_HEX 179 46
     sGiI
   ON_HEX 180 46
@@ -1452,8 +1302,6 @@ ENVIROMENT
     sci2
   ON_HEX 108 47
     sci6
-  ON_HEX 140 47
-    sRi3
   ON_HEX 142 47
     sci1
   ON_HEX 143 47
@@ -1478,12 +1326,6 @@ ENVIROMENT
     sci7
   ON_HEX 158 48
     sci5
-  ON_HEX 168 48
-    sRi3
-  ON_HEX 173 48
-    sci7
-  ON_HEX 174 48
-    sci9
   ON_HEX 40 49
     sGiE
   ON_HEX 69 49
@@ -1498,10 +1340,6 @@ ENVIROMENT
     sci8
   ON_HEX 159 49
     sRi2
-  ON_HEX 169 49
-    sci2
-  ON_HEX 171 49
-    sci8
   ON_HEX 173 49
     sci9
   ON_HEX 174 49
@@ -1518,26 +1356,14 @@ ENVIROMENT
     sciA
   ON_HEX 155 50
     sci4
-  ON_HEX 156 50
-    sRi3
-  ON_HEX 172 50
-    sci8
-  ON_HEX 174 50
-    sRi3
   ON_HEX 180 50
     sGi9
   ON_HEX 181 50
     sci6
-  ON_HEX 79 51
-    sRi3
   ON_HEX 83 51
     sci8
-  ON_HEX 87 51
-    sRi2
   ON_HEX 109 51
     sciA
-  ON_HEX 111 51
-    sRi5
   ON_HEX 112 51
     sci4
   ON_HEX 116 51
@@ -1550,8 +1376,6 @@ ENVIROMENT
     sci9
   ON_HEX 135 51
     sci1
-  ON_HEX 136 51
-    sRi5
   ON_HEX 162 51
     sci2
   ON_HEX 173 51
@@ -1572,8 +1396,6 @@ ENVIROMENT
     sci2
   ON_HEX 127 52
     sci5
-  ON_HEX 129 52
-    sRi4
   ON_HEX 130 52
     sci4
   ON_HEX 131 52
@@ -1588,8 +1410,6 @@ ENVIROMENT
     sci5
   ON_HEX 68 53
     sci3
-  ON_HEX 70 53
-    sRi4
   ON_HEX 72 53
     sci4
   ON_HEX 74 53
@@ -1600,18 +1420,12 @@ ENVIROMENT
     sci7
   ON_HEX 99 53
     sci3
-  ON_HEX 113 53
-    sci2
   ON_HEX 114 53
     sci4
-  ON_HEX 116 53
-    sRi3
   ON_HEX 135 53
     sci2
   ON_HEX 155 53
     sci4
-  ON_HEX 163 53
-    sRi4
   ON_HEX 203 53
     sGiF
   ON_HEX 47 54
@@ -1622,18 +1436,12 @@ ENVIROMENT
     sci5
   ON_HEX 88 54
     sci2
-  ON_HEX 101 54
-    sRi4
   ON_HEX 102 54
     sci4
   ON_HEX 118 54
     sci7
   ON_HEX 131 54
     sci6
-  ON_HEX 134 54
-    sRi3
-  ON_HEX 174 54
-    sRi2
   ON_HEX 175 54
     sci5
   ON_HEX 199 54
@@ -1644,12 +1452,12 @@ ENVIROMENT
     sci8
   ON_HEX 78 55
     sci1
+  ON_HEX 86 55
+    sRi4
   ON_HEX 101 55
     sci1
   ON_HEX 119 55
     sciA
-  ON_HEX 121 55
-    sRi5
   ON_HEX 198 55
     sci1
   ON_HEX 200 55
@@ -1666,8 +1474,6 @@ ENVIROMENT
     sci3
   ON_HEX 131 56
     sci2
-  ON_HEX 153 56
-    sci3
   ON_HEX 225 56
     sRi3
   ON_HEX 85 57
@@ -1678,16 +1484,10 @@ ENVIROMENT
     sciA
   ON_HEX 149 57
     sci7
-  ON_HEX 153 57
-    sci6
-  ON_HEX 154 57
-    sRi3
   ON_HEX 202 57
     sci1
   ON_HEX 227 57
     sciA
-  ON_HEX 89 58
-    sRi4
   ON_HEX 92 58
     sci8
   ON_HEX 155 58
@@ -1706,20 +1506,14 @@ ENVIROMENT
     sci3
   ON_HEX 148 59
     sciA
-  ON_HEX 149 59
-    sRi2
   ON_HEX 158 59
     sci8
   ON_HEX 203 59
     sci4
-  ON_HEX 224 59
-    sRi1
   ON_HEX 226 59
     sci1
   ON_HEX 145 60
     sci8
-  ON_HEX 146 60
-    sRi2
   ON_HEX 149 60
     sci4
   ON_HEX 158 60
@@ -1728,24 +1522,16 @@ ENVIROMENT
     sci6
   ON_HEX 169 60
     sci2
-  ON_HEX 224 60
-    sci6
   ON_HEX 32 61
     sci4
   ON_HEX 48 61
     sci8
   ON_HEX 51 61
     sci8
-  ON_HEX 66 61
-    sRi4
   ON_HEX 93 61
     sciA
-  ON_HEX 96 61
-    sRi1
   ON_HEX 163 61
     sci4
-  ON_HEX 171 61
-    sci1
   ON_HEX 172 61
     sci8
   ON_HEX 207 61
@@ -1756,10 +1542,6 @@ ENVIROMENT
     sciA
   ON_HEX 98 62
     sci1
-  ON_HEX 162 62
-    sRi3
-  ON_HEX 171 62
-    sRi2
   ON_HEX 182 62
     sci5
   ON_HEX 227 62
@@ -1854,8 +1636,6 @@ ENVIROMENT
     sJiE
   ON_HEX 229 65
     sci4
-  ON_HEX 64 66
-    sRi3
   ON_HEX 75 66
     sJiX
   ON_HEX 126 66
@@ -1874,8 +1654,6 @@ ENVIROMENT
     sci1
   ON_HEX 158 66
     sci1
-  ON_HEX 168 66
-    sRi5
   ON_HEX 211 66
     sci1
   ON_HEX 212 66
@@ -1900,8 +1678,6 @@ ENVIROMENT
     sci2
   ON_HEX 150 67
     sciA
-  ON_HEX 169 67
-    sci9
   ON_HEX 189 67
     sGiA
   ON_HEX 228 67
@@ -1912,10 +1688,6 @@ ENVIROMENT
     sJiO
   ON_HEX 121 68
     sci2
-  ON_HEX 123 68
-    sRi3
-  ON_HEX 130 68
-    sRi5
   ON_HEX 137 68
     sci3
   ON_HEX 142 68
@@ -1940,14 +1712,8 @@ ENVIROMENT
     sEiN
   ON_HEX 105 69
     sci6
-  ON_HEX 127 69
-    sci1
-  ON_HEX 134 69
-    sOi4
   ON_HEX 136 69
     sci6
-  ON_HEX 228 69
-    sRi5
   ON_HEX 72 70
     sJiT
   ON_HEX 133 70
@@ -1994,24 +1760,16 @@ ENVIROMENT
     sciA
   ON_HEX 124 72
     sci6
-  ON_HEX 129 72
-    sci5
   ON_HEX 187 72
     sci7
   ON_HEX 229 72
     sci5
-  ON_HEX 64 73
-    sRi2
   ON_HEX 82 73
     sci1
   ON_HEX 112 73
     sci4
-  ON_HEX 127 73
-    sRi5
   ON_HEX 142 73
     sci7
-  ON_HEX 167 73
-    sciA
   ON_HEX 189 73
     sci3
   ON_HEX 202 73
@@ -2030,14 +1788,10 @@ ENVIROMENT
     sci8
   ON_HEX 143 74
     sci2
-  ON_HEX 168 74
-    sci5
   ON_HEX 187 74
     sRi4
   ON_HEX 192 74
     sci8
-  ON_HEX 196 74
-    sRi4
   ON_HEX 203 74
     sRi1
   ON_HEX 233 74
@@ -2048,16 +1802,8 @@ ENVIROMENT
     sci8
   ON_HEX 113 75
     sci9
-  ON_HEX 135 75
-    sfi1
-  ON_HEX 137 75
-    sRi2
-  ON_HEX 170 75
-    sci7
   ON_HEX 173 75
     sci2
-  ON_HEX 176 75
-    sRi1
   ON_HEX 188 75
     sci9
   ON_HEX 210 75
@@ -2070,20 +1816,10 @@ ENVIROMENT
     sci3
   ON_HEX 40 76
     sci7
-  ON_HEX 117 76
-    sRi5
-  ON_HEX 134 76
-    sRi4
   ON_HEX 147 76
     sci8
   ON_HEX 157 76
     sci9
-  ON_HEX 167 76
-    sci2
-  ON_HEX 169 76
-    sci5
-  ON_HEX 171 76
-    sci8
   ON_HEX 189 76
     sci7
   ON_HEX 198 76
@@ -2098,8 +1834,6 @@ ENVIROMENT
     sJiS
   ON_HEX 115 77
     sci8
-  ON_HEX 129 77
-    sfi1
   ON_HEX 133 77
     sci2
   ON_HEX 136 77
@@ -2116,14 +1850,10 @@ ENVIROMENT
     sci8
   ON_HEX 214 78
     sci3
-  ON_HEX 232 78
-    sRi1
   ON_HEX 236 78
     sRi3
   ON_HEX 45 79
     sRi4
-  ON_HEX 52 79
-    sRi1
   ON_HEX 70 79
     sJiV
   ON_HEX 87 79
@@ -2134,38 +1864,18 @@ ENVIROMENT
     sEiK
   ON_HEX 114 79
     sci9
-  ON_HEX 131 79
-    sOi6
   ON_HEX 136 79
     sci9
-  ON_HEX 139 79
-    sci3
-  ON_HEX 140 79
-    sfi6
-  ON_HEX 170 79
-    sci9
-  ON_HEX 172 79
-    sci7
   ON_HEX 174 79
     sci8
-  ON_HEX 193 79
-    sRi5
-  ON_HEX 198 79
-    sRi2
   ON_HEX 200 79
     sciA
   ON_HEX 204 79
     sci6
-  ON_HEX 208 79
-    sRi4
   ON_HEX 209 79
     sci7
-  ON_HEX 214 79
-    sci2
   ON_HEX 234 79
     sci3
-  ON_HEX 54 80
-    sci2
   ON_HEX 70 80
     sJiX
   ON_HEX 77 80
@@ -2180,40 +1890,24 @@ ENVIROMENT
     sci4
   ON_HEX 176 80
     sci9
-  ON_HEX 203 80
-    sRi3
-  ON_HEX 215 80
-    sRi3
   ON_HEX 45 81
     sci5
   ON_HEX 70 81
     sJiJ
-  ON_HEX 118 81
-    sci6
   ON_HEX 131 81
     sci5
   ON_HEX 132 81
     sci1
-  ON_HEX 133 81
-    sci3
   ON_HEX 138 81
     sci6
-  ON_HEX 144 81
-    sRi3
   ON_HEX 160 81
     sci3
-  ON_HEX 173 81
-    sci1
   ON_HEX 217 81
     sci1
   ON_HEX 218 81
     sci7
   ON_HEX 52 82
     sci9
-  ON_HEX 131 82
-    sci6
-  ON_HEX 135 82
-    sRi3
   ON_HEX 181 82
     sRi2
   ON_HEX 238 82
@@ -2226,16 +1920,6 @@ ENVIROMENT
     sci4
   ON_HEX 114 83
     sci8
-  ON_HEX 116 83
-    sRi4
-  ON_HEX 128 83
-    sci8
-  ON_HEX 130 83
-    sRi3
-  ON_HEX 141 83
-    sci4
-  ON_HEX 143 83
-    sci7
   ON_HEX 146 83
     sci3
   ON_HEX 238 83
@@ -2246,12 +1930,6 @@ ENVIROMENT
     sci6
   ON_HEX 127 84
     sci3
-  ON_HEX 129 84
-    sci1
-  ON_HEX 130 84
-    sci7
-  ON_HEX 138 84
-    sci9
   ON_HEX 154 84
     sci8
   ON_HEX 158 84
@@ -2268,52 +1946,28 @@ ENVIROMENT
     sci4
   ON_HEX 45 85
     sRi3
-  ON_HEX 56 85
-    sRi3
   ON_HEX 58 85
     sci5
   ON_HEX 76 85
     sci4
-  ON_HEX 118 85
-    sciA
-  ON_HEX 139 85
-    sSi8
   ON_HEX 145 85
     sciA
   ON_HEX 161 85
     sEi1
-  ON_HEX 181 85
-    sci7
-  ON_HEX 237 85
-    sRi4
-  ON_HEX 240 85
-    sRi1
   ON_HEX 45 86
     sci4
-  ON_HEX 86 86
-    sRi5
   ON_HEX 88 86
     sci1
   ON_HEX 93 86
     sci6
   ON_HEX 117 86
     sciA
-  ON_HEX 134 86
-    sfi1
-  ON_HEX 137 86
-    sRi5
-  ON_HEX 138 86
-    sci8
-  ON_HEX 142 86
-    sRi2
   ON_HEX 162 86
     sci2
   ON_HEX 163 86
     sEi6
   ON_HEX 167 86
     sciA
-  ON_HEX 184 86
-    sci5
   ON_HEX 48 87
     sci8
   ON_HEX 72 87
@@ -2324,24 +1978,12 @@ ENVIROMENT
     sci2
   ON_HEX 114 87
     sci6
-  ON_HEX 131 87
-    sRi1
-  ON_HEX 142 87
-    sOi2
-  ON_HEX 144 87
-    sci4
   ON_HEX 148 87
     sci2
-  ON_HEX 186 87
-    sRi1
   ON_HEX 108 88
     sRi2
   ON_HEX 109 88
     sci1
-  ON_HEX 129 88
-    sciA
-  ON_HEX 144 88
-    sci6
   ON_HEX 148 88
     sci3
   ON_HEX 159 88
@@ -2354,18 +1996,10 @@ ENVIROMENT
     sci2
   ON_HEX 178 88
     sciA
-  ON_HEX 182 88
-    sciA
-  ON_HEX 76 89
-    sRi2
   ON_HEX 79 89
     sci1
-  ON_HEX 82 89
-    sRi3
   ON_HEX 83 89
     sci7
-  ON_HEX 85 89
-    sci8
   ON_HEX 88 89
     sci3
   ON_HEX 107 89
@@ -2376,56 +2010,28 @@ ENVIROMENT
     sci1
   ON_HEX 117 89
     sci3
-  ON_HEX 132 89
-    sciA
   ON_HEX 142 89
     sci3
-  ON_HEX 143 89
-    sci2
   ON_HEX 159 89
     sEiD
   ON_HEX 162 89
     sEi5
   ON_HEX 179 89
     sci8
-  ON_HEX 182 89
-    sci2
-  ON_HEX 239 89
-    sRi2
   ON_HEX 76 90
     sciA
   ON_HEX 86 90
     sci9
   ON_HEX 126 90
     sci7
-  ON_HEX 129 90
-    sRi4
   ON_HEX 131 90
     sci5
-  ON_HEX 181 90
-    sRi1
-  ON_HEX 185 90
-    sci3
   ON_HEX 203 90
     sci7
-  ON_HEX 240 90
-    sci8
-  ON_HEX 53 91
-    sRi4
-  ON_HEX 62 91
-    sciA
-  ON_HEX 77 91
-    sci8
-  ON_HEX 128 91
-    sci9
   ON_HEX 156 91
     sci8
   ON_HEX 180 91
     sci3
-  ON_HEX 185 91
-    sci2
-  ON_HEX 186 91
-    sRi5
   ON_HEX 200 91
     sci7
   ON_HEX 204 91
@@ -2434,18 +2040,8 @@ ENVIROMENT
     sRi4
   ON_HEX 217 91
     sci2
-  ON_HEX 144 92
-    sfi1
-  ON_HEX 148 92
-    sRi3
-  ON_HEX 203 92
-    sRi4
   ON_HEX 217 92
     sci1
-  ON_HEX 127 93
-    sci6
-  ON_HEX 219 93
-    sRi4
   ON_HEX 147 94
     sci5
   ON_HEX 180 94
@@ -2454,10 +2050,6 @@ ENVIROMENT
     sci7
   ON_HEX 242 94
     sci5
-  ON_HEX 245 94
-    sRi4
-  ON_HEX 132 95
-    sRi4
   ON_HEX 150 95
     sci7
   ON_HEX 154 95
@@ -2468,24 +2060,14 @@ ENVIROMENT
     sciA
   ON_HEX 53 96
     sci9
-  ON_HEX 131 96
-    sSi6
-  ON_HEX 200 96
-    sRi2
   ON_HEX 221 96
     sci6
-  ON_HEX 59 97
-    sRi1
   ON_HEX 126 97
     sci9
   ON_HEX 127 97
     sci5
-  ON_HEX 153 97
-    sRi1
   ON_HEX 179 97
     sci7
-  ON_HEX 197 97
-    sRi5
   ON_HEX 52 98
     sRi3
   ON_HEX 58 98
@@ -2502,10 +2084,6 @@ ENVIROMENT
     sci1
   ON_HEX 237 98
     sci9
-  ON_HEX 239 98
-    sRi5
-  ON_HEX 246 98
-    sRi3
   ON_HEX 247 98
     sci2
   ON_HEX 52 99
@@ -2530,8 +2108,6 @@ ENVIROMENT
     sci6
   ON_HEX 126 99
     sciA
-  ON_HEX 129 99
-    sRi5
   ON_HEX 140 99
     sci7
   ON_HEX 165 99
@@ -2542,8 +2118,6 @@ ENVIROMENT
     sRi5
   ON_HEX 238 99
     sci8
-  ON_HEX 240 99
-    sci2
   ON_HEX 241 99
     sci7
   ON_HEX 61 100
@@ -2558,12 +2132,8 @@ ENVIROMENT
     sci9
   ON_HEX 129 100
     sci3
-  ON_HEX 142 100
-    sSi2
   ON_HEX 144 100
     sci6
-  ON_HEX 160 100
-    sRi5
   ON_HEX 164 100
     sci8
   ON_HEX 169 100
@@ -2578,76 +2148,44 @@ ENVIROMENT
     sci5
   ON_HEX 242 100
     sci7
-  ON_HEX 56 101
-    sRi5
   ON_HEX 85 101
     sci3
-  ON_HEX 87 101
-    sRi1
   ON_HEX 100 101
     sci2
   ON_HEX 104 101
     sci3
   ON_HEX 110 101
     sci5
-  ON_HEX 113 101
-    sRi2
-  ON_HEX 122 101
-    sRi5
   ON_HEX 123 101
     sci6
-  ON_HEX 126 101
-    sSi5
   ON_HEX 131 101
     sci5
   ON_HEX 134 101
-    sci5
-  ON_HEX 138 101
-    sRi2
-  ON_HEX 141 101
     sci5
   ON_HEX 143 101
     sci6
   ON_HEX 150 101
     sci3
-  ON_HEX 151 101
-    sSi1
   ON_HEX 156 101
     sciA
-  ON_HEX 167 101
-    sOi9
-  ON_HEX 169 101
-    sci5
   ON_HEX 175 101
     sciA
   ON_HEX 180 101
     sci6
-  ON_HEX 225 101
-    sRi3
   ON_HEX 248 101
     sci3
   ON_HEX 53 102
     sci4
-  ON_HEX 63 102
-    sRi1
-  ON_HEX 114 102
-    sci4
   ON_HEX 140 102
     sci3
-  ON_HEX 145 102
-    sci6
   ON_HEX 147 102
     sci4
   ON_HEX 148 102
     sRi5
-  ON_HEX 162 102
-    sci8
   ON_HEX 172 102
     sci9
   ON_HEX 228 102
     sRi5
-  ON_HEX 238 102
-    sRi3
   ON_HEX 239 102
     sci1
   ON_HEX 240 102
@@ -2658,32 +2196,18 @@ ENVIROMENT
     sRi4
   ON_HEX 65 103
     sci8
-  ON_HEX 113 103
-    sci1
   ON_HEX 120 103
-    sciA
-  ON_HEX 126 103
     sciA
   ON_HEX 127 103
     sci3
   ON_HEX 130 103
     sciA
-  ON_HEX 143 103
-    sOi1
   ON_HEX 144 103
     sci3
   ON_HEX 154 103
     sciA
-  ON_HEX 159 103
-    sRi3
-  ON_HEX 160 103
-    sSi5
-  ON_HEX 170 103
-    sRi1
   ON_HEX 177 103
     sci3
-  ON_HEX 179 103
-    sRi5
   ON_HEX 241 103
     sci2
   ON_HEX 244 103
@@ -2694,34 +2218,22 @@ ENVIROMENT
     sJiY
   ON_HEX 102 104
     sci8
-  ON_HEX 104 104
-    sRi5
   ON_HEX 106 104
     sci8
-  ON_HEX 108 104
-    sRi1
   ON_HEX 109 104
     sci2
   ON_HEX 121 104
     sfi9
   ON_HEX 132 104
     sci9
-  ON_HEX 134 104
-    sRi5
   ON_HEX 136 104
     sci8
   ON_HEX 148 104
     sci4
   ON_HEX 151 104
     sci2
-  ON_HEX 156 104
-    sRi3
-  ON_HEX 159 104
-    sci6
   ON_HEX 161 104
     sci1
-  ON_HEX 175 104
-    sRi4
   ON_HEX 195 104
     sRi1
   ON_HEX 69 105
@@ -2744,36 +2256,20 @@ ENVIROMENT
     sci8
   ON_HEX 155 105
     sci2
-  ON_HEX 176 105
-    sci1
   ON_HEX 181 105
     sci8
-  ON_HEX 191 105
-    sRi2
-  ON_HEX 195 105
-    sRi4
   ON_HEX 69 106
     sci4
   ON_HEX 98 106
     sEiK
-  ON_HEX 110 106
-    sfi8
-  ON_HEX 119 106
-    sRi2
   ON_HEX 123 106
     sci3
   ON_HEX 156 106
     sci9
   ON_HEX 159 106
     sci7
-  ON_HEX 176 106
-    sfi8
-  ON_HEX 178 106
-    sOi8
   ON_HEX 189 106
     sci7
-  ON_HEX 199 106
-    sRi2
   ON_HEX 55 107
     sci2
   ON_HEX 93 107
@@ -2782,36 +2278,22 @@ ENVIROMENT
     sci8
   ON_HEX 108 107
     sci8
-  ON_HEX 117 107
-    sfi1
-  ON_HEX 119 107
-    sOi6
   ON_HEX 130 107
     sci3
-  ON_HEX 131 107
-    sSi9
   ON_HEX 165 107
     sci1
-  ON_HEX 68 108
-    sRi2
   ON_HEX 73 108
     sci2
   ON_HEX 85 108
     sci3
   ON_HEX 111 108
     sci4
-  ON_HEX 114 108
-    sRi2
   ON_HEX 115 108
     sci8
   ON_HEX 117 108
     sci4
-  ON_HEX 128 108
-    sci3
   ON_HEX 130 108
     sci9
-  ON_HEX 132 108
-    sci6
   ON_HEX 135 108
     sci7
   ON_HEX 138 108
@@ -2820,12 +2302,8 @@ ENVIROMENT
     sRi2
   ON_HEX 159 108
     sOi4
-  ON_HEX 168 108
-    sRi3
   ON_HEX 169 108
     sci4
-  ON_HEX 178 108
-    sci1
   ON_HEX 193 108
     sci9
   ON_HEX 205 108
@@ -2834,8 +2312,6 @@ ENVIROMENT
     sci1
   ON_HEX 124 109
     sci9
-  ON_HEX 135 109
-    sOi7
   ON_HEX 142 109
     sci8
   ON_HEX 143 109
@@ -2852,8 +2328,6 @@ ENVIROMENT
     sci3
   ON_HEX 75 110
     sRi1
-  ON_HEX 136 110
-    sRi5
   ON_HEX 141 110
     sci3
   ON_HEX 143 110
@@ -2862,26 +2336,18 @@ ENVIROMENT
     sUi#80
   ON_HEX 156 110
     sUi#B9
-  ON_HEX 168 110
-    sOi2
-  ON_HEX 173 110
-    sRi2
+  ON_HEX 174 110
+    sci2
   ON_HEX 206 110
     spi9
   ON_HEX 212 110
     sci5
-  ON_HEX 245 110
-    sRi1
   ON_HEX 251 110
     sRi4
   ON_HEX 252 110
     sci8
   ON_HEX 116 111
     sci5
-  ON_HEX 127 111
-    sci6
-  ON_HEX 128 111
-    sRi3
   ON_HEX 130 111
     sci8
   ON_HEX 134 111
@@ -2898,10 +2364,6 @@ ENVIROMENT
     sUiY
   ON_HEX 158 111
     sUi#94
-  ON_HEX 164 111
-    s8i3
-  ON_HEX 165 111
-    sUi#93
   ON_HEX 190 111
     sci5
   ON_HEX 194 111
@@ -2914,12 +2376,6 @@ ENVIROMENT
     sci9
   ON_HEX 75 112
     sciA
-  ON_HEX 90 112
-    sRi3
-  ON_HEX 97 112
-    sRi1
-  ON_HEX 100 112
-    sRi4
   ON_HEX 127 112
     sci9
   ON_HEX 137 112
@@ -2936,12 +2392,8 @@ ENVIROMENT
     sUi#79
   ON_HEX 162 112
     sUiJ
-  ON_HEX 166 112
-    sUi#82
-  ON_HEX 170 112
-    sci5
   ON_HEX 178 112
-    sRi4
+    sci1
   ON_HEX 213 112
     sci4
   ON_HEX 215 112
@@ -2956,8 +2408,6 @@ ENVIROMENT
     sci9
   ON_HEX 255 112
     sci1
-  ON_HEX 73 113
-    sRi5
   ON_HEX 129 113
     sci1
   ON_HEX 132 113
@@ -2976,14 +2426,6 @@ ENVIROMENT
     sUi#7B
   ON_HEX 169 113
     sci5
-  ON_HEX 176 113
-    sci5
-  ON_HEX 184 113
-    sci8
-  ON_HEX 186 113
-    sci6
-  ON_HEX 193 113
-    sRi2
   ON_HEX 214 113
     sci5
   ON_HEX 221 113
@@ -2994,8 +2436,6 @@ ENVIROMENT
     sciA
   ON_HEX 90 114
     sci7
-  ON_HEX 122 114
-    sfi3
   ON_HEX 126 114
     sciA
   ON_HEX 162 114
@@ -3003,8 +2443,6 @@ ENVIROMENT
   ON_HEX 167 114
     sUi#C7
   ON_HEX 171 114
-    sci8
-  ON_HEX 181 114
     sci8
   ON_HEX 191 114
     sci9
@@ -3016,14 +2454,10 @@ ENVIROMENT
     sci4
   ON_HEX 60 115
     sRi2
-  ON_HEX 86 115
-    sRi5
   ON_HEX 110 115
     sci4
   ON_HEX 111 115
     sci1
-  ON_HEX 125 115
-    sRi1
   ON_HEX 129 115
     sci3
   ON_HEX 139 115
@@ -3032,10 +2466,6 @@ ENVIROMENT
     sUi#8C
   ON_HEX 167 115
     sUi#84
-  ON_HEX 186 115
-    sci7
-  ON_HEX 194 115
-    sfi6
   ON_HEX 222 115
     sciA
   ON_HEX 223 115
@@ -3056,18 +2486,10 @@ ENVIROMENT
     sci8
   ON_HEX 119 116
     sci8
-  ON_HEX 120 116
-    sRi5
-  ON_HEX 131 116
-    sci6
   ON_HEX 136 116
     sciA
   ON_HEX 147 116
     s8i1
-  ON_HEX 174 116
-    sSi5
-  ON_HEX 175 116
-    sRi1
   ON_HEX 224 116
     sci8
   ON_HEX 228 116
@@ -3092,8 +2514,6 @@ ENVIROMENT
     sUi9
   ON_HEX 173 117
     sci2
-  ON_HEX 175 117
-    sci2
   ON_HEX 179 117
     sci2
   ON_HEX 228 117
@@ -3110,28 +2530,20 @@ ENVIROMENT
     sci4
   ON_HEX 121 118
     sci2
-  ON_HEX 133 118
-    sci1
   ON_HEX 134 118
     sci7
-  ON_HEX 136 118
-    sRi1
   ON_HEX 156 118
     spiB
   ON_HEX 162 118
     sUiv
   ON_HEX 166 118
     sUi#C0
-  ON_HEX 184 118
-    sci7
   ON_HEX 194 118
     sciA
   ON_HEX 230 118
     sci3
   ON_HEX 234 118
     sci7
-  ON_HEX 235 118
-    sRi4
   ON_HEX 254 118
     sRi4
   ON_HEX 104 119
@@ -3140,14 +2552,8 @@ ENVIROMENT
     sci8
   ON_HEX 126 119
     sci1
-  ON_HEX 133 119
-    sOi4
   ON_HEX 136 119
     sci4
-  ON_HEX 139 119
-    sSi5
-  ON_HEX 142 119
-    sRi5
   ON_HEX 146 119
     s8i3
   ON_HEX 148 119
@@ -3162,16 +2568,12 @@ ENVIROMENT
     sUi#9A
   ON_HEX 178 119
     sciA
-  ON_HEX 207 119
-    sRi3
   ON_HEX 228 119
     sci1
   ON_HEX 231 119
     sci7
   ON_HEX 84 120
     sci1
-  ON_HEX 97 120
-    sciA
   ON_HEX 106 120
     sJiQ
   ON_HEX 113 120
@@ -3190,8 +2592,8 @@ ENVIROMENT
     sUi#90
   ON_HEX 168 120
     s8i9
-  ON_HEX 211 120
-    sRi5
+  ON_HEX 187 120
+    sci9
   ON_HEX 229 120
     sci5
   ON_HEX 231 120
@@ -3202,16 +2604,10 @@ ENVIROMENT
     sci7
   ON_HEX 62 121
     sRi4
-  ON_HEX 98 121
-    sci9
   ON_HEX 104 121
     sJiG
   ON_HEX 108 121
     sJiU
-  ON_HEX 129 121
-    sfiA
-  ON_HEX 134 121
-    sci9
   ON_HEX 142 121
     sci4
   ON_HEX 170 121
@@ -3222,8 +2618,6 @@ ENVIROMENT
     sci7
   ON_HEX 181 121
     sci4
-  ON_HEX 188 121
-    sfi6
   ON_HEX 193 121
     sci8
   ON_HEX 229 121
@@ -3236,8 +2630,6 @@ ENVIROMENT
     sci7
   ON_HEX 258 121
     sci2
-  ON_HEX 66 122
-    sRi2
   ON_HEX 70 122
     sci9
   ON_HEX 76 122
@@ -3260,58 +2652,30 @@ ENVIROMENT
     s8i8
   ON_HEX 179 122
     sci1
-  ON_HEX 184 122
-    sci9
-  ON_HEX 185 122
-    sRi4
-  ON_HEX 191 122
-    sci4
-  ON_HEX 193 122
-    sRi5
   ON_HEX 194 122
     sci1
   ON_HEX 230 122
     sci2
   ON_HEX 64 123
     sci4
-  ON_HEX 87 123
-    sRi5
-  ON_HEX 99 123
-    sci8
   ON_HEX 121 123
     sEiH
   ON_HEX 126 123
     sci2
-  ON_HEX 130 123
-    sci6
-  ON_HEX 133 123
-    sRi1
   ON_HEX 145 123
     sci9
   ON_HEX 149 123
     sUi#B4
-  ON_HEX 189 123
-    sciA
   ON_HEX 209 123
     sRi1
   ON_HEX 113 124
     sJiU
-  ON_HEX 129 124
-    sci1
-  ON_HEX 133 124
-    sci6
-  ON_HEX 135 124
-    sciA
   ON_HEX 150 124
     sUiK
-  ON_HEX 193 124
-    sci7
-  ON_HEX 194 124
-    sciA
+  ON_HEX 186 124
+    sci3
   ON_HEX 205 124
     sGi2
-  ON_HEX 214 124
-    sRi4
   ON_HEX 257 124
     sci7
   ON_HEX 115 125
@@ -3320,8 +2684,6 @@ ENVIROMENT
     sGie
   ON_HEX 119 125
     sJiY
-  ON_HEX 137 125
-    sciA
   ON_HEX 150 125
     sUiQ
   ON_HEX 164 125
@@ -3332,8 +2694,6 @@ ENVIROMENT
     sci1
   ON_HEX 178 125
     sci5
-  ON_HEX 192 125
-    sOi4
   ON_HEX 202 125
     sci9
   ON_HEX 258 125
@@ -3342,16 +2702,8 @@ ENVIROMENT
     sRi5
   ON_HEX 74 126
     sRi5
-  ON_HEX 103 126
-    sci8
-  ON_HEX 104 126
-    sci8
   ON_HEX 106 126
     sci1
-  ON_HEX 128 126
-    sciA
-  ON_HEX 133 126
-    sci4
   ON_HEX 151 126
     sUi#AB
   ON_HEX 162 126
@@ -3360,12 +2712,8 @@ ENVIROMENT
     sUi#9A
   ON_HEX 174 126
     sUi#C7
-  ON_HEX 189 126
-    sci7
   ON_HEX 204 126
     sci5
-  ON_HEX 256 126
-    sRi4
   ON_HEX 98 127
     sci2
   ON_HEX 99 127
@@ -3374,14 +2722,6 @@ ENVIROMENT
     sEiJ
   ON_HEX 123 127
     sEiJ
-  ON_HEX 130 127
-    sRi3
-  ON_HEX 131 127
-    sOi4
-  ON_HEX 133 127
-    sci2
-  ON_HEX 134 127
-    sci3
   ON_HEX 146 127
     sci8
   ON_HEX 150 127
@@ -3396,8 +2736,8 @@ ENVIROMENT
     sUi#A5
   ON_HEX 167 127
     sUi#55
-  ON_HEX 189 127
-    sRi3
+  ON_HEX 193 127
+    sci2
   ON_HEX 197 127
     sci5
   ON_HEX 261 127
@@ -3412,24 +2752,16 @@ ENVIROMENT
     sJi9
   ON_HEX 129 128
     sci5
-  ON_HEX 132 128
-    sci3
-  ON_HEX 144 128
-    sRi5
+  ON_HEX 136 128
+    sci6
   ON_HEX 147 128
     sci2
   ON_HEX 164 128
     s8i8
-  ON_HEX 195 128
-    sci8
-  ON_HEX 197 128
-    sci9
   ON_HEX 204 128
     sciA
   ON_HEX 205 128
     sci2
-  ON_HEX 255 128
-    sRi1
   ON_HEX 257 128
     sci3
   ON_HEX 72 129
@@ -3450,14 +2782,10 @@ ENVIROMENT
     sci4
   ON_HEX 181 129
     sRi1
-  ON_HEX 192 129
-    sSi9
   ON_HEX 257 129
     sci5
   ON_HEX 67 130
     sRi2
-  ON_HEX 74 130
-    sRi1
   ON_HEX 76 130
     sci1
   ON_HEX 120 130
@@ -3472,17 +2800,9 @@ ENVIROMENT
     sUi#95
   ON_HEX 178 130
     sci1
-  ON_HEX 183 130
-    sfi9
-  ON_HEX 194 130
-    sci3
-  ON_HEX 195 130
-    sRi4
   ON_HEX 211 130
     sGiF
   ON_HEX 223 130
-    sci5
-  ON_HEX 224 130
     sci5
   ON_HEX 229 130
     sci7
@@ -3490,8 +2810,6 @@ ENVIROMENT
     sci9
   ON_HEX 132 131
     sci6
-  ON_HEX 138 131
-    sSi8
   ON_HEX 149 131
     sci6
   ON_HEX 152 131
@@ -3512,8 +2830,6 @@ ENVIROMENT
     sci5
   ON_HEX 212 131
     sGiF
-  ON_HEX 224 131
-    sci8
   ON_HEX 231 131
     sci9
   ON_HEX 261 131
@@ -3532,10 +2848,6 @@ ENVIROMENT
     sUi#93
   ON_HEX 182 132
     sci1
-  ON_HEX 187 132
-    sRi3
-  ON_HEX 198 132
-    sSi5
   ON_HEX 200 132
     sci9
   ON_HEX 207 132
@@ -3552,8 +2864,6 @@ ENVIROMENT
     sci3
   ON_HEX 84 133
     sci8
-  ON_HEX 135 133
-    sci1
   ON_HEX 154 133
     sUi#CD
   ON_HEX 156 133
@@ -3574,16 +2884,10 @@ ENVIROMENT
     sGiB
   ON_HEX 224 133
     sci5
-  ON_HEX 263 133
-    sRi3
   ON_HEX 68 134
     sci3
-  ON_HEX 72 134
-    sRi1
   ON_HEX 126 134
     sci5
-  ON_HEX 139 134
-    sOi6
   ON_HEX 157 134
     sUi#BA
   ON_HEX 176 134
@@ -3596,8 +2900,6 @@ ENVIROMENT
     sci2
   ON_HEX 210 134
     sEi5
-  ON_HEX 240 134
-    sRi2
   ON_HEX 242 134
     sciA
   ON_HEX 120 135
@@ -3610,28 +2912,14 @@ ENVIROMENT
     sUiL
   ON_HEX 128 136
     sci4
-  ON_HEX 138 136
-    sRi1
-  ON_HEX 140 136
-    sci3
-  ON_HEX 142 136
-    sRi2
-  ON_HEX 144 136
-    sci2
   ON_HEX 146 136
     sci8
-  ON_HEX 148 136
-    sci3
-  ON_HEX 150 136
-    sRi3
   ON_HEX 151 136
     sci4
   ON_HEX 163 136
     sUi#47
   ON_HEX 180 136
     sUiH
-  ON_HEX 197 136
-    sci7
   ON_HEX 202 136
     sciA
   ON_HEX 226 136
@@ -3640,16 +2928,8 @@ ENVIROMENT
     sEiG
   ON_HEX 231 136
     sci3
-  ON_HEX 241 136
-    sci2
-  ON_HEX 71 137
-    sRi1
   ON_HEX 73 137
     sci5
-  ON_HEX 117 137
-    sRi5
-  ON_HEX 142 137
-    sci9
   ON_HEX 155 137
     sUi3
   ON_HEX 156 137
@@ -3670,8 +2950,6 @@ ENVIROMENT
     sci5
   ON_HEX 221 137
     sEiK
-  ON_HEX 231 137
-    sci9
   ON_HEX 232 137
     sci7
   ON_HEX 255 137
@@ -3692,8 +2970,6 @@ ENVIROMENT
     sUi#BC
   ON_HEX 181 138
     sUi#A1
-  ON_HEX 195 138
-    sOi5
   ON_HEX 216 138
     sci5
   ON_HEX 224 138
@@ -3706,14 +2982,8 @@ ENVIROMENT
     sciA
   ON_HEX 98 139
     sci1
-  ON_HEX 137 139
-    sRi4
-  ON_HEX 140 139
-    sci7
   ON_HEX 143 139
     sci3
-  ON_HEX 146 139
-    sci1
   ON_HEX 160 139
     sUi#C4
   ON_HEX 179 139
@@ -3722,26 +2992,14 @@ ENVIROMENT
     sci1
   ON_HEX 243 139
     sciA
-  ON_HEX 259 139
-    sRi3
   ON_HEX 266 139
     sci4
-  ON_HEX 76 140
-    sRi1
   ON_HEX 85 140
     sciA
-  ON_HEX 86 140
-    sRi1
   ON_HEX 100 140
     sci1
   ON_HEX 101 140
     sci3
-  ON_HEX 124 140
-    sRi2
-  ON_HEX 148 140
-    sci2
-  ON_HEX 152 140
-    sci8
   ON_HEX 172 140
     spiC
   ON_HEX 181 140
@@ -3766,18 +3024,6 @@ ENVIROMENT
     sci6
   ON_HEX 99 141
     sci4
-  ON_HEX 122 141
-    sRi1
-  ON_HEX 138 141
-    sci2
-  ON_HEX 142 141
-    sci4
-  ON_HEX 146 141
-    sci5
-  ON_HEX 152 141
-    sSi5
-  ON_HEX 155 141
-    sRi1
   ON_HEX 157 141
     sci8
   ON_HEX 161 141
@@ -3790,22 +3036,14 @@ ENVIROMENT
     sUi#7D
   ON_HEX 186 141
     sciA
-  ON_HEX 197 141
-    sRi2
   ON_HEX 202 141
     sciA
-  ON_HEX 203 141
-    sRi4
   ON_HEX 206 141
     sciA
   ON_HEX 209 141
     sci5
   ON_HEX 219 141
     sci9
-  ON_HEX 230 141
-    sci9
-  ON_HEX 243 141
-    sRi3
   ON_HEX 244 141
     sciA
   ON_HEX 267 141
@@ -3822,6 +3060,8 @@ ENVIROMENT
     sci1
   ON_HEX 137 142
     sfi9
+  ON_HEX 149 142
+    sci1
   ON_HEX 173 142
     spiH
   ON_HEX 183 142
@@ -3832,10 +3072,6 @@ ENVIROMENT
     sci3
   ON_HEX 218 142
     sci4
-  ON_HEX 231 142
-    sciA
-  ON_HEX 232 142
-    sciA
   ON_HEX 265 142
     sRi4
   ON_HEX 74 143
@@ -3846,20 +3082,14 @@ ENVIROMENT
     sci8
   ON_HEX 105 143
     sci1
-  ON_HEX 143 143
-    sci5
   ON_HEX 181 143
     sUip
   ON_HEX 187 143
     sci8
-  ON_HEX 190 143
-    sSi8
   ON_HEX 194 143
     sci9
   ON_HEX 217 143
     sci8
-  ON_HEX 231 143
-    sci2
   ON_HEX 266 143
     sci2
   ON_HEX 101 144
@@ -3870,10 +3100,6 @@ ENVIROMENT
     sci6
   ON_HEX 138 144
     sci3
-  ON_HEX 151 144
-    sRi5
-  ON_HEX 153 144
-    sci9
   ON_HEX 156 144
     sci2
   ON_HEX 162 144
@@ -3896,18 +3122,14 @@ ENVIROMENT
     sci6
   ON_HEX 78 145
     sci8
-  ON_HEX 92 145
-    sRi3
   ON_HEX 105 145
     sci9
   ON_HEX 106 145
     sci5
   ON_HEX 108 145
     sci3
-  ON_HEX 149 145
+  ON_HEX 152 145
     sci6
-  ON_HEX 155 145
-    sci3
   ON_HEX 180 145
     sUil
   ON_HEX 181 145
@@ -3918,22 +3140,12 @@ ENVIROMENT
     sci8
   ON_HEX 210 145
     sfi6
-  ON_HEX 79 146
-    sRi5
   ON_HEX 102 146
     sciA
   ON_HEX 116 146
     sci7
   ON_HEX 119 146
     sJi9
-  ON_HEX 136 146
-    sci6
-  ON_HEX 138 146
-    sRi3
-  ON_HEX 143 146
-    sci4
-  ON_HEX 146 146
-    sci9
   ON_HEX 166 146
     sUi#C2
   ON_HEX 168 146
@@ -3950,8 +3162,6 @@ ENVIROMENT
     sciA
   ON_HEX 190 146
     sci8
-  ON_HEX 191 146
-    sci7
   ON_HEX 202 146
     sci4
   ON_HEX 205 146
@@ -3966,8 +3176,6 @@ ENVIROMENT
     sRi4
   ON_HEX 115 147
     sciA
-  ON_HEX 152 147
-    sci1
   ON_HEX 161 147
     sci5
   ON_HEX 164 147
@@ -3990,14 +3198,6 @@ ENVIROMENT
     sUi#CA
   ON_HEX 196 147
     sciA
-  ON_HEX 201 147
-    sRi3
-  ON_HEX 229 147
-    sRi3
-  ON_HEX 241 147
-    sRi5
-  ON_HEX 245 147
-    sRi5
   ON_HEX 268 147
     sci3
   ON_HEX 269 147
@@ -4008,12 +3208,6 @@ ENVIROMENT
     sci8
   ON_HEX 117 148
     sci2
-  ON_HEX 137 148
-    sOi9
-  ON_HEX 156 148
-    sci6
-  ON_HEX 159 148
-    sRi1
   ON_HEX 174 148
     sUiX
   ON_HEX 176 148
@@ -4034,20 +3228,12 @@ ENVIROMENT
     sci5
   ON_HEX 240 148
     sci2
-  ON_HEX 255 148
-    sRi1
   ON_HEX 272 148
     sci4
-  ON_HEX 81 149
-    sRi1
   ON_HEX 84 149
     sci7
   ON_HEX 116 149
     sci5
-  ON_HEX 139 149
-    sci2
-  ON_HEX 152 149
-    sSi5
   ON_HEX 169 149
     sci9
   ON_HEX 171 149
@@ -4062,28 +3248,18 @@ ENVIROMENT
     sci9
   ON_HEX 186 149
     sci9
-  ON_HEX 188 149
-    sRi1
   ON_HEX 193 149
     sci1
   ON_HEX 196 149
     sRi3
-  ON_HEX 207 149
-    sOi5
-  ON_HEX 231 149
-    sRi2
   ON_HEX 243 149
     sci3
   ON_HEX 257 149
     sci5
   ON_HEX 272 149
     sci4
-  ON_HEX 78 150
-    sRi1
   ON_HEX 150 150
     sci2
-  ON_HEX 161 150
-    sSi5
   ON_HEX 176 150
     sUi#8E
   ON_HEX 177 150
@@ -4096,8 +3272,6 @@ ENVIROMENT
     sci8
   ON_HEX 201 150
     sci1
-  ON_HEX 203 150
-    sci5
   ON_HEX 243 150
     sciA
   ON_HEX 260 150
@@ -4110,10 +3284,6 @@ ENVIROMENT
     spi3
   ON_HEX 132 151
     sci1
-  ON_HEX 134 151
-    sci9
-  ON_HEX 137 151
-    sRi3
   ON_HEX 139 151
     sci5
   ON_HEX 154 151
@@ -4132,8 +3302,6 @@ ENVIROMENT
     sci4
   ON_HEX 211 151
     sRi3
-  ON_HEX 262 151
-    sRi3
   ON_HEX 81 152
     sciA
   ON_HEX 113 152
@@ -4146,12 +3314,8 @@ ENVIROMENT
     sci4
   ON_HEX 152 152
     sci8
-  ON_HEX 157 152
-    sRi3
   ON_HEX 159 152
     sci2
-  ON_HEX 162 152
-    sOi8
   ON_HEX 217 152
     sci7
   ON_HEX 219 152
@@ -4164,20 +3328,12 @@ ENVIROMENT
     sci3
   ON_HEX 114 153
     sJiE
-  ON_HEX 136 153
-    sci7
   ON_HEX 139 153
     sci4
-  ON_HEX 163 153
-    sci1
   ON_HEX 172 153
     sci4
-  ON_HEX 191 153
-    sciA
   ON_HEX 194 153
     sci8
-  ON_HEX 205 153
-    sci9
   ON_HEX 212 153
     sci7
   ON_HEX 222 153
@@ -4190,32 +3346,14 @@ ENVIROMENT
     sci3
   ON_HEX 264 153
     sci3
-  ON_HEX 89 154
-    sRi2
-  ON_HEX 133 154
-    sci5
   ON_HEX 149 154
     sci6
-  ON_HEX 167 154
-    sRi2
   ON_HEX 179 154
     sci5
-  ON_HEX 191 154
-    sfi3
-  ON_HEX 193 154
-    sRi1
-  ON_HEX 207 154
-    sRi2
-  ON_HEX 220 154
-    sOi8
-  ON_HEX 243 154
-    sRi5
   ON_HEX 264 154
     sciA
   ON_HEX 129 155
     sci7
-  ON_HEX 131 155
-    sRi5
   ON_HEX 170 155
     sci5
   ON_HEX 174 155
@@ -4224,38 +3362,22 @@ ENVIROMENT
     sci8
   ON_HEX 195 155
     sci3
-  ON_HEX 225 155
-    sRi4
   ON_HEX 228 155
     sci4
   ON_HEX 229 155
     sci3
   ON_HEX 129 156
     sci3
-  ON_HEX 132 156
-    sci6
-  ON_HEX 139 156
-    sci7
   ON_HEX 153 156
     sci4
-  ON_HEX 155 156
-    sRi2
-  ON_HEX 163 156
-    sRi3
   ON_HEX 178 156
     sci2
-  ON_HEX 183 156
-    sci3
   ON_HEX 186 156
     sci3
   ON_HEX 191 156
     sci7
   ON_HEX 199 156
     sOi9
-  ON_HEX 200 156
-    sfi1
-  ON_HEX 216 156
-    sRi3
   ON_HEX 218 156
     sci9
   ON_HEX 224 156
@@ -4270,64 +3392,44 @@ ENVIROMENT
     sci5
   ON_HEX 136 157
     sci8
-  ON_HEX 137 157
-    sci3
   ON_HEX 149 157
     sciA
+  ON_HEX 163 157
+    sci6
   ON_HEX 170 157
     sci4
-  ON_HEX 173 157
-    sRi4
   ON_HEX 175 157
     sci4
   ON_HEX 182 157
     sRi3
-  ON_HEX 188 157
-    sRi5
   ON_HEX 194 157
     sciA
   ON_HEX 203 157
     sci2
-  ON_HEX 204 157
-    sRi1
   ON_HEX 206 157
     sci8
   ON_HEX 208 157
     sci6
-  ON_HEX 209 157
-    sSi8
   ON_HEX 214 157
     sci2
   ON_HEX 218 157
     sci2
-  ON_HEX 220 157
-    sRi4
   ON_HEX 80 158
     sci5
   ON_HEX 129 158
     sci2
-  ON_HEX 130 158
-    sci4
-  ON_HEX 152 158
-    sRi1
   ON_HEX 155 158
     sci9
-  ON_HEX 160 158
-    sOi1
   ON_HEX 197 158
     sci5
   ON_HEX 210 158
     sci3
-  ON_HEX 213 158
-    sRi3
   ON_HEX 217 158
     sci4
   ON_HEX 220 158
     sci1
   ON_HEX 222 158
     sciA
-  ON_HEX 223 158
-    sSi5
   ON_HEX 225 158
     sci3
   ON_HEX 228 158
@@ -4336,56 +3438,20 @@ ENVIROMENT
     sci2
   ON_HEX 242 158
     sci5
-  ON_HEX 243 158
-    sRi2
   ON_HEX 266 158
     sci8
   ON_HEX 103 159
     sci3
-  ON_HEX 152 159
-    sci7
-  ON_HEX 157 159
-    sci6
-  ON_HEX 159 159
-    sfi5
-  ON_HEX 162 159
-    sRi4
-  ON_HEX 164 159
-    sci5
-  ON_HEX 173 159
-    sci2
-  ON_HEX 174 159
-    sSi1
   ON_HEX 176 159
     sci1
   ON_HEX 178 159
-    sRi1
-  ON_HEX 188 159
-    sciA
-  ON_HEX 190 159
-    sci3
-  ON_HEX 192 159
-    sRi3
-  ON_HEX 199 159
     sRi1
   ON_HEX 201 159
     sci9
   ON_HEX 208 159
     sci4
-  ON_HEX 227 159
-    sRi5
   ON_HEX 273 159
     sci8
-  ON_HEX 82 160
-    sRi3
-  ON_HEX 87 160
-    sRi3
-  ON_HEX 150 160
-    sci7
-  ON_HEX 155 160
-    sci5
-  ON_HEX 167 160
-    sRi5
   ON_HEX 173 160
     sci4
   ON_HEX 177 160
@@ -4402,20 +3468,12 @@ ENVIROMENT
     sci1
   ON_HEX 244 160
     sci7
-  ON_HEX 267 160
-    sRi1
   ON_HEX 273 160
     sci2
   ON_HEX 89 161
     sci2
-  ON_HEX 91 161
-    sRi2
-  ON_HEX 95 161
-    sRi5
   ON_HEX 106 161
     sci8
-  ON_HEX 150 161
-    sci2
   ON_HEX 185 161
     sci9
   ON_HEX 188 161
@@ -4428,24 +3486,12 @@ ENVIROMENT
     sci7
   ON_HEX 270 161
     sci2
-  ON_HEX 83 162
-    sRi1
   ON_HEX 98 162
     sci9
-  ON_HEX 105 162
-    sciA
-  ON_HEX 106 162
-    sRi3
   ON_HEX 130 162
     sci6
-  ON_HEX 131 162
-    sRi5
   ON_HEX 150 162
     sci1
-  ON_HEX 172 162
-    sRi3
-  ON_HEX 187 162
-    sRi1
   ON_HEX 275 162
     sci4
   ON_HEX 277 162
@@ -4466,16 +3512,12 @@ ENVIROMENT
     sci7
   ON_HEX 149 164
     sci5
-  ON_HEX 170 164
-    sfi8
   ON_HEX 172 164
     sci3
   ON_HEX 174 164
     sci8
   ON_HEX 195 164
     sSi2
-  ON_HEX 198 164
-    sRi5
   ON_HEX 127 165
     sci5
   ON_HEX 130 165
@@ -4490,8 +3532,6 @@ ENVIROMENT
     sci8
   ON_HEX 149 166
     sci3
-  ON_HEX 176 166
-    sci9
   ON_HEX 280 166
     sRi5
   ON_HEX 130 167
@@ -4502,12 +3542,6 @@ ENVIROMENT
     sci5
   ON_HEX 173 167
     sci4
-  ON_HEX 177 167
-    sci6
-  ON_HEX 178 167
-    sRi2
-  ON_HEX 198 167
-    sOi9
   ON_HEX 200 167
     sci6
   ON_HEX 125 168
@@ -4516,40 +3550,22 @@ ENVIROMENT
     sci3
   ON_HEX 129 168
     sciA
-  ON_HEX 181 168
-    sci2
-  ON_HEX 195 168
-    sRi4
-  ON_HEX 197 168
-    sci5
-  ON_HEX 200 168
-    sci9
   ON_HEX 253 168
     sci2
   ON_HEX 123 169
     sci2
-  ON_HEX 125 169
-    sRi1
-  ON_HEX 147 169
-    sRi3
   ON_HEX 158 169
     sci5
   ON_HEX 161 169
     sGiB
   ON_HEX 163 169
     sci7
-  ON_HEX 179 169
-    sci8
-  ON_HEX 181 169
-    sSi7
   ON_HEX 212 169
     sci8
   ON_HEX 282 169
     sci4
   ON_HEX 117 170
     sci2
-  ON_HEX 118 170
-    sRi2
   ON_HEX 120 170
     sci5
   ON_HEX 149 170
@@ -4557,10 +3573,6 @@ ENVIROMENT
   ON_HEX 163 170
     sci4
   ON_HEX 170 170
-    sci4
-  ON_HEX 179 170
-    sciA
-  ON_HEX 197 170
     sci4
   ON_HEX 213 170
     sci3
@@ -4580,20 +3592,12 @@ ENVIROMENT
     sci2
   ON_HEX 159 171
     sci9
-  ON_HEX 182 171
-    sci3
   ON_HEX 185 171
     sci2
-  ON_HEX 194 171
-    sci7
   ON_HEX 219 171
     sci8
   ON_HEX 223 171
     sci5
-  ON_HEX 249 171
-    sRi4
-  ON_HEX 253 171
-    sRi5
   ON_HEX 255 171
     sci1
   ON_HEX 280 171
@@ -4602,8 +3606,6 @@ ENVIROMENT
     sci4
   ON_HEX 166 172
     sci7
-  ON_HEX 196 172
-    sRi4
   ON_HEX 214 172
     sci9
   ON_HEX 219 172
@@ -4614,34 +3616,22 @@ ENVIROMENT
     sci9
   ON_HEX 256 172
     sci6
-  ON_HEX 258 172
-    sRi1
   ON_HEX 88 173
     sci2
-  ON_HEX 148 173
-    sciA
   ON_HEX 163 173
     sci8
   ON_HEX 184 173
     sci3
-  ON_HEX 201 173
-    sci7
   ON_HEX 212 173
     sci1
   ON_HEX 237 173
     sci5
-  ON_HEX 242 173
-    sRi2
   ON_HEX 253 173
     sci3
-  ON_HEX 90 174
-    sRi1
   ON_HEX 143 174
     sci1
   ON_HEX 169 174
     sCiW
-  ON_HEX 198 174
-    sci1
   ON_HEX 213 174
     sci1
   ON_HEX 214 174
@@ -4660,24 +3650,14 @@ ENVIROMENT
     sci8
   ON_HEX 192 175
     sci5
-  ON_HEX 197 175
-    sci6
-  ON_HEX 201 175
-    sRi5
   ON_HEX 214 175
     sci7
   ON_HEX 282 175
     sci5
   ON_HEX 285 175
     sci2
-  ON_HEX 146 176
-    sRi5
   ON_HEX 148 176
     sci1
-  ON_HEX 157 176
-    sci5
-  ON_HEX 189 176
-    sRi3
   ON_HEX 245 176
     sciA
   ON_HEX 254 176
@@ -4692,16 +3672,10 @@ ENVIROMENT
     sci8
   ON_HEX 185 177
     sci1
-  ON_HEX 189 177
-    sci2
   ON_HEX 195 177
     sciA
-  ON_HEX 201 177
-    sfi9
   ON_HEX 211 177
     sci6
-  ON_HEX 213 177
-    sRi4
   ON_HEX 248 177
     sciA
   ON_HEX 254 177
@@ -4716,20 +3690,10 @@ ENVIROMENT
     sci8
   ON_HEX 178 178
     sci5
-  ON_HEX 191 178
-    sfi2
-  ON_HEX 201 178
-    sci6
-  ON_HEX 247 178
-    sRi1
   ON_HEX 263 178
     sci4
-  ON_HEX 276 178
-    sRi1
   ON_HEX 118 179
     sci8
-  ON_HEX 121 179
-    sRi1
   ON_HEX 133 179
     sci8
   ON_HEX 157 179
@@ -4738,8 +3702,6 @@ ENVIROMENT
     sci3
   ON_HEX 187 179
     sci4
-  ON_HEX 200 179
-    sci3
   ON_HEX 217 179
     sci2
   ON_HEX 223 179
@@ -4760,22 +3722,10 @@ ENVIROMENT
     sRi3
   ON_HEX 91 180
     sRi2
-  ON_HEX 136 180
-    sRi4
-  ON_HEX 158 180
-    sci9
-  ON_HEX 159 180
-    sci1
   ON_HEX 171 180
     sci5
   ON_HEX 179 180
     sci5
-  ON_HEX 193 180
-    sci9
-  ON_HEX 195 180
-    sRi3
-  ON_HEX 199 180
-    sRi4
   ON_HEX 214 180
     sci6
   ON_HEX 241 180
@@ -4786,15 +3736,11 @@ ENVIROMENT
     sRi5
   ON_HEX 115 181
     sci3
-  ON_HEX 117 181
-    sRi1
   ON_HEX 154 181
     sci2
   ON_HEX 156 181
     sci1
   ON_HEX 172 181
-    sci1
-  ON_HEX 180 181
     sci1
   ON_HEX 195 181
     sci7
@@ -4810,36 +3756,16 @@ ENVIROMENT
     sciA
   ON_HEX 141 182
     sci1
-  ON_HEX 179 182
-    sci6
-  ON_HEX 182 182
-    sci3
-  ON_HEX 189 182
-    sRi5
-  ON_HEX 191 182
-    sOi8
   ON_HEX 202 182
     sci8
   ON_HEX 227 182
     sJiM
   ON_HEX 274 182
     sci8
-  ON_HEX 275 182
-    sRi3
   ON_HEX 118 183
     sci6
-  ON_HEX 157 183
-    sci1
-  ON_HEX 158 183
-    sci6
-  ON_HEX 160 183
-    sci9
   ON_HEX 197 183
     sci6
-  ON_HEX 218 183
-    sRi2
-  ON_HEX 283 183
-    sRi5
   ON_HEX 288 183
     sci4
   ON_HEX 171 184
@@ -4866,48 +3792,24 @@ ENVIROMENT
     sRi3
   ON_HEX 289 184
     sci1
-  ON_HEX 133 185
-    sRi1
   ON_HEX 135 185
     sci4
-  ON_HEX 141 185
-    sRi2
   ON_HEX 156 185
     sci1
-  ON_HEX 158 185
-    sci9
-  ON_HEX 163 185
-    sci4
   ON_HEX 186 185
     sci3
   ON_HEX 191 185
     sci6
   ON_HEX 195 185
     sci1
-  ON_HEX 202 185
-    sci7
-  ON_HEX 203 185
-    sOi5
-  ON_HEX 213 185
-    sRi1
-  ON_HEX 265 185
-    sRi5
-  ON_HEX 281 185
-    sRi1
   ON_HEX 111 186
     sJiI
-  ON_HEX 129 186
-    sRi4
   ON_HEX 139 186
     sci3
   ON_HEX 153 186
     sci3
-  ON_HEX 160 186
-    sci6
   ON_HEX 187 186
     sci4
-  ON_HEX 201 186
-    sRi3
   ON_HEX 231 186
     sJiP
   ON_HEX 284 186
@@ -4920,12 +3822,6 @@ ENVIROMENT
     sci4
   ON_HEX 158 187
     sci1
-  ON_HEX 163 187
-    sci8
-  ON_HEX 196 187
-    sRi3
-  ON_HEX 198 187
-    sSi1
   ON_HEX 215 187
     sci7
   ON_HEX 224 187
@@ -4954,8 +3850,6 @@ ENVIROMENT
     sci2
   ON_HEX 180 189
     sci8
-  ON_HEX 198 189
-    sci1
   ON_HEX 204 189
     sci1
   ON_HEX 219 189
@@ -4976,46 +3870,28 @@ ENVIROMENT
     sci5
   ON_HEX 194 190
     sci3
-  ON_HEX 197 190
-    sci6
-  ON_HEX 199 190
-    sci2
   ON_HEX 220 190
     sci8
-  ON_HEX 224 190
-    sRi3
   ON_HEX 237 190
     sJiL
   ON_HEX 261 190
     sJiO
   ON_HEX 277 190
     sci7
-  ON_HEX 97 191
-    sRi1
   ON_HEX 109 191
     sci4
   ON_HEX 113 191
     sci3
-  ON_HEX 158 191
-    sRi3
   ON_HEX 159 191
     sci6
   ON_HEX 179 191
     sciA
-  ON_HEX 202 191
-    sRi2
-  ON_HEX 220 191
-    sRi4
   ON_HEX 222 191
     sci3
   ON_HEX 239 191
     sJiU
   ON_HEX 254 191
     sJiQ
-  ON_HEX 277 191
-    sci6
-  ON_HEX 281 191
-    sRi3
   ON_HEX 97 192
     sci3
   ON_HEX 116 192
@@ -5030,10 +3906,6 @@ ENVIROMENT
     sci8
   ON_HEX 188 192
     sci3
-  ON_HEX 197 192
-    sRi1
-  ON_HEX 198 192
-    sOi8
   ON_HEX 224 192
     sciA
   ON_HEX 232 192
@@ -5072,8 +3944,6 @@ ENVIROMENT
     sJiG
   ON_HEX 288 193
     sRi5
-  ON_HEX 100 194
-    sci5
   ON_HEX 117 194
     sci8
   ON_HEX 120 194
@@ -5082,10 +3952,6 @@ ENVIROMENT
     sJiE
   ON_HEX 144 194
     sci6
-  ON_HEX 197 194
-    sciA
-  ON_HEX 200 194
-    sci7
   ON_HEX 203 194
     sci7
   ON_HEX 209 194
@@ -5102,16 +3968,8 @@ ENVIROMENT
     sEi3
   ON_HEX 258 194
     sJiN
-  ON_HEX 277 194
-    sci7
-  ON_HEX 278 194
-    sRi4
-  ON_HEX 285 194
-    sRi4
   ON_HEX 288 194
     sci9
-  ON_HEX 289 194
-    sci7
   ON_HEX 118 195
     sci1
   ON_HEX 143 195
@@ -5130,8 +3988,6 @@ ENVIROMENT
     sci4
   ON_HEX 279 195
     sci2
-  ON_HEX 289 195
-    sciA
   ON_HEX 156 196
     sci6
   ON_HEX 165 196
@@ -5146,16 +4002,12 @@ ENVIROMENT
     sci3
   ON_HEX 295 196
     sRi3
-  ON_HEX 103 197
-    sRi4
   ON_HEX 121 197
     sEiL
   ON_HEX 146 197
     sJiL
   ON_HEX 147 197
     sJiO
-  ON_HEX 158 197
-    sRi5
   ON_HEX 231 197
     sci6
   ON_HEX 232 197
@@ -5172,8 +4024,6 @@ ENVIROMENT
     sJiG
   ON_HEX 280 198
     sci4
-  ON_HEX 281 198
-    sci7
   ON_HEX 287 198
     sci5
   ON_HEX 102 199
@@ -5188,18 +4038,12 @@ ENVIROMENT
     sci4
   ON_HEX 240 199
     sci8
-  ON_HEX 285 199
-    sRi2
   ON_HEX 288 199
     sciA
   ON_HEX 293 199
     sci7
-  ON_HEX 294 199
-    sRi5
   ON_HEX 296 199
     sci5
-  ON_HEX 102 200
-    sRi3
   ON_HEX 105 200
     sciA
   ON_HEX 126 200
@@ -5226,8 +4070,6 @@ ENVIROMENT
     sci3
   ON_HEX 238 201
     sRi4
-  ON_HEX 172 202
-    sRi5
   ON_HEX 175 202
     sci4
   ON_HEX 184 202
@@ -5248,14 +4090,10 @@ ENVIROMENT
     sci3
   ON_HEX 172 203
     sci5
-  ON_HEX 173 203
-    sci4
   ON_HEX 177 203
     sci8
   ON_HEX 180 203
     sci8
-  ON_HEX 182 203
-    sRi3
   ON_HEX 184 203
     sci2
   ON_HEX 244 203
@@ -5264,8 +4102,6 @@ ENVIROMENT
     sci5
   ON_HEX 294 203
     sci3
-  ON_HEX 104 204
-    sci6
   ON_HEX 131 204
     sci6
   ON_HEX 200 204
@@ -5288,8 +4124,6 @@ ENVIROMENT
     sci1
   ON_HEX 104 205
     sci7
-  ON_HEX 106 205
-    sRi3
   ON_HEX 108 205
     sci6
   ON_HEX 125 205
@@ -5300,20 +4134,14 @@ ENVIROMENT
     sci1
   ON_HEX 195 205
     sci9
-  ON_HEX 198 205
-    sRi2
   ON_HEX 221 205
     sci1
-  ON_HEX 222 205
-    sRi1
   ON_HEX 224 205
     sci7
   ON_HEX 229 205
     sci5
   ON_HEX 246 205
     sci8
-  ON_HEX 248 205
-    sRi4
   ON_HEX 249 205
     sci8
   ON_HEX 281 205
@@ -5336,16 +4164,10 @@ ENVIROMENT
     sci7
   ON_HEX 210 206
     sci2
-  ON_HEX 215 206
-    sci1
   ON_HEX 230 206
     sci2
-  ON_HEX 252 206
-    sRi4
   ON_HEX 254 206
     sci9
-  ON_HEX 256 206
-    sRi1
   ON_HEX 259 206
     sci1
   ON_HEX 283 206
@@ -5358,38 +4180,20 @@ ENVIROMENT
     sci4
   ON_HEX 205 207
     sci4
-  ON_HEX 208 207
-    sRi5
   ON_HEX 212 207
     sci7
-  ON_HEX 216 207
-    sRi4
-  ON_HEX 217 207
-    sci5
   ON_HEX 233 207
     sci9
-  ON_HEX 243 207
-    sRi5
   ON_HEX 281 207
     sci8
-  ON_HEX 170 208
-    sciA
-  ON_HEX 195 208
-    sRi2
-  ON_HEX 196 208
-    sci1
   ON_HEX 198 208
     sci1
   ON_HEX 201 208
     sci4
   ON_HEX 204 208
     sci3
-  ON_HEX 208 208
-    sci6
   ON_HEX 216 208
     sci5
-  ON_HEX 232 208
-    sRi1
   ON_HEX 248 208
     sci3
   ON_HEX 252 208
@@ -5400,22 +4204,10 @@ ENVIROMENT
     sci7
   ON_HEX 150 209
     sJiT
-  ON_HEX 158 209
-    sRi4
-  ON_HEX 172 209
-    sRi4
   ON_HEX 173 209
     sci2
-  ON_HEX 195 209
-    sci8
   ON_HEX 199 209
     sciA
-  ON_HEX 214 209
-    sci3
-  ON_HEX 215 209
-    sci3
-  ON_HEX 251 209
-    sRi3
   ON_HEX 259 209
     sci9
   ON_HEX 261 209
@@ -5426,14 +4218,6 @@ ENVIROMENT
     sciA
   ON_HEX 171 210
     sci2
-  ON_HEX 197 210
-    sciA
-  ON_HEX 214 210
-    sci3
-  ON_HEX 215 210
-    sci7
-  ON_HEX 216 210
-    sci9
   ON_HEX 278 210
     sci7
   ON_HEX 288 210
@@ -5442,8 +4226,6 @@ ENVIROMENT
     sGiH
   ON_HEX 194 211
     sci3
-  ON_HEX 220 211
-    sci8
   ON_HEX 261 211
     sci3
   ON_HEX 138 212
@@ -5464,8 +4246,6 @@ ENVIROMENT
     sJi1
   ON_HEX 188 213
     sci2
-  ON_HEX 222 213
-    sci5
   ON_HEX 278 213
     sci6
   ON_HEX 305 213
@@ -5474,20 +4254,12 @@ ENVIROMENT
     sJiM
   ON_HEX 156 214
     sci6
-  ON_HEX 158 214
-    sRi1
   ON_HEX 185 214
     sci5
-  ON_HEX 189 214
-    sRi1
-  ON_HEX 191 214
-    sci6
   ON_HEX 306 214
     sci6
   ON_HEX 165 215
     sci7
-  ON_HEX 190 215
-    sci1
   ON_HEX 224 215
     sci1
   ON_HEX 276 215
@@ -5498,18 +4270,12 @@ ENVIROMENT
     sci2
   ON_HEX 306 215
     sci9
-  ON_HEX 111 216
-    sRi3
   ON_HEX 112 216
     sci4
   ON_HEX 161 216
     sci5
-  ON_HEX 165 216
-    sRi3
   ON_HEX 183 216
     sci9
-  ON_HEX 185 216
-    sRi2
   ON_HEX 188 216
     sci6
   ON_HEX 275 216
@@ -5554,17 +4320,7 @@ ENVIROMENT
     sci9
   ON_HEX 218 219
     sci2
-  ON_HEX 228 219
-    sci4
-  ON_HEX 229 219
-    sRi2
-  ON_HEX 241 219
-    sRi5
-  ON_HEX 294 219
-    sgi5
   ON_HEX 111 220
-    sRi4
-  ON_HEX 133 220
     sRi4
   ON_HEX 151 220
     sci2
@@ -5580,10 +4336,6 @@ ENVIROMENT
     sJiU
   ON_HEX 230 220
     sci2
-  ON_HEX 233 220
-    sci7
-  ON_HEX 236 220
-    sRi4
   ON_HEX 237 220
     sci9
   ON_HEX 240 220
@@ -5640,33 +4392,15 @@ ENVIROMENT
     sci7
   ON_HEX 183 223
     sci8
-  ON_HEX 184 223
-    sRi1
   ON_HEX 194 223
     sci1
   ON_HEX 223 223
     sci1
-  ON_HEX 250 223
-    sRi5
-  ON_HEX 257 223
-    sRi1
   ON_HEX 260 223
     sci1
-  ON_HEX 115 224
-    sRi1
   ON_HEX 117 224
     sci1
-  ON_HEX 132 224
-    sRi5
   ON_HEX 136 224
-    sRi4
-  ON_HEX 168 224
-    sRi2
-  ON_HEX 184 224
-    sci2
-  ON_HEX 185 224
-    sci1
-  ON_HEX 189 224
     sRi4
   ON_HEX 249 224
     sci2
@@ -5678,14 +4412,12 @@ ENVIROMENT
     sci3
   ON_HEX 265 224
     sci8
-  ON_HEX 268 224
-    sRi4
   ON_HEX 278 224
     sci2
   ON_HEX 280 224
     sci2
-  ON_HEX 305 224
-    sgi1
+  ON_HEX 304 224
+    sci5
   ON_HEX 127 225
     sci4
   ON_HEX 130 225
@@ -5708,8 +4440,6 @@ ENVIROMENT
     sJiH
   ON_HEX 169 226
     sci4
-  ON_HEX 186 226
-    sRi5
   ON_HEX 232 226
     sci1
   ON_HEX 235 226
@@ -5746,8 +4476,6 @@ ENVIROMENT
     sJi3
   ON_HEX 244 227
     sci4
-  ON_HEX 266 227
-    sRi3
   ON_HEX 268 227
     sciA
   ON_HEX 283 227
@@ -5778,10 +4506,6 @@ ENVIROMENT
     sci8
   ON_HEX 264 229
     sci4
-  ON_HEX 273 229
-    sRi3
-  ON_HEX 302 229
-    sci2
   ON_HEX 304 229
     sci4
   ON_HEX 117 230
@@ -5792,12 +4516,8 @@ ENVIROMENT
     sGiC
   ON_HEX 301 230
     sci7
-  ON_HEX 313 230
-    sRi4
   ON_HEX 167 231
     sci3
-  ON_HEX 175 231
-    sRi1
   ON_HEX 276 231
     sci8
   ON_HEX 170 232
@@ -5808,10 +4528,6 @@ ENVIROMENT
     sciA
   ON_HEX 301 232
     sci9
-  ON_HEX 304 232
-    sci5
-  ON_HEX 311 232
-    sRi2
   ON_HEX 226 233
     sciA
   ON_HEX 170 234
@@ -5832,16 +4548,12 @@ ENVIROMENT
     sRi2
   ON_HEX 191 236
     sci2
-  ON_HEX 192 236
-    sRi1
   ON_HEX 228 236
     sGij
   ON_HEX 234 236
     sci5
   ON_HEX 120 237
     sRi1
-  ON_HEX 193 237
-    sci4
   ON_HEX 228 237
     sJiT
   ON_HEX 124 238
@@ -5862,39 +4574,27 @@ ENVIROMENT
     sci2
   ON_HEX 230 239
     sci7
-  ON_HEX 124 240
-    sRi4
   ON_HEX 314 240
     sRi2
   ON_HEX 122 241
     sci6
-  ON_HEX 171 241
-    sRi1
   ON_HEX 173 241
     sci7
   ON_HEX 194 241
     sciA
-  ON_HEX 125 242
-    sci3
   ON_HEX 169 242
     sci9
   ON_HEX 303 243
     sci2
   ON_HEX 319 243
     sRi5
-  ON_HEX 125 244
-    sRi4
   ON_HEX 128 244
     sci5
   ON_HEX 171 244
     sci1
   ON_HEX 197 244
     sci9
-  ON_HEX 198 244
-    sRi2
   ON_HEX 314 244
-    sRi2
-  ON_HEX 192 245
     sRi2
   ON_HEX 207 245
     sJi4
@@ -5944,16 +4644,10 @@ ENVIROMENT
     sciA
   ON_HEX 125 248
     sRi4
-  ON_HEX 197 248
-    sRi3
   ON_HEX 201 248
     sci8
   ON_HEX 208 248
     sci9
-  ON_HEX 226 248
-    sci6
-  ON_HEX 318 248
-    sRi5
   ON_HEX 126 249
     sRi5
   ON_HEX 129 249
@@ -5962,10 +4656,6 @@ ENVIROMENT
     sci6
   ON_HEX 207 249
     sciA
-  ON_HEX 225 249
-    sRi4
-  ON_HEX 229 249
-    sRi5
   ON_HEX 234 249
     sci7
   ON_HEX 126 250
@@ -5976,10 +4666,6 @@ ENVIROMENT
     sci6
   ON_HEX 208 250
     sci2
-  ON_HEX 218 250
-    sRi1
-  ON_HEX 220 250
-    sRi5
   ON_HEX 235 250
     sJiA
   ON_HEX 309 250
@@ -5996,18 +4682,8 @@ ENVIROMENT
     sci1
   ON_HEX 138 252
     sci4
-  ON_HEX 140 252
-    sci2
-  ON_HEX 152 252
-    sci3
   ON_HEX 153 252
     sci7
-  ON_HEX 218 252
-    sRi4
-  ON_HEX 228 252
-    sci7
-  ON_HEX 243 252
-    sRi2
   ON_HEX 252 252
     sci4
   ON_HEX 275 252
@@ -6026,8 +4702,6 @@ ENVIROMENT
     sci8
   ON_HEX 323 252
     sRi4
-  ON_HEX 130 253
-    sRi2
   ON_HEX 148 253
     sci3
   ON_HEX 154 253
@@ -6036,8 +4710,6 @@ ENVIROMENT
     sci2
   ON_HEX 187 253
     sci1
-  ON_HEX 222 253
-    sRi2
   ON_HEX 234 253
     sGiD
   ON_HEX 258 253
@@ -6048,8 +4720,6 @@ ENVIROMENT
     sci4
   ON_HEX 294 253
     sci7
-  ON_HEX 298 253
-    sRi1
   ON_HEX 305 253
     sci1
   ON_HEX 321 253
@@ -6058,16 +4728,12 @@ ENVIROMENT
     sJiX
   ON_HEX 133 254
     sci7
-  ON_HEX 142 254
-    sRi4
   ON_HEX 143 254
     sciA
   ON_HEX 148 254
     sci1
   ON_HEX 181 254
     sKiM
-  ON_HEX 190 254
-    sRi3
   ON_HEX 196 254
     sRi4
   ON_HEX 219 254
@@ -6076,36 +4742,20 @@ ENVIROMENT
     sci7
   ON_HEX 245 254
     sci9
-  ON_HEX 250 254
-    sRi4
-  ON_HEX 261 254
-    sRi2
-  ON_HEX 278 254
-    sRi1
-  ON_HEX 291 254
-    sRi2
-  ON_HEX 292 254
-    sci9
   ON_HEX 297 254
     sci2
   ON_HEX 135 255
     sRi4
   ON_HEX 156 255
     sciA
-  ON_HEX 157 255
-    sci2
   ON_HEX 162 255
     sci5
-  ON_HEX 185 255
-    sRi2
   ON_HEX 196 255
     sci9
   ON_HEX 230 255
     sci6
   ON_HEX 234 255
     sJi4
-  ON_HEX 252 255
-    sci9
   ON_HEX 256 255
     sci2
   ON_HEX 263 255
@@ -6114,10 +4764,6 @@ ENVIROMENT
     sci9
   ON_HEX 273 255
     sci3
-  ON_HEX 275 255
-    sRi4
-  ON_HEX 282 255
-    sRi2
   ON_HEX 286 255
     sci6
   ON_HEX 302 255
@@ -6126,28 +4772,12 @@ ENVIROMENT
     sci8
   ON_HEX 323 255
     sci6
-  ON_HEX 138 256
-    sRi3
-  ON_HEX 140 256
-    sciA
   ON_HEX 143 256
     sci3
-  ON_HEX 145 256
-    sci4
-  ON_HEX 154 256
-    sci3
-  ON_HEX 155 256
-    sRi3
-  ON_HEX 158 256
-    sRi3
-  ON_HEX 161 256
-    sRi2
   ON_HEX 163 256
     sci2
   ON_HEX 172 256
     sci6
-  ON_HEX 230 256
-    sRi3
   ON_HEX 246 256
     sci9
   ON_HEX 251 256
@@ -6170,8 +4800,6 @@ ENVIROMENT
     sci2
   ON_HEX 299 256
     sci4
-  ON_HEX 305 256
-    sRi2
   ON_HEX 326 256
     s2iJ
   ON_HEX 131 257
@@ -6182,8 +4810,6 @@ ENVIROMENT
     sci8
   ON_HEX 141 257
     sRi4
-  ON_HEX 146 257
-    sRi1
   ON_HEX 153 257
     sci1
   ON_HEX 160 257
@@ -6204,30 +4830,22 @@ ENVIROMENT
     sRi2
   ON_HEX 199 257
     sci5
-  ON_HEX 223 257
-    sRi3
   ON_HEX 226 257
     sRi2
   ON_HEX 234 257
     sci6
-  ON_HEX 244 257
-    sRi2
   ON_HEX 249 257
     sRi2
   ON_HEX 251 257
     sci8
   ON_HEX 252 257
     sci7
-  ON_HEX 254 257
-    sRi5
   ON_HEX 255 257
     sci4
   ON_HEX 257 257
     sci9
   ON_HEX 261 257
     sci8
-  ON_HEX 264 257
-    sRi5
   ON_HEX 268 257
     sci3
   ON_HEX 270 257
@@ -6238,16 +4856,12 @@ ENVIROMENT
     sci2
   ON_HEX 284 257
     sci7
-  ON_HEX 289 257
-    sRi3
   ON_HEX 293 257
     sci5
   ON_HEX 296 257
     sRi1
   ON_HEX 299 257
     sci8
-  ON_HEX 301 257
-    sRi1
   ON_HEX 304 257
     sci3
   ON_HEX 308 257
@@ -6262,18 +4876,12 @@ ENVIROMENT
     sci3
   ON_HEX 156 258
     sci7
-  ON_HEX 159 258
-    sRi5
   ON_HEX 172 258
     sci8
-  ON_HEX 190 258
-    sRi4
   ON_HEX 196 258
     sci2
   ON_HEX 223 258
     sci7
-  ON_HEX 225 258
-    sRi2
   ON_HEX 227 258
     sci5
   ON_HEX 234 258
@@ -6282,20 +4890,12 @@ ENVIROMENT
     sGiC
   ON_HEX 243 258
     sci5
-  ON_HEX 246 258
-    sRi3
   ON_HEX 248 258
     sci1
   ON_HEX 252 258
     sciA
-  ON_HEX 259 258
-    sRi4
   ON_HEX 268 258
     sci6
-  ON_HEX 277 258
-    sRi1
-  ON_HEX 282 258
-    sRi3
   ON_HEX 312 258
     sci4
   ON_HEX 314 258
@@ -6469,15 +5069,15 @@ END_OF_BASES
 RANDOMS
   MICROLOGIC 2 0 1
   RANDOM_SEED 1 863437414
-  RANDOM_SEED 2 -1199372770
-  RANDOM_SEED 3 -1373246467
+  RANDOM_SEED 2 -1376732655
+  RANDOM_SEED 3 -921119475
   RANDOM_SEED 4 110103870
   RANDOM_SEED 5 -1618032701
   RANDOM_SEED 6 268592425
   RANDOM_SEED 7 92643794
   RANDOM_SEED 8 631288604
   RANDOM_SEED 9 426144657
-  RANDOM_SEED 10 -644836433
+  RANDOM_SEED 10 -1218897211
   RANDOM_SEED 11 393987896
   RANDOM_SEED 12 1172833818
   RANDOM_SEED 13 -171684798
@@ -6520,7 +5120,7 @@ LASER_EFECTS
 END_OF_LASER_EFECTS
 
 USER_INTERFACE
-  VIEW 2010 1828 1542 854 1
+  VIEW 2720 1552 1542 854 1
   MASHA_FLAG 2 F F
 END_OF_USER_INTERFACE
 

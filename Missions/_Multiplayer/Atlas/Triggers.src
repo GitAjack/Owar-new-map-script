@@ -21,7 +21,7 @@ begin
     if GetBType(b) in [b_depot, b_warehouse] then
     begin
         SetBName(b, '@' & GetSide(b));
-        side_depots := Replace(side_depots, GetSide(o), side_depots[GetSide(o)] diff b);
+        side_depots := Replace(side_depots, o, side_depots[o] diff b);
         if GetSide(b)=Your_Side then
         begin
             if side_depots[GetSide(b)]+0=0 then
@@ -31,9 +31,13 @@ begin
                     ToLua('LUA_SideTechMax()');
             end;
         end;
-        if GetSide(o)=Your_Side then
-            if side_depots[GetSide(o)]+0=0 then
+        if side_depots[o]+0=0 then
+        begin
+            if o=Your_Side then
                 ToLua('LUA_NoDepot();');
+            DidPlayerLose(o);
+        end;
+        
         side_depots := Replace(side_depots, GetSide(b), side_depots[GetSide(b)] ^ b);
     end;
 end;
@@ -51,9 +55,12 @@ begin
     
     if GetBType(i) in [b_depot, b_warehouse] then
         side_depots := Replace(side_depots, GetSide(i), side_depots[GetSide(i)] diff i);
-        if GetSide(i)=Your_Side then    
-            if side_depots[GetSide(i)]+0=0 then
+        if side_depots[GetSide(i)]+0=0 then
+        begin
+            if GetSide(i)=Your_Side then    
                 ToLua('LUA_NoDepot();');
+            DidPlayerLose(GetSide(i));
+        end;
 end;
 
 //SAIL events
@@ -74,12 +81,10 @@ begin
                     if Your_Side=9 or Your_Side in Teams[i] then
                     begin
                         YouLostInMultiplayer;
-                        ToLua('EndGame();');
                     end
                     else
                     begin
                         YouWinInMultiplayer;
-                        ToLua('EndGame();');
                     end
                 else
                     Continue
@@ -96,12 +101,10 @@ begin
                         if Your_Side in Teams[i] then
                         begin
                             YouWinInMultiplayer;
-                            ToLua('EndGame();');
                         end
                         else
                         begin
                             YouLostInMultiplayer;
-                            ToLua('EndGame();');
                         end;
                 end;
             end;
@@ -298,5 +301,53 @@ begin
             if side=Your_Side then
                 SetAreaMapShow(team_transfer_zones[Side_Teams[side]][side_chosen_zone[side]],0);
         end;
+        
+//        501: //Spectator swaps perspective backwards
+//        begin
+//            i := GetSideFog(Your_Side);
+//            
+//            Case i of
+//                9:
+//                begin
+//                    i := 2;
+//                end;
+//                    
+//                2..8:
+//                begin
+//                    i := i-1;
+//                end;
+//                
+//                1:
+//                begin
+//                    i := 9;
+//                end;
+//            end;
+//            
+//            ChangeSideFog(Your_Side,i);
+//            ToLua('LUA_UpdatePerspective('&i&');');    
+//        end;
+//        
+//        502: //Spectator swaps perspective forwards
+//        begin
+//            Case i of
+//                9:
+//                begin
+//                    i := 1;
+//                end;
+//                    
+//                1:
+//                begin
+//                    i := i+1;
+//                end;
+//                
+//                2..8:
+//                begin
+//                    i := 9;
+//                end;
+//            end;
+//            
+//            ChangeSideFog(Your_Side,i);
+//            ToLua('LUA_UpdatePerspective('&i&');');
+//        end;
     end;
 end;
